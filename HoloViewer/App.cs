@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.MobileBlazorBindings;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace HoloViewer
@@ -17,9 +16,6 @@ namespace HoloViewer
                 {
                     // Adds web-specific services such as NavigationManager
                     services.AddBlazorHybrid();
-
-                    // Register app-specific services
-                    services.AddSingleton<CounterState>();
                 })
                 .UseWebRoot("wwwroot");
 
