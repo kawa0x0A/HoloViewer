@@ -1,8 +1,22 @@
 ﻿<ContentView>
     <StackLayout>
-        <BlazorWebView VerticalOptions="LayoutOptions.FillAndExpand">
-            <HoloViewer.WebUI.App />
-        </BlazorWebView>
+        <StackLayout Orientation="StackOrientation.Horizontal">
+            <Label Text="画面分割" VerticalOptions="LayoutOptions.CenterAndExpand" FontSize="24" />
+            <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenHorizontal2.png"))" WidthRequest="32" HeightRequest="32" />
+            <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenVertical2.png"))"   WidthRequest="32" HeightRequest="32" />
+            <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenHorizontal3.png"))" WidthRequest="32" HeightRequest="32" />
+            <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenVertical3.png"))"   WidthRequest="32" HeightRequest="32" />
+            <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenCustom3-1.png"))"   WidthRequest="32" HeightRequest="32" />
+            <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenCustom3-2.png"))"   WidthRequest="32" HeightRequest="32" />
+            <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenHorizontal4.png"))" WidthRequest="32" HeightRequest="32" />
+            <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenVertical4.png"))"   WidthRequest="32" HeightRequest="32" />
+            <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenCustom4.png"))"     WidthRequest="32" HeightRequest="32" />
+        </StackLayout>
+        <Grid>
+            <BlazorWebView VerticalOptions="LayoutOptions.FillAndExpand">
+                <HoloViewer.WebUI.App />
+            </BlazorWebView>
+        </Grid>
     </StackLayout>
 </ContentView>
 
