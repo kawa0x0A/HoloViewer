@@ -1,5 +1,108 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<div>
+    @foreach (var group in vTuberGroups)
+    {
+        <ul>
+            @foreach (var profile in group.groupMembers)
+            {
+                <li>
+                    <NavLink href="@profile.youtubePageUrl">
+                        @profile.markIcon @profile.fullName
+                    </NavLink>
+                </li>
+            }
+        </ul>
+    }
+</div>
 
-Welcome to your new app.
+@code
+{
+    public class VTuberGroup
+    {
+        public readonly string groupName;
+        public readonly VTuberProfile[] groupMembers;
+
+        public VTuberGroup(string groupName, VTuberProfile[] groupMembers)
+        {
+            this.groupName = groupName;
+            this.groupMembers = groupMembers;
+        }
+    }
+
+    public class VTuberProfile
+    {
+        public readonly string fullName;
+        public readonly string markIcon;
+        public readonly string youtubePageUrl;
+
+        public VTuberProfile (string fullName, string markIcon, string youtubePageUrl)
+        {
+            this.fullName = fullName;
+            this.markIcon = markIcon;
+            this.youtubePageUrl = youtubePageUrl;
+        }
+    }
+
+    public static readonly VTuberGroup[] vTuberGroups =
+    {
+        new VTuberGroup(null, new VTuberProfile[]
+        {
+            new VTuberProfile("ときのそら", "🐻💿", "https://www.youtube.com/channel/UCp6993wxpyDPHUpavwDFqgg"),
+            new VTuberProfile("ロボ子さん", "🤖", "https://www.youtube.com/channel/UCDqI2jOz0weumE8s7paEk6g"),
+            new VTuberProfile("さくらみこ", "🌸", "https://www.youtube.com/channel/UC-hM6YJuNYVAmUWxeIr9FeA"),
+            new VTuberProfile("星街すいせい", "☄️", "https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A"),
+        }),
+
+        new VTuberGroup("1期生", new VTuberProfile[]
+        {
+            new VTuberProfile("夜空メル", "🌟", "https://www.youtube.com/channel/UCD8HOxPs4Xvsm8H0ZxXGiBw"),
+            new VTuberProfile("アキ・ローゼンタール", "🍎", "https://www.youtube.com/channel/UCFTLzh12_nrtzqBPsTCqenA"),
+            new VTuberProfile("赤井はあと", "❤", "https://www.youtube.com/channel/UC1CfXB_kRs3C-zaeTG3oGyg"),
+            new VTuberProfile("白上フブキ", "🌽", "https://www.youtube.com/channel/UCdn5BQ06XqgXoAxIhbqw5Rg"),
+            new VTuberProfile("夏色まつり", "🏮", "https://www.youtube.com/channel/UCQ0UDLQCjY0rmuxCDE38FGg"),
+        }),
+
+        new VTuberGroup("2期生", new VTuberProfile[]
+        {
+            new VTuberProfile("湊あくあ", "⚓️", "https://www.youtube.com/channel/UC1opHUrw8rvnsadT-iGp7Cg"),
+            new VTuberProfile("紫咲シオン", "🌙", "https://www.youtube.com/channel/UCXTpFs_3PqI41qX2d9tL2Rw"),
+            new VTuberProfile("百鬼あやめ", "😈", "https://www.youtube.com/channel/UC7fk0CB07ly8oSl0aqKkqFg"),
+            new VTuberProfile("癒月ちょこ", "💋", "https://www.youtube.com/channel/UC1suqwovbL1kzsoaZgFZLKg"),
+            new VTuberProfile("大空スバル", "🚑", "https://www.youtube.com/channel/UCvzGlP9oQwU--Y0r9id_jnA"),
+        }),
+
+        new VTuberGroup("ゲーマーズ", new VTuberProfile[]
+        {
+            new VTuberProfile("大神ミオ", "🌲", "https://www.youtube.com/channel/UCp-5t9SrOQwXMU7iIjQfARg"),
+            new VTuberProfile("猫又おかゆ", "🍙", "https://www.youtube.com/channel/UCvaTdHTWBGv3MKj3KVqJVCw"),
+            new VTuberProfile("戌神ころね", "🥐", "https://www.youtube.com/channel/UChAnqc_AY5_I3Px5dig3X1Q"),
+        }),
+
+        new VTuberGroup("3期生", new VTuberProfile[]
+        {
+            new VTuberProfile("兎田ぺこら", "👯", "https://www.youtube.com/channel/UC1DCedRgGHBdm81E1llLhOQ"),
+            new VTuberProfile("潤羽るしあ", "🦋", "https://www.youtube.com/channel/UCl_gCybOJRIgOXw6Qb4qJzQ"),
+            new VTuberProfile("不知火フレア", "🔥", "https://www.youtube.com/channel/UCvInZx9h3jC2JzsIzoOebWg"),
+            new VTuberProfile("白銀ノエル", "⚔️", "https://www.youtube.com/channel/UCdyqAaZDKHXg4Ahi7VENThQ"),
+            new VTuberProfile("宝鐘マリン", "🏴‍☠️", "https://www.youtube.com/channel/UCCzUftO8KOVkV4wQG1vkUvg"),
+        }),
+
+        new VTuberGroup("4期生", new VTuberProfile[]
+        {
+            new VTuberProfile("天音かなた", "💫", "https://www.youtube.com/channel/UCZlDXzGoo7d44bwdNObFacg"),
+            new VTuberProfile("桐生ココ", "🐉", "https://www.youtube.com/channel/UCS9uQI-jC3DE0L4IpXyvr6w"),
+            new VTuberProfile("角巻わため", "🐏", "https://www.youtube.com/channel/UCqm3BQLlJfvkTsX_hvm0UmA"),
+            new VTuberProfile("常闇トワ", "👾", "https://www.youtube.com/channel/UC1uv2Oq6kNxgATlCiez59hw"),
+            new VTuberProfile("姫森ルーナ", "🍬", "https://www.youtube.com/channel/UCa9Y57gfeY0Zro_noHRVrnw"),
+        }),
+
+        new VTuberGroup("5期生", new VTuberProfile[]
+        {
+            new VTuberProfile("雪花ラミィ", "☃️", "https://www.youtube.com/channel/UCFKOVgVbGmX65RxO3EtH3iw"),
+            new VTuberProfile("桃鈴ねね", "🥟", "https://www.youtube.com/channel/UCAWSyEs_Io8MtpY3m-zqILA"),
+            new VTuberProfile("獅白ぼたん", "♌", "https://www.youtube.com/channel/UCUKD-uaobj9jiqB-VXt71mA"),
+            new VTuberProfile("尾丸ポルカ", "🎪", "https://www.youtube.com/channel/UCK9V2B22uJYu3N7eR_BT9QA"),
+        }),
+    };
+}
