@@ -16,6 +16,9 @@ namespace HoloViewer
                 {
                     // Adds web-specific services such as NavigationManager
                     services.AddBlazorHybrid();
+
+                    // Register app-specific services
+                    services.AddSingleton<ApplicationScreenMode>();
                 })
                 .UseWebRoot("wwwroot");
 

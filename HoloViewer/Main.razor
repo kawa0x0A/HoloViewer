@@ -1,4 +1,8 @@
-﻿<ContentView>
+﻿@inject ApplicationScreenMode ApplicationScreenMode
+
+@using ScreenMode = ApplicationScreenMode.ScreenMode;
+
+<ContentView>
     <StackLayout>
         <StackLayout Orientation="StackOrientation.Horizontal">
             <Label Text="画面分割" VerticalOptions="LayoutOptions.CenterAndExpand" FontSize="24" />
@@ -13,7 +17,7 @@
             <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenCustom4.png"))"     WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenCustom4" />
         </StackLayout>
 
-        @switch (CurrentScreenMode)
+        @switch (ApplicationScreenMode.CurrentScreenMode)
         {
             case ScreenMode.Single:
                 <Grid>
@@ -215,64 +219,48 @@
 
 @code
 {
-    public enum ScreenMode
-    {
-        Single,
-        SplitHorizontal2,
-        SplitVertical2,
-        SplitHorizontal3,
-        SplitVertical3,
-        SplitCustom3_1,
-        SplitCustom3_2,
-        SplitHorizontal4,
-        SplitVertical4,
-        SplitCustom4,
-    }
-
-    public ScreenMode CurrentScreenMode { get; set; }
-
     void ChangeScreenHorizontal2 ()
     {
-        CurrentScreenMode = ScreenMode.SplitHorizontal2;
+        ApplicationScreenMode.ChangeScreenMode(ScreenMode.SplitHorizontal2);
     }
 
     void ChangeScreenVertical2 ()
     {
-        CurrentScreenMode = ScreenMode.SplitVertical2;
+        ApplicationScreenMode.ChangeScreenMode(ScreenMode.SplitVertical2);
     }
 
     void ChangeScreenHorizontal3 ()
     {
-        CurrentScreenMode = ScreenMode.SplitHorizontal3;
+        ApplicationScreenMode.ChangeScreenMode(ScreenMode.SplitHorizontal3);
     }
 
     void ChangeScreenVertical3 ()
     {
-        CurrentScreenMode = ScreenMode.SplitVertical3;
+        ApplicationScreenMode.ChangeScreenMode(ScreenMode.SplitVertical3);
     }
 
     void ChangeScreenCustom3_1 ()
     {
-        CurrentScreenMode = ScreenMode.SplitCustom3_1;
+        ApplicationScreenMode.ChangeScreenMode(ScreenMode.SplitCustom3_1);
     }
 
     void ChangeScreenCustom3_2 ()
     {
-        CurrentScreenMode = ScreenMode.SplitCustom3_2;
+        ApplicationScreenMode.ChangeScreenMode(ScreenMode.SplitCustom3_2);
     }
 
     void ChangeScreenHorizontal4 ()
     {
-        CurrentScreenMode = ScreenMode.SplitHorizontal4;
+        ApplicationScreenMode.ChangeScreenMode(ScreenMode.SplitHorizontal4);
     }
 
     void ChangeScreenVertical4 ()
     {
-        CurrentScreenMode = ScreenMode.SplitVertical4;
+        ApplicationScreenMode.ChangeScreenMode(ScreenMode.SplitVertical4);
     }
 
     void ChangeScreenCustom4 ()
     {
-        CurrentScreenMode = ScreenMode.SplitCustom4;
+        ApplicationScreenMode.ChangeScreenMode(ScreenMode.SplitCustom4);
     }
 }
