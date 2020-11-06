@@ -5,10 +5,8 @@ name: CI
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the main branch
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  create:
+    tags:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -27,11 +25,17 @@ jobs:
         with: 
           dotnet-version: '3.1.403'
 
-      - name: Build Application
+      - name: Build Application for Windows
         run: dotnet publish -c Release ./HoloViewer.Windows/HoloViewer.Windows.csproj -r win-x64 /p:PublishTrimmed=true /p:PublishSingleFile=true
 
-      - name: Create Archive
-        run: powershell Compress-Archive -Path HoloViewer.Windows\bin\Release\netcoreapp3.1\win-x64\publish\* -DestinationPath HoloViewer.zip
+      - name: Create Windows Archive
+        run: powershell Compress-Archive -Path HoloViewer.Windows\bin\Release\netcoreapp3.1\win-x64\publish\* -DestinationPath HoloViewer_Windows_x64.zip
+
+      - name: Upload Windows Archive
+        uses: actions/upload-artifact@v2
+        with:
+          name: Windows_x64
+          path: HoloViewer_Windows_x64.zip  
 
       - name: Create Release
         id: create_release
