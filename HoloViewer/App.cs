@@ -32,7 +32,7 @@ namespace HoloViewer
             }
             var host = hostBuilder.Build();
 
-            MainPage = new ContentPage { Title = "My Application" };
+            MainPage = new ContentPage { Title = "Holo Viewer" };
             host.AddComponent<Main>(parent: MainPage);
         }
 
