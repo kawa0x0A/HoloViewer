@@ -6,6 +6,7 @@
     <StackLayout>
         <StackLayout Orientation="StackOrientation.Horizontal">
             <Label Text="画面分割" VerticalOptions="LayoutOptions.CenterAndExpand" FontSize="24" />
+            <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenSingle.png"))"      WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenSingle" />
             <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenHorizontal2.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenHorizontal2" />
             <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenVertical2.png"))"   WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenVertical2" />
             <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenHorizontal3.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenHorizontal3" />
@@ -20,7 +21,7 @@
         @switch (ApplicationScreenMode.CurrentScreenMode)
         {
             case ScreenMode.Single:
-                <Grid>
+                <Grid HorizontalOptions="LayoutOptions.FillAndExpand" VerticalOptions="LayoutOptions.FillAndExpand">
                     <BlazorWebView VerticalOptions="LayoutOptions.FillAndExpand">
                         <HoloViewer.WebUI.App />
                     </BlazorWebView>
@@ -219,6 +220,11 @@
 
 @code
 {
+    void ChangeScreenSingle ()
+    {
+        ApplicationScreenMode.ChangeScreenMode(ScreenMode.Single);
+    }
+
     void ChangeScreenHorizontal2 ()
     {
         ApplicationScreenMode.ChangeScreenMode(ScreenMode.SplitHorizontal2);
