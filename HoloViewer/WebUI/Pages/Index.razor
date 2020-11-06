@@ -5,75 +5,27 @@
 @inject ApplicationScreenMode ApplicationScreenMode
 
 <div>
-    <div class="@TableLayoutName">
+    <div class="group">
         @foreach (var group in vTuberGroups)
         {
-            <ul class="@TableCellLayoutName">
-                @foreach (var profile in group.groupMembers)
-                {
-                    <li>
-                        <NavLink href="@profile.youtubePageUrl">
-                            @profile.markIcon @profile.fullName
-                        </NavLink>
-                    </li>
-                }
-            </ul>
+            <div>
+                <ul>
+                    @foreach (var profile in group.groupMembers)
+                    {
+                        <li>
+                            <NavLink href="@profile.youtubePageUrl">
+                                @profile.markIcon @profile.fullName
+                            </NavLink>
+                        </li>
+                    }
+                </ul>
+            </div>
         }
     </div>
 </div>
 
 @code
 {
-    public string TableLayoutName
-    {
-        get
-        {
-            switch (ApplicationScreenMode.CurrentScreenMode)
-            {
-                case ScreenMode.Single:
-                case ScreenMode.SplitHorizontal2:
-                case ScreenMode.SplitHorizontal3:
-                case ScreenMode.SplitHorizontal4:
-                case ScreenMode.SplitCustom3_1:
-                case ScreenMode.SplitCustom3_2:
-                case ScreenMode.SplitCustom4:
-                    return "horizontal-list";
-
-                case ScreenMode.SplitVertical2:
-                case ScreenMode.SplitVertical3:
-                case ScreenMode.SplitVertical4:
-                    return "";
-            }
-
-            return "";
-        }
-    }
-
-    public string TableCellLayoutName
-    {
-        get
-        {
-            switch (ApplicationScreenMode.CurrentScreenMode)
-            {
-                case ScreenMode.Single:
-                case ScreenMode.SplitHorizontal2:
-                case ScreenMode.SplitHorizontal3:
-                case ScreenMode.SplitHorizontal4:
-                case ScreenMode.SplitCustom3_1:
-                case ScreenMode.SplitCustom3_2:
-                case ScreenMode.SplitCustom4:
-                    return "horizontal-list-cell";
-
-                case ScreenMode.SplitVertical2:
-                case ScreenMode.SplitVertical3:
-                case ScreenMode.SplitVertical4:
-                    return "";
-            }
-
-            return "";
-        }
-    }
-
     public class VTuberGroup
     {
         public readonly string groupName;
@@ -103,7 +55,7 @@
     public static readonly VTuberGroup[] vTuberGroups =
     {
         new VTuberGroup(null, new VTuberProfile[]
-    {
+        {
             new VTuberProfile("ときのそら", "🐻💿", "https://www.youtube.com/channel/UCp6993wxpyDPHUpavwDFqgg"),
             new VTuberProfile("ロボ子さん", "🤖", "https://www.youtube.com/channel/UCDqI2jOz0weumE8s7paEk6g"),
             new VTuberProfile("さくらみこ", "🌸", "https://www.youtube.com/channel/UC-hM6YJuNYVAmUWxeIr9FeA"),
@@ -111,7 +63,7 @@
         }),
 
         new VTuberGroup("1期生", new VTuberProfile[]
-    {
+        {
             new VTuberProfile("夜空メル", "🌟", "https://www.youtube.com/channel/UCD8HOxPs4Xvsm8H0ZxXGiBw"),
             new VTuberProfile("アキ・ローゼンタール", "🍎", "https://www.youtube.com/channel/UCFTLzh12_nrtzqBPsTCqenA"),
             new VTuberProfile("赤井はあと", "❤", "https://www.youtube.com/channel/UC1CfXB_kRs3C-zaeTG3oGyg"),
@@ -120,7 +72,7 @@
         }),
 
         new VTuberGroup("2期生", new VTuberProfile[]
-    {
+        {
             new VTuberProfile("湊あくあ", "⚓️", "https://www.youtube.com/channel/UC1opHUrw8rvnsadT-iGp7Cg"),
             new VTuberProfile("紫咲シオン", "🌙", "https://www.youtube.com/channel/UCXTpFs_3PqI41qX2d9tL2Rw"),
             new VTuberProfile("百鬼あやめ", "😈", "https://www.youtube.com/channel/UC7fk0CB07ly8oSl0aqKkqFg"),
@@ -129,14 +81,14 @@
         }),
 
         new VTuberGroup("ゲーマーズ", new VTuberProfile[]
-    {
+        {
             new VTuberProfile("大神ミオ", "🌲", "https://www.youtube.com/channel/UCp-5t9SrOQwXMU7iIjQfARg"),
             new VTuberProfile("猫又おかゆ", "🍙", "https://www.youtube.com/channel/UCvaTdHTWBGv3MKj3KVqJVCw"),
             new VTuberProfile("戌神ころね", "🥐", "https://www.youtube.com/channel/UChAnqc_AY5_I3Px5dig3X1Q"),
         }),
 
         new VTuberGroup("3期生", new VTuberProfile[]
-    {
+        {
             new VTuberProfile("兎田ぺこら", "👯", "https://www.youtube.com/channel/UC1DCedRgGHBdm81E1llLhOQ"),
             new VTuberProfile("潤羽るしあ", "🦋", "https://www.youtube.com/channel/UCl_gCybOJRIgOXw6Qb4qJzQ"),
             new VTuberProfile("不知火フレア", "🔥", "https://www.youtube.com/channel/UCvInZx9h3jC2JzsIzoOebWg"),
@@ -145,7 +97,7 @@
         }),
 
         new VTuberGroup("4期生", new VTuberProfile[]
-    {
+        {
             new VTuberProfile("天音かなた", "💫", "https://www.youtube.com/channel/UCZlDXzGoo7d44bwdNObFacg"),
             new VTuberProfile("桐生ココ", "🐉", "https://www.youtube.com/channel/UCS9uQI-jC3DE0L4IpXyvr6w"),
             new VTuberProfile("角巻わため", "🐏", "https://www.youtube.com/channel/UCqm3BQLlJfvkTsX_hvm0UmA"),
@@ -154,7 +106,7 @@
         }),
 
         new VTuberGroup("5期生", new VTuberProfile[]
-    {
+        {
             new VTuberProfile("雪花ラミィ", "☃️", "https://www.youtube.com/channel/UCFKOVgVbGmX65RxO3EtH3iw"),
             new VTuberProfile("桃鈴ねね", "🥟", "https://www.youtube.com/channel/UCAWSyEs_Io8MtpY3m-zqILA"),
             new VTuberProfile("獅白ぼたん", "♌", "https://www.youtube.com/channel/UCUKD-uaobj9jiqB-VXt71mA"),

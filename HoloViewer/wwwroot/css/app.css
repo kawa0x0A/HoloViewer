@@ -25,12 +25,9 @@ app {
             margin-left: 1.5rem;
         }
 
-.horizontal-list {
-    display:table;
-}
-
-.horizontal-list-cell {
-    display:table-cell;
+.group {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #blazor-error-ui {
