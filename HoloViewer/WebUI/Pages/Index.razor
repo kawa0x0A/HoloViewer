@@ -8,18 +8,21 @@
     <div class="group">
         @foreach (var group in vTuberGroups)
         {
-            <div>
-                <ul>
-                    @foreach (var profile in group.groupMembers)
-                    {
-                        <li>
-                            <NavLink href="@profile.youtubePageUrl">
-                                @profile.markIcon @profile.fullName
-                            </NavLink>
-                        </li>
-                    }
-                </ul>
-            </div>
+            <ul>
+                <li>
+                    @group.groupName
+                    <ul>
+                        @foreach (var profile in group.groupMembers)
+                        {
+                            <li>
+                                <NavLink href="@profile.youtubePageUrl">
+                                    @profile.markIcon @profile.fullName
+                                </NavLink>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            </ul>
         }
     </div>
 </div>
@@ -54,7 +57,7 @@
 
     public static readonly VTuberGroup[] vTuberGroups =
     {
-        new VTuberGroup(null, new VTuberProfile[]
+        new VTuberGroup("0期生", new VTuberProfile[]
         {
             new VTuberProfile("ときのそら", "🐻💿", "https://www.youtube.com/channel/UCp6993wxpyDPHUpavwDFqgg"),
             new VTuberProfile("ロボ子さん", "🤖", "https://www.youtube.com/channel/UCDqI2jOz0weumE8s7paEk6g"),
