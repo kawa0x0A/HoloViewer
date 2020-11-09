@@ -9,14 +9,10 @@ namespace HoloViewer.macOS
     {
         public void FullScreen ()
         {
-            NSApplication.SharedApplication.MainWindow.CollectionBehavior |= NSWindowCollectionBehavior.FullScreenPrimary;
-            NSApplication.SharedApplication.MainWindow.ToggleFullScreen(NSApplication.SharedApplication.MainWindow);
         }
 
         void IWindowMode.WindowMode ()
         {
-            NSApplication.SharedApplication.MainWindow.CollectionBehavior ^= NSWindowCollectionBehavior.FullScreenPrimary;
-            NSApplication.SharedApplication.MainWindow.ToggleFullScreen(NSApplication.SharedApplication.MainWindow);
         }
     }
 }

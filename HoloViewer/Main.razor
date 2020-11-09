@@ -36,10 +36,15 @@
                         break;
                 }
             </StackLayout>
-            <StackLayout Orientation="StackOrientation.Horizontal">
-                <Label Text="フルスクリーン" VerticalOptions="LayoutOptions.CenterAndExpand" FontSize="24" />
-                <Switch IsToggledChanged="ChangeWindowMode" VerticalOptions="LayoutOptions.CenterAndExpand" />
-            </StackLayout>
+            @switch(Device.RuntimePlatform)
+            {
+                case Device.WPF:
+                    <StackLayout Orientation="StackOrientation.Horizontal">
+                        <Label Text="フルスクリーン" VerticalOptions="LayoutOptions.CenterAndExpand" FontSize="24" />
+                        <Switch IsToggledChanged="ChangeWindowMode" VerticalOptions="LayoutOptions.CenterAndExpand" />
+                    </StackLayout>
+                    break;
+            }
         </StackLayout>
 
         @switch (ApplicationScreenMode.CurrentScreenMode)
