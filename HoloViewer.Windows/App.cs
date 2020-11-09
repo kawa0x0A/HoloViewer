@@ -1,4 +1,4 @@
-﻿using Microsoft.MobileBlazorBindings.WebView.Windows;
+using Microsoft.MobileBlazorBindings.WebView.Windows;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.WPF;

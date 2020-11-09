@@ -1,4 +1,4 @@
-﻿using AppKit;
+using AppKit;
 using Microsoft.MobileBlazorBindings.WebView.macOS;
 
 namespace HoloViewer.macOS

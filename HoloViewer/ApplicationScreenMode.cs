@@ -1,4 +1,4 @@
-﻿namespace HoloViewer
+namespace HoloViewer
 {
     public class ApplicationScreenMode
     {
