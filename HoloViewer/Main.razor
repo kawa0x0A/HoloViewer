@@ -7,16 +7,34 @@
         <StackLayout Orientation="StackOrientation.Horizontal">
             <StackLayout Orientation="StackOrientation.Horizontal">
                 <Label Text="画面分割" VerticalOptions="LayoutOptions.CenterAndExpand" FontSize="24" />
-                <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenSingle.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenSingle" />
-                <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenHorizontal2.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenHorizontal2" />
-                <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenVertical2.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenVertical2" />
-                <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenHorizontal3.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenHorizontal3" />
-                <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenVertical3.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenVertical3" />
-                <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenCustom3-1.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenCustom3_1" />
-                <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenCustom3-2.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenCustom3_2" />
-                <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenHorizontal4.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenHorizontal4" />
-                <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenVertical4.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenVertical4" />
-                <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenCustom4.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenCustom4" />
+                @switch(Device.RuntimePlatform)
+                {
+                    case Device.WPF:
+                        <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenSingle.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenSingle" />
+                        <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenHorizontal2.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenHorizontal2" />
+                        <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenVertical2.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenVertical2" />
+                        <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenHorizontal3.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenHorizontal3" />
+                        <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenVertical3.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenVertical3" />
+                        <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenCustom3-1.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenCustom3_1" />
+                        <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenCustom3-2.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenCustom3_2" />
+                        <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenHorizontal4.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenHorizontal4" />
+                        <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenVertical4.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenVertical4" />
+                        <ImageButton Source="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenCustom4.png"))" WidthRequest="32" HeightRequest="32" OnClick="ChangeScreenCustom4" />
+                        break;
+
+                    case Device.macOS:
+                        <Button ImageSource="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenSingle.png"))" WidthRequest="32" HeightRequest="32" CornerRadius="0" OnClick="ChangeScreenSingle" />
+                        <Button ImageSource="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenHorizontal2.png"))" WidthRequest="32" HeightRequest="32" CornerRadius="0" OnClick="ChangeScreenHorizontal2" />
+                        <Button ImageSource="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenVertical2.png"))" WidthRequest="32" HeightRequest="32" CornerRadius="0" OnClick="ChangeScreenVertical2" />
+                        <Button ImageSource="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenHorizontal3.png"))" WidthRequest="32" HeightRequest="32" CornerRadius="0" OnClick="ChangeScreenHorizontal3" />
+                        <Button ImageSource="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenVertical3.png"))" WidthRequest="32" HeightRequest="32" CornerRadius="0" OnClick="ChangeScreenVertical3" />
+                        <Button ImageSource="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenCustom3-1.png"))" WidthRequest="32" HeightRequest="32" CornerRadius="0" OnClick="ChangeScreenCustom3_1" />
+                        <Button ImageSource="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenCustom3-2.png"))" WidthRequest="32" HeightRequest="32" CornerRadius="0" OnClick="ChangeScreenCustom3_2" />
+                        <Button ImageSource="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenHorizontal4.png"))" WidthRequest="32" HeightRequest="32" CornerRadius="0" OnClick="ChangeScreenHorizontal4" />
+                        <Button ImageSource="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenVertical4.png"))" WidthRequest="32" HeightRequest="32" CornerRadius="0" OnClick="ChangeScreenVertical4" />
+                        <Button ImageSource="@(ImageSource.FromResource("HoloViewer.Resources.Icon.IconScreenCustom4.png"))" WidthRequest="32" HeightRequest="32" CornerRadius="0" OnClick="ChangeScreenCustom4" />
+                        break;
+                }
             </StackLayout>
             <StackLayout Orientation="StackOrientation.Horizontal">
                 <Label Text="フルスクリーン" VerticalOptions="LayoutOptions.CenterAndExpand" FontSize="24" />
