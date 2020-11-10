@@ -19,7 +19,10 @@
                     case Device.macOS:
                         @foreach (var screenModeButtonInfo in screenModeButtonInfos)
                         {
-                            <Button ImageSource="@(ImageSource.FromResource(screenModeButtonInfo.iconResourceName))" WidthRequest="@ScreenModeButtonInfo.IconWidthPixel" HeightRequest="@ScreenModeButtonInfo.IconHeightPixel" OnClick="@(() => ChangeScreenMode(screenModeButtonInfo.changeScreenMode))" />
+                            <Grid>
+                                <Image Source="@(ImageSource.FromResource(screenModeButtonInfo.iconResourceName))" WidthRequest="@ScreenModeButtonInfo.IconWidthPixel" HeightRequest="@ScreenModeButtonInfo.IconHeightPixel" />
+                                <TapGestureRecognizer OnTapped="@(() => ChangeScreenMode(screenModeButtonInfo.changeScreenMode))" />
+                            </Grid>
                         }
                         break;
                 }
