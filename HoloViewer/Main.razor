@@ -36,6 +36,10 @@
                     </StackLayout>
                     break;
             }
+
+            <StackLayout HorizontalOptions="LayoutOptions.EndAndExpand" VerticalOptions="LayoutOptions.FillAndExpand">
+                <Button Text="フィードバック" FontSize="24" VerticalOptions="LayoutOptions.Center" OnClick="ShowFeedBackDialog" />
+            </StackLayout>
         </StackLayout>
 
         @switch (ApplicationScreenMode.CurrentScreenMode)
@@ -287,5 +291,12 @@
         {
             windowMode.WindowMode();
         }
+    }
+
+    void ShowFeedBackDialog ()
+    {
+        var feedBackDialog = DependencyService.Get<IFeedBackDialog>();
+
+        feedBackDialog.ShowDialog();
     }
 }
