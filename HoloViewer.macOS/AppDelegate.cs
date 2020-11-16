@@ -12,7 +12,7 @@ namespace HoloViewer.macOS
             var rect = new CoreGraphics.CGRect(200, 1000, 1024, 768);
             MainWindow = new NSWindow(rect, style, NSBackingStore.Buffered, false)
             {
-                Title = "My Application",
+                Title = "HoloViewer",
                 TitleVisibility = NSWindowTitleVisibility.Visible,
             };
         }
@@ -57,6 +57,11 @@ namespace HoloViewer.macOS
             appMenu.AddItem(quitMenuItem);
 
             return menubar;
+        }
+
+        public override bool ApplicationShouldTerminateAfterLastWindowClosed(NSApplication sender)
+        {
+            return true;
         }
     }
 }
