@@ -11,17 +11,27 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="5*"/>
+                <RowDefinition Height="4*"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="アプリケーションバージョン" Grid.Column="0" FontSize="20"/>
-                        <Label Content="{Binding Path=Version, Mode=OneTime}" Grid.Column="1" FontSize="20"/>
-                        <Separator />
+                        <Label Content="アプリケーションバージョン" FontSize="20"/>
+                        <Label Content="{Binding Path=Version, Mode=OneTime}" FontSize="20"/>
                     </StackPanel>
+                    <Separator />
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="リリース日" FontSize="20"/>
+                        <Label Content="{Binding Path=ReleaseDate, Mode=OneTime}" FontSize="20"/>
+                    </StackPanel>
+                    <Separator />
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="ライセンス" FontSize="20"/>
+                        <Label Content="{Binding Path=SoftwareLicence, Mode=OneTime}" FontSize="20"/>
+                    </StackPanel>
+                    <Separator />
                 </StackPanel>
             </Grid>
             <StackPanel Grid.Row="1">

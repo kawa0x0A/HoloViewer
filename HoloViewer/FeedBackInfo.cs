@@ -17,6 +17,16 @@ namespace HoloViewer
         public string Version { get; } = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
 #if __MACOS__
+        [Export(nameof(ReleaseDate))]
+#endif
+        public string ReleaseDate { get; } = "2020/MM/dd";
+
+#if __MACOS__
+        [Export(nameof(SoftwareLicence))]
+#endif
+        public string SoftwareLicence { get; } = "MIT";
+
+#if __MACOS__
         [Export(nameof(RepositoryPageUrl))]
 #endif
         public string RepositoryPageUrl { get; } = @"https://github.com/kawa0x0A/HoloViewer";
