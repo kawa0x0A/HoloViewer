@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:HoloViewer.Windows"
         xmlns:pcl="clr-namespace:HoloViewer;assembly=HoloViewer"
         mc:Ignorable="d"
-        Title="FeedBack" Width="500" Height="350" Loaded="Window_Loaded">
+        Title="FeedBack" Width="640" Height="480" Loaded="Window_Loaded">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="3*"/>
+                <RowDefinition Height="5*"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -19,33 +19,33 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="アプリケーションバージョン" Grid.Column="0" FontSize="20"/>
-                        <Label Content="{Binding Path=Version, Mode=OneWay}" Grid.Column="1" FontSize="20"/>
+                        <Label Content="{Binding Path=Version, Mode=OneTime}" Grid.Column="1" FontSize="20"/>
+                        <Separator />
                     </StackPanel>
-                    <Separator />
                 </StackPanel>
             </Grid>
             <StackPanel Grid.Row="1">
-                <TextBlock Text="{Binding Source={x:Static pcl:FeedBackInfo.Description}}" FontSize="16" TextWrapping="Wrap" Margin="8,8,0,0"/>
+                <TextBlock Text="{Binding Path=FeedBackDescription, Mode=OneTime}" FontSize="16" TextWrapping="Wrap" Margin="8,8,0,0"/>
             </StackPanel>
             <StackPanel Grid.Row="2">
                 <Separator/>
                 <TextBlock Text="製作者 Twitter プロフィールページ" FontSize="16" Margin="8,0,0,0"/>
                 <TextBlock Margin="16,0,0,0">
-                    <Hyperlink NavigateUri="{Binding Source={x:Static pcl:FeedBackInfo.TwitterProfilePageUrl}}" RequestNavigate="Hyperlink_RequestNavigate">
-                        <TextBlock Text="{Binding Source={x:Static pcl:FeedBackInfo.TwitterProfilePageUrl}}" FontSize="16"/>
+                    <Hyperlink NavigateUri="{Binding Path=TwitterProfilePageUrl}" RequestNavigate="Hyperlink_RequestNavigate">
+                        <TextBlock Text="{Binding Path=TwitterProfilePageUrl}" FontSize="16"/>
                     </Hyperlink>
                 </TextBlock>
                 <Separator Margin="0,4,0,4"/>
                 <TextBlock Text="GitHub リポジトリページ" FontSize="16" Margin="8,0,0,0"/>
                 <TextBlock Margin="16,0,0,0">
-                    <Hyperlink NavigateUri="{Binding Source={x:Static pcl:FeedBackInfo.RepositoryPageUrl}}" RequestNavigate="Hyperlink_RequestNavigate">
-                        <TextBlock Text="{Binding Source={x:Static pcl:FeedBackInfo.RepositoryPageUrl}}" FontSize="16"/>
+                    <Hyperlink NavigateUri="{Binding Path=RepositoryPageUrl}" RequestNavigate="Hyperlink_RequestNavigate">
+                        <TextBlock Text="{Binding Path=RepositoryPageUrl}" FontSize="16"/>
                     </Hyperlink>
                 </TextBlock>
                 <Separator Margin="0,4,0,0"/>
             </StackPanel>
             <Grid Grid.Row="3" VerticalAlignment="Stretch">
-                <Button Content="閉じる" Width="64" Height="32" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,8,0" Click="Button_Click"/>
+                <Button Content="閉じる" Width="64" Height="32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,8,8" Click="Button_Click"/>
             </Grid>
         </Grid>
     </Grid>

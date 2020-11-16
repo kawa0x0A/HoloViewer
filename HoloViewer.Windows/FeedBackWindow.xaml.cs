@@ -20,8 +20,6 @@ namespace HoloViewer.Windows
     /// </summary>
     public partial class FeedBackWindow : Window
     {
-        public string Version { get; set; } = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-
         private const int GWL_STYLE = -16;
         private const int WS_MINIMIZEBOX = 0x00020000;
         private const int WS_MAXIMIZEBOX = 0x00010000;
@@ -30,7 +28,7 @@ namespace HoloViewer.Windows
         {
             InitializeComponent();
 
-            DataContext = this;
+            DataContext = new FeedBackInfo();
         }
 
         [DllImport("user32.dll", EntryPoint = "GetWindowLongPtr")]
