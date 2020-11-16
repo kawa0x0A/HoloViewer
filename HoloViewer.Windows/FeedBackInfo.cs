@@ -6,7 +6,7 @@ namespace HoloViewer.Windows
 
         public string ReleaseDate { get; } = FeedBackInfoValue.ReleaseDate;
 
-        public string SoftwareLicence { get; } = FeedBackInfoValue.SoftwareLicence;
+        public string SoftwareLicense { get; } = FeedBackInfoValue.SoftwareLicense;
 
         public string RepositoryPageUrl { get; } = FeedBackInfoValue.RepositoryPageUrl;
 

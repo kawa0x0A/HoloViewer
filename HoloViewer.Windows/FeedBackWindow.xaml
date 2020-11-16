@@ -29,7 +29,7 @@
                     <Separator />
                     <StackPanel Orientation="Horizontal">
                         <Label Content="ライセンス" FontSize="20"/>
-                        <Label Content="{Binding Path=SoftwareLicence, Mode=OneTime}" FontSize="20"/>
+                        <Label Content="{Binding Path=SoftwareLicense, Mode=OneTime}" FontSize="20"/>
                     </StackPanel>
                     <Separator />
                 </StackPanel>

@@ -6,7 +6,7 @@ namespace HoloViewer
 
         public const string ReleaseDate = "2020/MM/dd";
 
-        public const string SoftwareLicence = "MIT";
+        public const string SoftwareLicense = "MIT";
 
         public const string RepositoryPageUrl = @"https://github.com/kawa0x0A/HoloViewer";
 

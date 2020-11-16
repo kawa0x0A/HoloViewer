@@ -11,8 +11,8 @@ namespace HoloViewer.macOS
         [Export(nameof(ReleaseDate))]
         public string ReleaseDate { get; } = FeedBackInfoValue.ReleaseDate;
 
-        [Export(nameof(SoftwareLicence))]
-        public string SoftwareLicence { get; } = FeedBackInfoValue.SoftwareLicence;
+        [Export(nameof(SoftwareLicense))]
+        public string SoftwareLicense { get; } = FeedBackInfoValue.SoftwareLicense;
 
         [Export(nameof(RepositoryPageUrl))]
         public string RepositoryPageUrl { get; } = FeedBackInfoValue.RepositoryPageUrl;
