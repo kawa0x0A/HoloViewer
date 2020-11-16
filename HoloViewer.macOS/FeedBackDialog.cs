@@ -17,13 +17,8 @@ namespace HoloViewer.macOS
 
         private void Window_WillClose(object sender, System.EventArgs e)
         {
-            Close(NSApplication.SharedApplication.MainWindow);
-        }
-
-        public static void Close(NSObject sender)
-        {
             NSApplication.SharedApplication.StopModal();
-            NSApplication.SharedApplication.MainWindow.OrderOut(sender);
+            NSApplication.SharedApplication.MainWindow.OrderOut(NSObject.FromObject(sender));
         }
     }
 }

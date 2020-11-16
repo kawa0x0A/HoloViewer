@@ -73,7 +73,7 @@ namespace HoloViewer.macOS
 
         partial void ClickedCloseButton(NSButton sender)
         {
-            FeedBackDialog.Close(sender);
+            View.Window.Close();
         }
     }
 }
