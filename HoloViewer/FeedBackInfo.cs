@@ -1,44 +1,17 @@
-#if __MACOS__
-using Foundation;
-#endif
-
 namespace HoloViewer
 {
-#if NETSTANDARD
-    public class FeedBackInfo
-#elif __MACOS__
-    [Register(nameof(FeedBackInfo))]
-    public class FeedBackInfo : NSObject
-#endif
+    public static class FeedBackInfoValue
     {
-#if __MACOS__
-        [Export(nameof(Version))]
-#endif
-        public string Version { get; } = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        public static readonly string Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
-#if __MACOS__
-        [Export(nameof(ReleaseDate))]
-#endif
-        public string ReleaseDate { get; } = "2020/MM/dd";
+        public const string ReleaseDate = "2020/MM/dd";
 
-#if __MACOS__
-        [Export(nameof(SoftwareLicence))]
-#endif
-        public string SoftwareLicence { get; } = "MIT";
+        public const string SoftwareLicence = "MIT";
 
-#if __MACOS__
-        [Export(nameof(RepositoryPageUrl))]
-#endif
-        public string RepositoryPageUrl { get; } = @"https://github.com/kawa0x0A/HoloViewer";
+        public const string RepositoryPageUrl = @"https://github.com/kawa0x0A/HoloViewer";
 
-#if __MACOS__
-        [Export(nameof(TwitterProfilePageUrl))]
-#endif
-        public string TwitterProfilePageUrl { get; } = @"https://twitter.com/kawa0x0A";
+        public const string TwitterProfilePageUrl = @"https://twitter.com/kawa0x0A";
 
-#if __MACOS__
-        [Export(nameof(FeedBackDescription))]
-#endif
-        public string FeedBackDescription { get; } = "アプリケーションに関するご意見・ご要望などがありましたら\nTwitterで製作者までリプライを送っていただくか\nハッシュタグ #ホロビューワー か #HoloViewer を付けてご投稿ください。\n(頂いたご要望に対応できない場合があります。ご了承ください。)";
+        public const string FeedBackDescription = "アプリケーションに関するご意見・ご要望などがありましたら\nTwitterで製作者までリプライを送っていただくか\nハッシュタグ #ホロビューワー か #HoloViewer を付けてご投稿ください。\n(頂いたご要望に対応できない場合があります。ご了承ください。)";
     }
 }

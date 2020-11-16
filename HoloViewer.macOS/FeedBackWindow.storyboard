@@ -60,8 +60,42 @@
                                 <rect key="frame" x="0.0" y="426" width="640" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </box>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wsr-Y4-kjl">
+                                <rect key="frame" x="20" y="397" width="97" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="リリース日" id="V3i-NT-wro">
+                                    <font key="font" metaFont="system" size="20"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQd-9b-2qy">
+                                <rect key="frame" x="121" y="397" width="501" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="ReleaseDate" id="HKN-kq-x9M">
+                                    <font key="font" metaFont="system" size="20"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="ZdQ-Bc-h5w" name="value" keyPath="FeedBackInfo.ReleaseDate" id="eYN-SX-zl6"/>
+                                </connections>
+                            </textField>
+                            <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Lvp-Hj-sDl">
+                                <rect key="frame" x="0.0" y="386" width="640" height="5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </box>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fsE-ak-k64">
+                                <rect key="frame" x="20" y="357" width="97" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="ライセンス" id="Ktl-TX-c0f">
+                                    <font key="font" metaFont="system" size="20"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fu1-tR-5qF">
-                                <rect key="frame" x="20" y="245" width="602" height="175"/>
+                                <rect key="frame" x="20" y="199" width="602" height="141"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" selectable="YES" title="FeedBackDescription" id="W7t-ZL-YRe">
                                     <font key="font" metaFont="system" size="18"/>
@@ -73,11 +107,11 @@
                                 </connections>
                             </textField>
                             <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="dl2-0k-3hn">
-                                <rect key="frame" x="0.0" y="230" width="640" height="5"/>
+                                <rect key="frame" x="0.0" y="188" width="640" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dHk-hd-lSG">
-                                <rect key="frame" x="20" y="208" width="240" height="19"/>
+                                <rect key="frame" x="20" y="166" width="240" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="製作者 Twitter プロフィールページ" id="dkt-v7-CkA">
                                     <font key="font" metaFont="system" size="16"/>
@@ -86,7 +120,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="59Q-cK-kgZ">
-                                <rect key="frame" x="32" y="181" width="590" height="19"/>
+                                <rect key="frame" x="32" y="139" width="590" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="TwitterProfilePageUrl" id="dWh-Wh-p2R">
                                     <font key="font" metaFont="system" size="16"/>
@@ -98,11 +132,11 @@
                                 </connections>
                             </textField>
                             <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="qED-Lr-yMf">
-                                <rect key="frame" x="0.0" y="164" width="640" height="5"/>
+                                <rect key="frame" x="0.0" y="122" width="640" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zgB-Pq-vBe">
-                                <rect key="frame" x="20" y="139" width="178" height="19"/>
+                                <rect key="frame" x="20" y="97" width="178" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="GitHub リポジトリページ" id="NuX-cQ-wdy">
                                     <font key="font" metaFont="system" size="16"/>
@@ -111,7 +145,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eRI-jl-txL">
-                                <rect key="frame" x="32" y="112" width="590" height="19"/>
+                                <rect key="frame" x="32" y="70" width="590" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="RepositoryPageUrl" id="Gll-oW-lRm">
                                     <font key="font" metaFont="system" size="16"/>
@@ -123,7 +157,7 @@
                                 </connections>
                             </textField>
                             <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="M3V-SH-0al">
-                                <rect key="frame" x="0.0" y="101" width="640" height="5"/>
+                                <rect key="frame" x="0.0" y="59" width="640" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </box>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edy-LO-wGC">
@@ -137,6 +171,22 @@
                                     <action selector="ClickedCloseButton:" target="ZdQ-Bc-h5w" id="Veq-Gp-iRa"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FdF-Pd-Vg5">
+                                <rect key="frame" x="127" y="357" width="495" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="SoftwareLicence" id="vk8-jX-B9k">
+                                    <font key="font" metaFont="system" size="20"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="ZdQ-Bc-h5w" name="value" keyPath="FeedBackInfo.SoftwareLicence" id="Q69-rg-wDW"/>
+                                </connections>
+                            </textField>
+                            <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="VMd-rJ-Vpn">
+                                <rect key="frame" x="0.0" y="346" width="640" height="5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </box>
                         </subviews>
                     </view>
                     <connections>
