@@ -37,8 +37,9 @@
                     break;
             }
 
-            <StackLayout HorizontalOptions="LayoutOptions.EndAndExpand" VerticalOptions="LayoutOptions.FillAndExpand">
+            <StackLayout Orientation="StackOrientation.Horizontal" HorizontalOptions="LayoutOptions.EndAndExpand" VerticalOptions="LayoutOptions.FillAndExpand">
                 <Button Text="フィードバック" FontSize="24" VerticalOptions="LayoutOptions.Center" OnClick="ShowFeedBackDialog" />
+                <Button Text="寄付" FontSize="24" VerticalOptions="LayoutOptions.Center" OnClick="OpenBillingPage" />
             </StackLayout>
         </StackLayout>
 
@@ -298,5 +299,12 @@
         var feedBackDialog = DependencyService.Get<IFeedBackDialog>();
 
         feedBackDialog.ShowDialog();
+    }
+
+    void OpenBillingPage ()
+    {
+        var billingPage = DependencyService.Get<IBillingPage>();
+
+        billingPage.OpenPage();
     }
 }
