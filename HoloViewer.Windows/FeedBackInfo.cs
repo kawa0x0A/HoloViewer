@@ -8,6 +8,8 @@ namespace HoloViewer.Windows
 
         public string SoftwareLicense { get; } = FeedBackInfoValue.SoftwareLicense;
 
+        public string MailAddress { get; } = FeedBackInfoValue.MailAddress;
+
         public string RepositoryPageUrl { get; } = FeedBackInfoValue.RepositoryPageUrl;
 
         public string TwitterProfilePageUrl { get; } = FeedBackInfoValue.TwitterProfilePageUrl;

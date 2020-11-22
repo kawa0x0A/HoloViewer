@@ -8,6 +8,8 @@ namespace HoloViewer
 
         public const string SoftwareLicense = "MIT";
 
+        public const string MailAddress = "holoviewer.contact@gmail.com";
+
         public const string RepositoryPageUrl = @"https://github.com/kawa0x0A/HoloViewer";
 
         public const string TwitterProfilePageUrl = @"https://twitter.com/kawa0x0A";
