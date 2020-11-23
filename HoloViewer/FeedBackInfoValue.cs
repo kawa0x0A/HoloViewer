@@ -14,6 +14,6 @@ namespace HoloViewer
 
         public const string TwitterProfilePageUrl = @"https://twitter.com/kawa0x0A";
 
-        public const string FeedBackDescription = "アプリケーションに関するご意見・ご要望などがありましたら\nTwitterで製作者までリプライを送っていただくか\nハッシュタグ #ホロビューワー か #HoloViewer を付けてご投稿ください。\n(頂いたご要望に対応できない場合があります。ご了承ください。)";
+        public const string FeedBackDescription = "アプリケーションに関するご意見・ご要望などがありましたら\nメールかTwitterで製作者までリプライを送っていただくか\nハッシュタグ #ホロビューワー か #HoloViewer を付けてご投稿ください。\n(頂いたご要望などに対応できない場合があります。ご了承ください。)";
     }
 }
