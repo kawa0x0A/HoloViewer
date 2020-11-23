@@ -35,7 +35,7 @@
                 </StackPanel>
             </Grid>
             <StackPanel Grid.Row="1">
-                <TextBlock Text="{Binding Path=FeedBackDescription, Mode=OneTime}" FontSize="16" TextWrapping="Wrap" Margin="8,8,0,0"/>
+                <TextBox Text="{Binding Path=FeedBackDescription, Mode=OneTime}" FontSize="18" TextWrapping="Wrap" Margin="8,8,0,0" BorderThickness="0" Background="Transparent" IsReadOnly="True"/>
             </StackPanel>
             <StackPanel Grid.Row="2">
                 <Separator/>
