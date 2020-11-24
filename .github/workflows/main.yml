@@ -26,7 +26,7 @@ jobs:
           dotnet-version: '5.0.100'
 
       - name: Build Application for Windows
-        run: dotnet publish -c Release ./HoloViewer.Windows/HoloViewer.Windows.csproj -r win-x64 /p:PublishTrimmed=true /p:PublishSingleFile=true
+        run: dotnet publish -c Release ./HoloViewer.Windows/HoloViewer.Windows.csproj -r win-x64 /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
 
       - name: Create Windows Archive
         run: powershell Compress-Archive -Path HoloViewer.Windows\bin\Release\net5.0-windows\win-x64\publish\* -DestinationPath HoloViewer_Windows_x64.zip
