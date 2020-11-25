@@ -29,7 +29,9 @@
 
 * ダウンロード
   * Windows版
+    * https://github.com/kawa0x0A/HoloViewer/releases/download/1.0.0.0/HoloViewer_Windows_x64.zip
   * Mac版
+    * https://github.com/kawa0x0A/HoloViewer/releases/download/1.0.0.0/HoloViewer_macOS.pkg
   * ~~過去のバージョンはこちらから~~
 
 * 連絡先
