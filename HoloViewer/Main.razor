@@ -48,8 +48,8 @@
             case ScreenMode.Single:
                 <Grid HorizontalOptions="LayoutOptions.FillAndExpand" VerticalOptions="LayoutOptions.FillAndExpand">
                     <StackLayout>
-                        <WebViewToolbar @ref="WebViewToolbar1" />
-                        <BlazorWebView @ref="BlazorWebView1" VerticalOptions="LayoutOptions.FillAndExpand">
+                        <WebViewToolbar @ref="WebViewToolbars" />
+                        <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
                             <HoloViewer.WebUI.App />
                         </BlazorWebView>
                     </StackLayout>
@@ -58,270 +58,146 @@
 
             case ScreenMode.SplitHorizontal2:
                 <Grid RowDefinitions="*, *" HorizontalOptions="LayoutOptions.FillAndExpand" VerticalOptions="LayoutOptions.FillAndExpand">
-                    <GridCell Row="0">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar1" />
-                            <BlazorWebView @ref="BlazorWebView1" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Row="1">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar2" />
-                            <BlazorWebView @ref="BlazorWebView2" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
+                    @for (int i = 0; i < 2; i++)
+                    {
+                        <GridCell Row="@i">
+                            <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
+                                <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
+                                    <HoloViewer.WebUI.App />
+                                </BlazorWebView>
+                            </StackLayout>
+                        </GridCell>
+                    }
                 </Grid>
                 break;
 
             case ScreenMode.SplitVertical2:
                 <Grid ColumnDefinitions="*, *" HorizontalOptions="LayoutOptions.FillAndExpand" VerticalOptions="LayoutOptions.FillAndExpand">
-                    <GridCell Column="0">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar1" />
-                            <BlazorWebView @ref="BlazorWebView1" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Column="1">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar2" />
-                            <BlazorWebView @ref="BlazorWebView2" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
+                    @for (int i = 0; i < 2; i++)
+                    {
+                        <GridCell Column="@i">
+                            <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
+                                <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
+                                    <HoloViewer.WebUI.App />
+                                </BlazorWebView>
+                            </StackLayout>
+                        </GridCell>
+                    }
                 </Grid>
                 break;
 
             case ScreenMode.SplitHorizontal3:
                 <Grid RowDefinitions="*, *, *" HorizontalOptions="LayoutOptions.FillAndExpand" VerticalOptions="LayoutOptions.FillAndExpand">
-                    <GridCell Row="0">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar1" />
-                            <BlazorWebView @ref="BlazorWebView1" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Row="1">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar2" />
-                            <BlazorWebView @ref="BlazorWebView2" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Row="2">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar3" />
-                            <BlazorWebView @ref="BlazorWebView3" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
+                    @for (int i = 0; i < 3; i++)
+                    {
+                        <GridCell Row="@i">
+                            <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
+                                <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
+                                    <HoloViewer.WebUI.App />
+                                </BlazorWebView>
+                            </StackLayout>
+                        </GridCell>
+                    }
                 </Grid>
                 break;
 
             case ScreenMode.SplitVertical3:
                 <Grid ColumnDefinitions="*, *, *" HorizontalOptions="LayoutOptions.FillAndExpand" VerticalOptions="LayoutOptions.FillAndExpand">
-                    <GridCell Column="0">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar1" />
-                            <BlazorWebView @ref="BlazorWebView1" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Column="1">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar2" />
-                            <BlazorWebView @ref="BlazorWebView2" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Column="2">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar3" />
-                            <BlazorWebView @ref="BlazorWebView3" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
+                    @for (int i = 0; i < 3; i++)
+                    {
+                        <GridCell Column="@i">
+                            <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
+                                <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
+                                    <HoloViewer.WebUI.App />
+                                </BlazorWebView>
+                            </StackLayout>
+                        </GridCell>
+                    }
                 </Grid>
                 break;
 
             case ScreenMode.SplitCustom3_1:
                 <Grid RowDefinitions="*, *" ColumnDefinitions="*, *" HorizontalOptions="LayoutOptions.FillAndExpand" VerticalOptions="LayoutOptions.FillAndExpand">
-                    <GridCell Row="0" Column="0" ColumnSpan="2">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar1" />
-                            <BlazorWebView @ref="BlazorWebView1" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Row="1" Column="0">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar2" />
-                            <BlazorWebView @ref="BlazorWebView2" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Row="1" Column="1">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar3" />
-                            <BlazorWebView @ref="BlazorWebView3" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
+                    @for (int i = 0; i < 3; i++)
+                    {
+                        <GridCell Row="@GridRowSplitCustom3_1[i]" Column="@GridColumnSplitCustom3_1[i]" ColumnSpan="@GridColumnSpanSplitCustom3_1[i]">
+                            <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
+                                <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
+                                    <HoloViewer.WebUI.App />
+                                </BlazorWebView>
+                            </StackLayout>
+                        </GridCell>
+                    }
                 </Grid>
                 break;
 
             case ScreenMode.SplitCustom3_2:
                 <Grid RowDefinitions="*, *" ColumnDefinitions="*, *" HorizontalOptions="LayoutOptions.FillAndExpand" VerticalOptions="LayoutOptions.FillAndExpand">
-                    <GridCell Row="0" Column="0">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar1" />
-                            <BlazorWebView @ref="BlazorWebView1" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Row="0" Column="1">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar2" />
-                            <BlazorWebView @ref="BlazorWebView2" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Row="1" Column="0" ColumnSpan="2">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar3" />
-                            <BlazorWebView @ref="BlazorWebView3" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
+                    @for (int i = 0; i < 3; i++)
+                    {
+                        <GridCell Row="@GridRowSplitCustom3_2[i]" Column="@GridColumnSplitCustom3_2[i]" ColumnSpan="@GridColumnSpanSplitCustom3_2[i]">
+                            <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
+                                <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
+                                    <HoloViewer.WebUI.App />
+                                </BlazorWebView>
+                            </StackLayout>
+                        </GridCell>
+
+                    }
                 </Grid>
                 break;
 
             case ScreenMode.SplitHorizontal4:
                 <Grid RowDefinitions="*, *, *, *" HorizontalOptions="LayoutOptions.FillAndExpand" VerticalOptions="LayoutOptions.FillAndExpand">
-                    <GridCell Row="0">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar1" />
-                            <BlazorWebView @ref="BlazorWebView1" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Row="1">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar2" />
-                            <BlazorWebView @ref="BlazorWebView2" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Row="2">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar3" />
-                            <BlazorWebView @ref="BlazorWebView3" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Row="3">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar4" />
-                            <BlazorWebView @ref="BlazorWebView4" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
+                    @for (int i = 0; i < 4; i++)
+                    {
+                        <GridCell Row="@i">
+                            <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
+                                <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
+                                    <HoloViewer.WebUI.App />
+                                </BlazorWebView>
+                            </StackLayout>
+                        </GridCell>
+                    }
                 </Grid>
                 break;
 
             case ScreenMode.SplitVertical4:
                 <Grid ColumnDefinitions="*, *, *, *" HorizontalOptions="LayoutOptions.FillAndExpand" VerticalOptions="LayoutOptions.FillAndExpand">
-                    <GridCell Column="0">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar1" />
-                            <BlazorWebView @ref="BlazorWebView1" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Column="1">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar2" />
-                            <BlazorWebView @ref="BlazorWebView2" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Column="2">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar3" />
-                            <BlazorWebView @ref="BlazorWebView3" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Column="3">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar4" />
-                            <BlazorWebView @ref="BlazorWebView4" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
+                    @for (int i = 0; i < 4; i++)
+                    {
+                        <GridCell Column="@i">
+                            <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
+                                <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
+                                    <HoloViewer.WebUI.App />
+                                </BlazorWebView>
+                            </StackLayout>
+                        </GridCell>
+                    }
                 </Grid>
                 break;
 
             case ScreenMode.SplitCustom4:
                 <Grid RowDefinitions="*, *" ColumnDefinitions="*, *" HorizontalOptions="LayoutOptions.FillAndExpand" VerticalOptions="LayoutOptions.FillAndExpand">
-                    <GridCell Row="0" Column="0">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar1" />
-                            <BlazorWebView @ref="BlazorWebView1" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Row="0" Column="1">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar2" />
-                            <BlazorWebView @ref="BlazorWebView2" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Row="1" Column="0">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar3" />
-                            <BlazorWebView @ref="BlazorWebView3" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
-                    <GridCell Row="1" Column="1">
-                        <StackLayout>
-                            <WebViewToolbar @ref="WebViewToolbar4" />
-                            <BlazorWebView @ref="BlazorWebView4" VerticalOptions="LayoutOptions.FillAndExpand">
-                                <HoloViewer.WebUI.App />
-                            </BlazorWebView>
-                        </StackLayout>
-                    </GridCell>
+                    @for (int i = 0; i < 4; i++)
+                    {
+                        <GridCell Row="@GridRowSplitCustom4[i]" Column="@GridColumnSplitCustom4[i]">
+                            <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
+                                <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
+                                    <HoloViewer.WebUI.App />
+                                </BlazorWebView>
+                            </StackLayout>
+                        </GridCell>
+                    }
                 </Grid>
                 break;
         }
@@ -362,42 +238,36 @@
         new ScreenModeButtonInfo("HoloViewer.Resources.Icon.IconScreenCustom4.png", ScreenMode.SplitCustom4),
     };
 
-    public BlazorWebView BlazorWebView1 { get; set; }
-    public BlazorWebView BlazorWebView2 { get; set; }
-    public BlazorWebView BlazorWebView3 { get; set; }
-    public BlazorWebView BlazorWebView4 { get; set; }
+    public static readonly int[] GridRowSplitCustom3_1 = { 0, 1, 1 };
+    public static readonly int[] GridColumnSplitCustom3_1 = { 0, 0, 1 };
+    public static readonly int[] GridColumnSpanSplitCustom3_1 = { 2, 1, 1 };
+    public static readonly int[] GridRowSplitCustom3_2 = { 0, 0, 1 };
+    public static readonly int[] GridColumnSplitCustom3_2 = { 0, 1, 0 };
+    public static readonly int[] GridColumnSpanSplitCustom3_2 = { 1, 1, 2 };
+    public static readonly int[] GridRowSplitCustom4 = { 0, 0, 1, 1 };
+    public static readonly int[] GridColumnSplitCustom4 = { 0, 1, 0, 1 };
 
-    public WebViewToolbar WebViewToolbar1 { get; set; }
-    public WebViewToolbar WebViewToolbar2 { get; set; }
-    public WebViewToolbar WebViewToolbar3 { get; set; }
-    public WebViewToolbar WebViewToolbar4 { get; set; }
+
+    private List<BlazorWebView> blazorWebViews = new List<BlazorWebView>();
+    private List<WebViewToolbar> webViewToolbars = new List<WebViewToolbar>();
+
+    public BlazorWebView BlazorWebViews { set { blazorWebViews.Add(value); } }
+    public WebViewToolbar WebViewToolbars { set { webViewToolbars.Add(value); } }
 
     protected override void OnAfterRender (bool firstRender)
     {
-        if (WebViewToolbar1 != null)
+        if (blazorWebViews.Count != webViewToolbars.Count)
         {
-            WebViewToolbar1.BindingBlazorWebView = BlazorWebView1;
+            return;
         }
 
-        if (WebViewToolbar2 != null)
+        for (int i = 0; i < blazorWebViews.Count; i++)
         {
-            WebViewToolbar2.BindingBlazorWebView = BlazorWebView2;
+            webViewToolbars[i].BindingBlazorWebView = blazorWebViews[i];
         }
 
-        if (WebViewToolbar3 != null)
-        {
-            WebViewToolbar3.BindingBlazorWebView = BlazorWebView3;
-        }
-
-        if (WebViewToolbar4 != null)
-        {
-            WebViewToolbar4.BindingBlazorWebView = BlazorWebView4;
-        }
-
-        WebViewToolbar1 = null;
-        WebViewToolbar2 = null;
-        WebViewToolbar3 = null;
-        WebViewToolbar4 = null;
+        blazorWebViews.Clear();
+        webViewToolbars.Clear();
 
         base.OnAfterRender(firstRender);
     }
