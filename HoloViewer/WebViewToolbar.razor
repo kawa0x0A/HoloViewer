@@ -1,0 +1,59 @@
+<StackLayout Orientation="StackOrientation.Horizontal">
+    <Button Text="←" IsEnabled="CanPageBack" OnClick="PageBack" />
+    <Button Text="→" IsEnabled="CanPageForward" OnClick="PageForward" />
+    <Button Text="Reload" OnClick="Reload" />
+    <Button Text="Stop" OnClick="Stop" />
+    <Entry Text="@CurrentUrl" HorizontalOptions="LayoutOptions.FillAndExpand"/>
+    <Button Text="Test" OnClick="StateHasChanged" />
+</StackLayout>
+
+@code
+{
+    public BlazorWebView BindingBlazorWebView { get; set; }
+
+    public bool CanPageBack { get { return (BindingBlazorWebView == null) ? false : DependencyService.Get<IWebView>().CanPageBack(BindingBlazorWebView); } }
+
+    public bool CanPageForward { get { return (BindingBlazorWebView == null) ? false : DependencyService.Get<IWebView>().CanPageForward(BindingBlazorWebView); } }
+
+    public string CurrentUrl { get { return (BindingBlazorWebView == null) ? "" : DependencyService.Get<IWebView>().GetUrl(BindingBlazorWebView); } }
+
+    public void PageBack ()
+    {
+        if (BindingBlazorWebView == null)
+        {
+            return;
+        }
+
+        DependencyService.Get<IWebView>().PageBack(BindingBlazorWebView);
+    }
+
+    public void PageForward ()
+    {
+        if (BindingBlazorWebView == null)
+        {
+            return;
+        }
+
+        DependencyService.Get<IWebView>().PageForward(BindingBlazorWebView);
+    }
+
+    public void Reload ()
+    {
+        if (BindingBlazorWebView == null)
+        {
+            return;
+        }
+
+        DependencyService.Get<IWebView>().Reload(BindingBlazorWebView);
+    }
+
+    public void Stop ()
+    {
+        if (BindingBlazorWebView == null)
+        {
+            return;
+        }
+
+        DependencyService.Get<IWebView>().Stop(BindingBlazorWebView);
+    }
+}
