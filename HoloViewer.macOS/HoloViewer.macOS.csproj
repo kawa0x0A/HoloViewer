@@ -94,6 +94,7 @@
     <Compile Include="WindowMode.cs" />
     <Compile Include="FeedBackDialog.cs" />
     <Compile Include="FeedBackInfo.cs" />
+    <Compile Include="WebView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\wwwroot\index.html" />
