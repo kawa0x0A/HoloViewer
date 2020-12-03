@@ -11,6 +11,7 @@
     * kawa0x0A
   * 動作に必要な環境
     * Windows (64bit)
+      * 『Microsoft Edge Canary チャネル』のインストールが必要です
     * Mac (macOS 10.9以上)
   * 機能
     * ブラウザを複数起動しなくても、Youtubeなどの動画ページを同時に見ることができます
@@ -32,6 +33,7 @@
 * ダウンロード
   * Windows版
     * https://github.com/kawa0x0A/HoloViewer/releases/download/1.0.1.0/HoloViewer_Windows_x64.zip
+    * Windows版の使用には[Microsoft Edge Canary チャネル](https://www.microsoftedgeinsider.com/ja-jp/download)が必要になります。
   * Mac版
     * https://github.com/kawa0x0A/HoloViewer/releases/download/1.0.1.0/HoloViewer_macOS.pkg
   * 過去のバージョンは[こちら](https://github.com/kawa0x0A/HoloViewer/releases)からダウンロードしてください
