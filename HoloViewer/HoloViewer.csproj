@@ -16,15 +16,57 @@
 
   <ItemGroup>
     <None Remove="Resources\Icon\IconScreenCustom3-1.png" />
+    <None Remove="Resources\Icon\IconScreenCustom3-1_CaptureBottomLeft.png" />
+    <None Remove="Resources\Icon\IconScreenCustom3-1_CaptureBottomRight.png" />
+    <None Remove="Resources\Icon\IconScreenCustom3-1_CaptureTop.png" />
     <None Remove="Resources\Icon\IconScreenCustom3-2.png" />
+    <None Remove="Resources\Icon\IconScreenCustom3-2_CaptureBottom.png" />
+    <None Remove="Resources\Icon\IconScreenCustom3-2_CaptureTopLeft.png" />
+    <None Remove="Resources\Icon\IconScreenCustom3-2_CaptureTopRight.png" />
     <None Remove="Resources\Icon\IconScreenCustom4.png" />
+    <None Remove="Resources\Icon\IconScreenCustom4_CaptureBottomLeft.png" />
+    <None Remove="Resources\Icon\IconScreenCustom4_CaptureBottomRight.png" />
+    <None Remove="Resources\Icon\IconScreenCustom4_CaptureTopLeft.png" />
+    <None Remove="Resources\Icon\IconScreenCustom4_CaptureTopRight.png" />
     <None Remove="Resources\Icon\IconScreenHorizontal2.png" />
+    <None Remove="Resources\Icon\IconScreenHorizontal2_CaptureBottom.png" />
+    <None Remove="Resources\Icon\IconScreenHorizontal2_CaptureTop.png" />
     <None Remove="Resources\Icon\IconScreenHorizontal3.png" />
+    <None Remove="Resources\Icon\IconScreenHorizontal3_CaptureBottom.png" />
+    <None Remove="Resources\Icon\IconScreenHorizontal3_CaptureCenter.png" />
+    <None Remove="Resources\Icon\IconScreenHorizontal3_CaptureTop.png" />
     <None Remove="Resources\Icon\IconScreenHorizontal4.png" />
+    <None Remove="Resources\Icon\IconScreenHorizontal4_CaptureBottom.png" />
+    <None Remove="Resources\Icon\IconScreenHorizontal4_CaptureCenterBottom.png" />
+    <None Remove="Resources\Icon\IconScreenHorizontal4_CaptureCenterTop.png" />
+    <None Remove="Resources\Icon\IconScreenHorizontal4_CaptureTop.png" />
     <None Remove="Resources\Icon\IconScreenSingle.png" />
     <None Remove="Resources\Icon\IconScreenVertical2.png" />
+    <None Remove="Resources\Icon\IconScreenVertical2_CaptureLeft.png" />
+    <None Remove="Resources\Icon\IconScreenVertical2_CaptureRight.png" />
     <None Remove="Resources\Icon\IconScreenVertical3.png" />
+    <None Remove="Resources\Icon\IconScreenVertical3_CaptureCenter.png" />
+    <None Remove="Resources\Icon\IconScreenVertical3_CaptureLeft.png" />
+    <None Remove="Resources\Icon\IconScreenVertical3_CaptureRight.png" />
     <None Remove="Resources\Icon\IconScreenVertical4.png" />
+    <None Remove="Resources\Icon\IconScreenVertical4_CaptureCenterLeft.png" />
+    <None Remove="Resources\Icon\IconScreenVertical4_CaptureCenterRight.png" />
+    <None Remove="Resources\Icon\IconScreenVertical4_CaptureLeft.png" />
+    <None Remove="Resources\Icon\IconScreenVertical4_CaptureRight.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icon\IconScreenCustom3-1_CaptureBottomLeft.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenCustom3-1_CaptureBottomRight.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenCustom3-1_CaptureTop.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenCustom3-2_CaptureBottom.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenCustom3-2_CaptureTopLeft.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenCustom3-2_CaptureTopRight.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenCustom4_CaptureBottomLeft.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenCustom4_CaptureBottomRight.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenCustom4_CaptureTopLeft.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenCustom4_CaptureTopRight.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal3_CaptureTop.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,12 +74,29 @@
     <EmbeddedResource Include="Resources\Icon\IconScreenCustom3-2.png" />
     <EmbeddedResource Include="Resources\Icon\IconScreenCustom4.png" />
     <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal2.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal2_CaptureBottom.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal2_CaptureTop.png" />
     <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal3.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal3_CaptureBottom.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal3_CaptureCenter.png" />
     <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal4.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal4_CaptureBottom.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal4_CaptureCenterBottom.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal4_CaptureCenterTop.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal4_CaptureTop.png" />
     <EmbeddedResource Include="Resources\Icon\IconScreenSingle.png" />
     <EmbeddedResource Include="Resources\Icon\IconScreenVertical2.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenVertical2_CaptureLeft.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenVertical2_CaptureRight.png" />
     <EmbeddedResource Include="Resources\Icon\IconScreenVertical3.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenVertical3_CaptureCenter.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenVertical3_CaptureLeft.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenVertical3_CaptureRight.png" />
     <EmbeddedResource Include="Resources\Icon\IconScreenVertical4.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenVertical4_CaptureCenterLeft.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenVertical4_CaptureCenterRight.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenVertical4_CaptureLeft.png" />
+    <EmbeddedResource Include="Resources\Icon\IconScreenVertical4_CaptureRight.png" />
   </ItemGroup>
 
   <ItemGroup>
