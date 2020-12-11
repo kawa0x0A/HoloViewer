@@ -1,0 +1,132 @@
+@inject ApplicationScreenMode ApplicationScreenMode
+
+<StackLayout Orientation="StackOrientation.Horizontal">
+    <Label Text="キャプチャ設定" VerticalOptions="LayoutOptions.CenterAndExpand" FontSize="24" />
+
+    <Label Text="|" WidthRequest="8" HeightRequest="40" FontSize="32" TranslationY="-4" />
+
+    @for (int i = 0; i < CaptureTargetScreenIconCount; i++)
+    {
+        var index = i;
+
+        <Image Source="@ImageSource.FromResource(CaptureIconResourceName[CurrentScreenMode][index])" WidthRequest="32" HeightRequest="32" HorizontalOptions="LayoutOptions.Center" VerticalOptions="LayoutOptions.Center" />
+        <CheckBox @bind-IsChecked="@IsCaptures[index]" HorizontalOptions="LayoutOptions.Center" VerticalOptions="LayoutOptions.Center" />
+        <Label WidthRequest="8" />
+    }
+
+    <Label WidthRequest="8" />
+    <Label Text="Youtubeプレイヤーのみをキャプチャ" FontSize="21" VerticalOptions="LayoutOptions.CenterAndExpand" />
+    <CheckBox @bind-IsChecked="@IsCaptureYoutubePlayerOnly" HorizontalOptions="LayoutOptions.Center" VerticalOptions="LayoutOptions.Center" />
+    <Label WidthRequest="8" />
+
+    @switch (CurrentScreenMode)
+    {
+        case ApplicationScreenMode.ScreenMode.SplitHorizontal2:
+        case ApplicationScreenMode.ScreenMode.SplitVertical2:
+        case ApplicationScreenMode.ScreenMode.SplitHorizontal3:
+        case ApplicationScreenMode.ScreenMode.SplitVertical3:
+        case ApplicationScreenMode.ScreenMode.SplitCustom3_1:
+        case ApplicationScreenMode.ScreenMode.SplitCustom3_2:
+        case ApplicationScreenMode.ScreenMode.SplitHorizontal4:
+        case ApplicationScreenMode.ScreenMode.SplitVertical4:
+        case ApplicationScreenMode.ScreenMode.SplitCustom4:
+            <Label Text="キャプチャした画像を1つにまとめる" FontSize="21" VerticalOptions="LayoutOptions.Center" />
+            <CheckBox @bind-IsChecked="@IsCapturedImageCombine" HorizontalOptions="LayoutOptions.Center" VerticalOptions="LayoutOptions.Center" />
+            break;
+    }
+
+    <Button Text="キャプチャ" FontSize="16" OnClick="CaptureEventCallback" HorizontalOptions="LayoutOptions.EndAndExpand" />
+</StackLayout>
+
+@code
+{
+    [Parameter]
+    public EventCallback CaptureEventCallback { get; set; }
+
+    private static readonly Dictionary<ApplicationScreenMode.ScreenMode, string[]> CaptureIconResourceName = new Dictionary<ApplicationScreenMode.ScreenMode, string[]>()
+    {
+        { ApplicationScreenMode.ScreenMode.SplitHorizontal2, new string[]{ "HoloViewer.Resources.Icon.IconScreenHorizontal2_CaptureTop.png", "HoloViewer.Resources.Icon.IconScreenHorizontal2_CaptureBottom.png" } },
+        { ApplicationScreenMode.ScreenMode.SplitVertical2, new string[]{ "HoloViewer.Resources.Icon.IconScreenVertical2_CaptureLeft.png", "HoloViewer.Resources.Icon.IconScreenVertical2_CaptureRight.png" } },
+        { ApplicationScreenMode.ScreenMode.SplitHorizontal3, new string[]{ "HoloViewer.Resources.Icon.IconScreenHorizontal3_CaptureTop.png", "HoloViewer.Resources.Icon.IconScreenHorizontal3_CaptureCenter.png", "HoloViewer.Resources.Icon.IconScreenHorizontal3_CaptureBottom.png" } },
+        { ApplicationScreenMode.ScreenMode.SplitVertical3, new string[]{ "HoloViewer.Resources.Icon.IconScreenVertical3_CaptureLeft.png", "HoloViewer.Resources.Icon.IconScreenVertical3_CaptureCenter.png", "HoloViewer.Resources.Icon.IconScreenVertical3_CaptureRight.png" } },
+        { ApplicationScreenMode.ScreenMode.SplitCustom3_1, new string[]{ "HoloViewer.Resources.Icon.IconScreenCustom3-1_CaptureTop.png", "HoloViewer.Resources.Icon.IconScreenCustom3-1_CaptureBottomLeft.png", "HoloViewer.Resources.Icon.IconScreenCustom3-1_CaptureBottomRight.png" } },
+        { ApplicationScreenMode.ScreenMode.SplitCustom3_2, new string[]{ "HoloViewer.Resources.Icon.IconScreenCustom3-2_CaptureTopLeft.png", "HoloViewer.Resources.Icon.IconScreenCustom3-2_CaptureTopRight.png", "HoloViewer.Resources.Icon.IconScreenCustom3-2_CaptureBottom.png" } },
+        { ApplicationScreenMode.ScreenMode.SplitHorizontal4, new string[]{ "HoloViewer.Resources.Icon.IconScreenHorizontal4_CaptureTop.png", "HoloViewer.Resources.Icon.IconScreenHorizontal4_CaptureCenterTop.png", "HoloViewer.Resources.Icon.IconScreenHorizontal4_CaptureCenterBottom.png", "HoloViewer.Resources.Icon.IconScreenHorizontal4_CaptureBottom.png" } },
+        { ApplicationScreenMode.ScreenMode.SplitVertical4, new string[]{ "HoloViewer.Resources.Icon.IconScreenVertical4_CaptureLeft.png", "HoloViewer.Resources.Icon.IconScreenVertical4_CaptureCenterLeft.png", "HoloViewer.Resources.Icon.IconScreenVertical4_CaptureCenterRight.png", "HoloViewer.Resources.Icon.IconScreenVertical4_CaptureRight.png" } },
+        { ApplicationScreenMode.ScreenMode.SplitCustom4, new string[]{ "HoloViewer.Resources.Icon.IconScreenCustom4_CaptureTopLeft.png", "HoloViewer.Resources.Icon.IconScreenCustom4_CaptureTopRight.png", "HoloViewer.Resources.Icon.IconScreenCustom4_CaptureBottomLeft.png", "HoloViewer.Resources.Icon.IconScreenCustom4_CaptureBottomRight.png" } },
+    };
+
+    private static bool[] IsCaptures { get; set; } = new bool[] { true, true, true, true };
+
+    private static bool IsCaptureYoutubePlayerOnly { get; set; } = true;
+
+    private static bool IsCapturedImageCombine { get; set; } = false;
+
+    private ApplicationScreenMode.ScreenMode CurrentScreenMode { get { return ApplicationScreenMode.CurrentScreenMode; } }
+
+    protected override void OnAfterRender (bool firstRender)
+    {
+        for (int i = 0; i < IsCaptures.Length; i++)
+        {
+            IsCaptures[i] = true;
+        }
+
+        base.OnAfterRender(firstRender);
+    }
+
+    public EnumCaptureSettingType CreateCaptureSetting<EnumCaptureSettingType, EnumScreenPositionType, EnumCaptureModeType> (BlazorWebView[] blazorWebViews) where EnumCaptureSettingType : IScreenCapture.CaptureSettingBase<EnumScreenPositionType, EnumCaptureModeType>, new() where EnumScreenPositionType : Enum where EnumCaptureModeType : Enum
+    {
+        int captureMode = IScreenCapture.CaptureModeNone;
+        var modeTypes = Enum.GetValues(typeof(EnumCaptureModeType)).Cast<EnumCaptureModeType>().ToArray();
+        var positionTypes = Enum.GetValues(typeof(EnumScreenPositionType)).Cast<EnumScreenPositionType>().ToArray();
+        var blazorWebView = new Dictionary<EnumScreenPositionType, IScreenCapture.CaptureTargetBase>();
+
+        for (int i = 0; i < modeTypes.Length; i++)
+        {
+            if (IsCaptures[i])
+            {
+                captureMode |= (int)Enum.Parse(typeof(EnumCaptureModeType), modeTypes[i].ToString());
+            }
+
+            if (IsCaptureYoutubePlayerOnly && IScreenCapture.IsCaptureableYoutubePlayer(DependencyService.Get<IWebView>().GetUrl(blazorWebViews[i])))
+            {
+                blazorWebView.Add(positionTypes[i], new IScreenCapture.CaptureYoutubePlayer(blazorWebViews[i]));
+            }
+            else
+            {
+                blazorWebView.Add(positionTypes[i], new IScreenCapture.CaptureWebView(blazorWebViews[i]));
+            }
+        }
+
+        var captureScreenConvertType = (IsCapturedImageCombine) ? IScreenCapture.CaptureScreenConvertType.Combine : IScreenCapture.CaptureScreenConvertType.Separate;
+
+        return new EnumCaptureSettingType() { BlazorWebViews = blazorWebView, CurrentCaptureMode = (EnumCaptureModeType)Enum.ToObject(typeof(EnumCaptureModeType), captureMode), CurrentCaptureScreenConvertType = captureScreenConvertType };
+    }
+
+    private int CaptureTargetScreenIconCount
+    {
+        get
+        {
+            switch(CurrentScreenMode)
+            {
+                case ApplicationScreenMode.ScreenMode.SplitHorizontal2:
+                case ApplicationScreenMode.ScreenMode.SplitVertical2:
+                    return 2;
+
+                case ApplicationScreenMode.ScreenMode.SplitHorizontal3:
+                case ApplicationScreenMode.ScreenMode.SplitVertical3:
+                case ApplicationScreenMode.ScreenMode.SplitCustom3_1:
+                case ApplicationScreenMode.ScreenMode.SplitCustom3_2:
+                    return 3;
+
+                case ApplicationScreenMode.ScreenMode.SplitHorizontal4:
+                case ApplicationScreenMode.ScreenMode.SplitVertical4:
+                case ApplicationScreenMode.ScreenMode.SplitCustom4:
+                    return 4;
+
+                default:
+                    return 0;
+            }
+        }
+    }
+}
