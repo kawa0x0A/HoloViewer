@@ -98,7 +98,7 @@
             }
         }
 
-        var captureScreenConvertType = (IsCapturedImageCombine) ? IScreenCapture.CaptureScreenConvertType.Combine : IScreenCapture.CaptureScreenConvertType.Separate;
+        var captureScreenConvertType = ((CurrentCaptureTargetCount() == 1) || IsCapturedImageCombine) ? IScreenCapture.CaptureScreenConvertType.Combine : IScreenCapture.CaptureScreenConvertType.Separate;
 
         return new EnumCaptureSettingType() { BlazorWebViews = blazorWebView, CurrentCaptureMode = (EnumCaptureModeType)Enum.ToObject(typeof(EnumCaptureModeType), captureMode), CurrentCaptureScreenConvertType = captureScreenConvertType };
     }
@@ -128,5 +128,46 @@
                     return 0;
             }
         }
+    }
+
+    private int CurrentCaptureTargetCount ()
+    {
+        int count = 0;
+        int loopCount = 0;
+
+        switch (CurrentScreenMode)
+        {
+            case ApplicationScreenMode.ScreenMode.Single:
+                loopCount = 1;
+                break;
+
+            case ApplicationScreenMode.ScreenMode.SplitHorizontal2:
+            case ApplicationScreenMode.ScreenMode.SplitVertical2:
+                loopCount = 2;
+                break;
+
+            case ApplicationScreenMode.ScreenMode.SplitHorizontal3:
+            case ApplicationScreenMode.ScreenMode.SplitVertical3:
+            case ApplicationScreenMode.ScreenMode.SplitCustom3_1:
+            case ApplicationScreenMode.ScreenMode.SplitCustom3_2:
+                loopCount = 3;
+                break;
+
+            case ApplicationScreenMode.ScreenMode.SplitHorizontal4:
+            case ApplicationScreenMode.ScreenMode.SplitVertical4:
+            case ApplicationScreenMode.ScreenMode.SplitCustom4:
+                loopCount = 4;
+                break;
+        }
+
+        for (int i = 0; i < loopCount; i++)
+        {
+            if (IsCaptures[i])
+            {
+                count++;
+            }
+        }
+
+        return count;
     }
 }
