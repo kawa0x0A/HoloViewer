@@ -56,11 +56,21 @@ namespace HoloViewer
             return Regex.IsMatch(url, @"https://www.youtube.com/watch\?.+");
         }
 
-        protected static string ConvertUriToBase64 (string uri)
+        protected static string ConvertUriToBase64(string uri)
         {
-            var match = Regex.Match(uri, @"""data:image/png;base64,(?<data>.+)""");
+            const string HeaderString = "data:image/png;base64,";
 
-            return match.Groups["data"].Value;
+            // Mac環境で正規表現がマッチしなかったので処理を分ける
+            if (Device.RuntimePlatform == Device.WPF)
+            {
+                var match = Regex.Match(uri, @$"""{HeaderString}(?<data>.+)""");
+
+                return match.Groups["data"].Value;
+            }
+            else
+            {
+                return uri.Replace("\"", "").Replace(HeaderString, "");
+            }
         }
 
         public const int CaptureModeNone = 0;

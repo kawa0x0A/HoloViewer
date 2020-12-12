@@ -95,6 +95,7 @@
     <Compile Include="FeedBackDialog.cs" />
     <Compile Include="FeedBackInfo.cs" />
     <Compile Include="WebView.cs" />
+    <Compile Include="ScreenCapture.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\wwwroot\index.html" />
@@ -104,6 +105,9 @@
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1451" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.0-pre4" />
     <PackageReference Include="System.Memory" Version="4.5.4" IncludeAssets="None" />
+    <PackageReference Include="SkiaSharp">
+      <Version>2.80.3-preview.18</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
   <ItemGroup>

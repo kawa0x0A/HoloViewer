@@ -1,19 +1,34 @@
 using System;
-using System.Reflection;
+using System.IO;
+using System.Threading.Tasks;
 using Microsoft.MobileBlazorBindings.Elements;
-using Microsoft.MobileBlazorBindings.WebView.Elements;
+using WebKit;
 
 [assembly: Xamarin.Forms.Dependency(typeof(HoloViewer.macOS.WebView))]
 namespace HoloViewer.macOS
 {
     public class WebView : IWebView
     {
-        private WebViewExtended CastWebView(BlazorWebView blazorWebView)
+        public static WKWebView CastWebView(BlazorWebView blazorWebView)
         {
-            var nativeControl = blazorWebView.NativeControl;
-            var type = nativeControl.GetType();
+            var content = ((Microsoft.MobileBlazorBindings.WebView.Elements.MobileBlazorBindingsBlazorWebView)blazorWebView.NativeControl).Content;
+            var type = content.GetType();
 
-            return (WebViewExtended)(type.BaseType.GetField("_webView", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(nativeControl));
+            var webViewExtendedWKWebViewRenderer = (Microsoft.MobileBlazorBindings.WebView.macOS.WebViewExtendedWKWebViewRenderer)type.GetProperty("EffectControlProvider").GetValue(content);
+
+            return webViewExtendedWKWebViewRenderer.Control;
+        }
+
+        public static async Task<string> ExecuteJavascript(BlazorWebView blazorWebView, string filePath)
+        {
+            string script = "";
+
+            using(var streamReader = new StreamReader(filePath))
+            {
+                script = streamReader.ReadToEnd();
+            }
+
+            return (await CastWebView(blazorWebView).EvaluateJavaScriptAsync(script)).ToString();
         }
 
         public bool CanPageBack(BlazorWebView blazorWebView)
@@ -28,7 +43,7 @@ namespace HoloViewer.macOS
 
         public string GetUrl(BlazorWebView blazorWebView)
         {
-            return ((Xamarin.Forms.UrlWebViewSource)CastWebView(blazorWebView).Source).Url;
+            return (CastWebView(blazorWebView).Url.ToString());
         }
 
         public void PageBack(BlazorWebView blazorWebView)
