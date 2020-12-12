@@ -64,14 +64,12 @@
 
     private ApplicationScreenMode.ScreenMode CurrentScreenMode { get { return ApplicationScreenMode.CurrentScreenMode; } }
 
-    protected override void OnAfterRender (bool firstRender)
+    public void ResetIsCapture ()
     {
         for (int i = 0; i < IsCaptures.Length; i++)
         {
             IsCaptures[i] = true;
         }
-
-        base.OnAfterRender(firstRender);
     }
 
     public EnumCaptureSettingType CreateCaptureSetting<EnumCaptureSettingType, EnumScreenPositionType, EnumCaptureModeType> (BlazorWebView[] blazorWebViews) where EnumCaptureSettingType : IScreenCapture.CaptureSettingBase<EnumScreenPositionType, EnumCaptureModeType>, new() where EnumScreenPositionType : Enum where EnumCaptureModeType : Enum
