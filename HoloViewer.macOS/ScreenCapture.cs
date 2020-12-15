@@ -75,6 +75,21 @@ namespace HoloViewer.macOS
             }
         }
 
+        public async Task<int> GetYoutubePlayerWidth(BlazorWebView blazorWebView)
+        {
+            return int.Parse(await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.GetWidthYoutubePlayerScriptPath));
+        }
+
+        public async Task<int> GetYoutubePlayerHeight(BlazorWebView blazorWebView)
+        {
+            return int.Parse(await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.GetHeightYoutubePlayerScriptPath));
+        }
+
+        public async Task<bool> IsEnableYoutubeVideoPlayer (BlazorWebView blazorWebView)
+        {
+            return bool.Parse(await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.IsEnableYoutubeVideoPlayerScriptPath));
+        }
+
         public async Task<byte[]> GetCaptureWebViewData(BlazorWebView blazorWebView)
         {
             var image = await WebView.CastWebView(blazorWebView).TakeSnapshotAsync(new WebKit.WKSnapshotConfiguration());
@@ -90,19 +105,20 @@ namespace HoloViewer.macOS
 
         public async Task<byte[]> GetCaptureYoutubePlayerData(BlazorWebView blazorWebView)
         {
-            var pngDataUri = await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.CaptureYoutubePlayerScriptPath);
+            var pngDataUri = await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.CaptureYoutubeVideoPlayerScriptPath);
 
             return Convert.FromBase64String(IScreenCapture.ConvertUriToBase64(pngDataUri));
         }
 
-        public async Task<int> GetYoutubePlayerWidth(BlazorWebView blazorWebView)
+        public async Task<byte[]> GetCaptureYoutubeBackgroundSlateImageData (BlazorWebView blazorWebView)
         {
-            return int.Parse(await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.GetWidthYoutubePlayerScriptPath));
-        }
+            await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.LoadYoutubeBackgroundSlateImageScriptPath);
 
-        public async Task<int> GetYoutubePlayerHeight(BlazorWebView blazorWebView)
-        {
-            return int.Parse(await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.GetHeightYoutubePlayerScriptPath));
+            while (!bool.Parse(await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.IsLoadCompleteImage))) { }
+
+            var pngDataUri = await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.CaptureYoutubeBackgroundSlateImageScriptPath);
+
+            return Convert.FromBase64String(IScreenCapture.ConvertUriToBase64(pngDataUri));
         }
 
         public async Task CaptureSingle(IScreenCapture.CaptureSetting_Single captureSetting)

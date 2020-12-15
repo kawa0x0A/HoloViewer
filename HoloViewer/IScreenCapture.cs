@@ -10,7 +10,15 @@ namespace HoloViewer
 {
     public interface IScreenCapture
     {
-        protected const string CaptureYoutubePlayerScriptPath = ScriptPath + "CaptureYoutubePlayer.js";
+        protected const string CaptureYoutubeVideoPlayerScriptPath = ScriptPath + "CaptureYoutubePlayer.js";
+
+        protected const string CaptureYoutubeBackgroundSlateImageScriptPath = ScriptPath + "CaptureBackgroundSlateImage.js";
+
+        protected const string LoadYoutubeBackgroundSlateImageScriptPath = ScriptPath + "LoadBackgroundSlateImage.js";
+
+        protected const string IsEnableYoutubeVideoPlayerScriptPath = ScriptPath + "IsEnableYoutubeVideoPlayer.js";
+
+        protected const string IsLoadCompleteImage = ScriptPath + "IsLoadCompleteImage.js";
 
         protected const string GetWidthYoutubePlayerScriptPath = ScriptPath + "GetWidthYoutubePlayer.js";
 
@@ -258,7 +266,7 @@ namespace HoloViewer
             }
         }
 
-        public class CaptureYoutubePlayer : CaptureTargetBase
+        public class CaptureYoutubeVideoPlayer : CaptureTargetBase
         {
             public override async Task<int> GetWidth () { return await DependencyService.Get<IScreenCapture>().GetYoutubePlayerWidth(CaptureBlazorWebView); }
 
@@ -266,7 +274,20 @@ namespace HoloViewer
 
             public override async Task<byte[]> GetCaptureData () { return await DependencyService.Get<IScreenCapture>().GetCaptureYoutubePlayerData(CaptureBlazorWebView); }
 
-            public CaptureYoutubePlayer (BlazorWebView blazorWebView) : base(blazorWebView)
+            public CaptureYoutubeVideoPlayer (BlazorWebView blazorWebView) : base(blazorWebView)
+            {
+            }
+        }
+
+        public class CaptureYoutubeBackgroundSlateImage : CaptureTargetBase
+        {
+            public override async Task<int> GetWidth () { return await DependencyService.Get<IScreenCapture>().GetYoutubePlayerWidth(CaptureBlazorWebView); }
+
+            public override async Task<int> GetHeight () { return await DependencyService.Get<IScreenCapture>().GetYoutubePlayerHeight(CaptureBlazorWebView); }
+
+            public override async Task<byte[]> GetCaptureData () { return await DependencyService.Get<IScreenCapture>().GetCaptureYoutubeBackgroundSlateImageData(CaptureBlazorWebView); }
+
+            public CaptureYoutubeBackgroundSlateImage (BlazorWebView blazorWebView) : base(blazorWebView)
             {
             }
         }
@@ -620,7 +641,7 @@ namespace HoloViewer
         {
             public override CaptureTargetBase CaptureTarget => BlazorWebViews[ScreenPosition_Custom3_1.BottomRight];
 
-            public override async Task<int> GetOffsetPixelX () { return (CurrentCaptureMode.HasFlag(CaptureMode_Custom3_1.BottomLeft) ? await BlazorWebViews[ScreenPosition_Custom3_1.BottomLeft].GetWidth() : 0); }
+            public override async Task<int> GetOffsetPixelX () { return ((CurrentCaptureMode.HasFlag(CaptureMode_Custom3_1.BottomLeft) || CurrentCaptureMode.HasFlag(CaptureMode_Custom3_1.Top)) ? await BlazorWebViews[ScreenPosition_Custom3_1.BottomLeft].GetWidth() : 0); }
 
             public override async Task<int> GetOffsetPixelY () { return (CurrentCaptureMode.HasFlag(CaptureMode_Custom3_1.Top) ? await BlazorWebViews[ScreenPosition_Custom3_1.Top].GetHeight() : 0); }
 
@@ -677,7 +698,7 @@ namespace HoloViewer
         {
             public override CaptureTargetBase CaptureTarget => BlazorWebViews[ScreenPosition_Custom3_2.TopRight];
 
-            public override async Task<int> GetOffsetPixelX () { return (CurrentCaptureMode.HasFlag(CaptureMode_Custom3_2.TopLeft) ? await BlazorWebViews[ScreenPosition_Custom3_2.TopLeft].GetWidth() : 0); }
+            public override async Task<int> GetOffsetPixelX () { return ((CurrentCaptureMode.HasFlag(CaptureMode_Custom3_2.TopLeft) || CurrentCaptureMode.HasFlag(CaptureMode_Custom3_2.Bottom)) ? await BlazorWebViews[ScreenPosition_Custom3_2.TopLeft].GetWidth() : 0); }
 
             public override async Task<int> GetOffsetPixelY () { return await Task.Run(() => { return 0; }); }
 
@@ -1053,9 +1074,13 @@ namespace HoloViewer
 
         Task<int> GetYoutubePlayerHeight (BlazorWebView blazorWebView);
 
+        Task<bool> IsEnableYoutubeVideoPlayer (BlazorWebView blazorWebView);
+
         Task<byte[]> GetCaptureWebViewData(BlazorWebView blazorWebView);
 
         Task<byte[]> GetCaptureYoutubePlayerData (BlazorWebView blazorWebView);
+
+        Task<byte[]> GetCaptureYoutubeBackgroundSlateImageData (BlazorWebView blazorWebView);
 
         Task CaptureSingle (CaptureSetting_Single captureSetting);
 

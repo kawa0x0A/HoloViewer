@@ -129,6 +129,11 @@ namespace HoloViewer.Windows
             return int.Parse(await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.GetHeightYoutubePlayerScriptPath));
         }
 
+        public async Task<bool> IsEnableYoutubeVideoPlayer (BlazorWebView blazorWebView)
+        {
+            return bool.Parse(await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.IsEnableYoutubeVideoPlayerScriptPath));
+        }
+
         public async Task<byte[]> GetCaptureWebViewData (BlazorWebView blazorWebView)
         {
             using var memoryStream = new MemoryStream();
@@ -140,7 +145,18 @@ namespace HoloViewer.Windows
 
         public async Task<byte[]> GetCaptureYoutubePlayerData (BlazorWebView blazorWebView)
         {
-            var pngDataUri = await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.CaptureYoutubePlayerScriptPath);
+            var pngDataUri = await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.CaptureYoutubeVideoPlayerScriptPath);
+
+            return Convert.FromBase64String(IScreenCapture.ConvertUriToBase64(pngDataUri));
+        }
+
+        public async Task<byte[]> GetCaptureYoutubeBackgroundSlateImageData (BlazorWebView blazorWebView)
+        {
+            await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.LoadYoutubeBackgroundSlateImageScriptPath);
+
+            while (!bool.Parse(await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.IsLoadCompleteImage))) { }
+
+            var pngDataUri = await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.CaptureYoutubeBackgroundSlateImageScriptPath);
 
             return Convert.FromBase64String(IScreenCapture.ConvertUriToBase64(pngDataUri));
         }
