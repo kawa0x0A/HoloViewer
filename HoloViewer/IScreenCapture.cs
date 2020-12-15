@@ -24,7 +24,7 @@ namespace HoloViewer
 
         protected const string GetHeightYoutubePlayerScriptPath = ScriptPath + "GetHeightYoutubePlayer.js";
 
-        private const string ScriptPath = "./wwwroot/_content/HoloViewer/scripts/";
+        private const string ScriptPath = "./wwwroot/_content/HoloViewer/scripts/capture/";
 
         private const string CaptureDirectoryName = "Capture";
 
