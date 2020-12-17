@@ -87,7 +87,7 @@ namespace HoloViewer.macOS
 
         public async Task<bool> IsEnableYoutubeVideoPlayer (BlazorWebView blazorWebView)
         {
-            return bool.Parse(await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.IsEnableYoutubeVideoPlayerScriptPath));
+            return (0 != int.Parse(await WebView.ExecuteJavascript(blazorWebView, IScreenCapture.IsEnableYoutubeVideoPlayerScriptPath)));
         }
 
         public async Task<byte[]> GetCaptureWebViewData(BlazorWebView blazorWebView)
