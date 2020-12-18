@@ -5,7 +5,18 @@
 
     @if (CaptureTargetScreenIconCount > 0)
     {
-        <Label Text="|" WidthRequest="8" HeightRequest="64" FontSize="32" TranslationY="-56" ScaleY="2.4" />
+        // Windows版はScaleYが反映されなかったので処理を分割
+        switch (Device.RuntimePlatform)
+        {
+            case Device.WPF:
+                <Label Text="|" WidthRequest="8" HeightRequest="32" FontSize="32" TranslationY="-4" />
+                <Label Text="|" WidthRequest="8" HeightRequest="32" FontSize="32" TranslationX="-14" TranslationY="27" />
+                break;
+
+            case Device.macOS:
+                <Label Text="|" WidthRequest="8" HeightRequest="64" FontSize="32" TranslationY="-4" ScaleY="2.4" />
+                break;
+        }
     }
     else
     {
@@ -28,7 +39,6 @@
                     <CheckBox @bind-IsChecked="@IsCaptures[index]" HorizontalOptions="LayoutOptions.Center" VerticalOptions="LayoutOptions.Center" />
                     <Image Source="@ImageSource.FromResource(CaptureIconResourceName[CurrentScreenMode][index])" WidthRequest="32" HeightRequest="32" HorizontalOptions="LayoutOptions.Center" VerticalOptions="LayoutOptions.Center" />
                 }
-
             }
         </StackLayout>
 
