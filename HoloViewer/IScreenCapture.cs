@@ -46,7 +46,15 @@ namespace HoloViewer
 
         public static string GetCaptureDirectoryFullPath ()
         {
-            return Path.GetFullPath(CaptureDirectoryName);
+            switch (Device.RuntimePlatform)
+            {
+                case Device.WPF:
+                    return Path.GetFullPath(CaptureDirectoryName);
+                case Device.macOS:
+                    return Path.Combine(Path.GetFullPath(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)), CaptureDirectoryName);
+                default:
+                    return "";
+            }
         }
 
         public static string GetCaptureFullPath (DateTime dateTime)
