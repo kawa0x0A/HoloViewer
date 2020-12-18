@@ -24,7 +24,7 @@
 
     <Label Text="|" WidthRequest="8" HeightRequest="40" FontSize="32" TranslationY="-4" />
     <CheckBox @bind-IsChecked="@IsCaptureYoutubePlayerOnly" HorizontalOptions="LayoutOptions.Center" VerticalOptions="LayoutOptions.Center" />
-    <Label Text="Youtubeプレイヤーのみをキャプチャ" FontSize="21" VerticalOptions="LayoutOptions.CenterAndExpand" />
+    <Label Text="Youtubeプレイヤーのみをキャプチャ" FontSize="@LabelTextFontSize" VerticalOptions="LayoutOptions.CenterAndExpand" />
 
     @switch (CurrentScreenMode)
     {
@@ -39,7 +39,7 @@
         case ApplicationScreenMode.ScreenMode.SplitCustom4:
             <Label Text="|" WidthRequest="8" HeightRequest="40" FontSize="32" TranslationY="-4" />
             <CheckBox @bind-IsChecked="@IsCapturedImageCombine" HorizontalOptions="LayoutOptions.Center" VerticalOptions="LayoutOptions.Center" />
-            <Label Text="キャプチャした画像を1つにまとめる" FontSize="21" VerticalOptions="LayoutOptions.Center" />
+            <Label Text="キャプチャした画像を1つにまとめる" FontSize="@LabelTextFontSize" VerticalOptions="LayoutOptions.Center" />
             break;
     }
 
@@ -71,6 +71,24 @@
     private static bool IsCapturedImageCombine { get; set; } = false;
 
     private ApplicationScreenMode.ScreenMode CurrentScreenMode { get { return ApplicationScreenMode.CurrentScreenMode; } }
+
+    private int LabelTextFontSize
+    {
+        get
+        {
+            switch (Device.RuntimePlatform)
+            {
+                case Device.WPF:
+                    return 21;
+
+                case Device.macOS:
+                    return 18;
+
+                default:
+                    return 21;
+            }
+        }
+    }
 
     private int CaptureTargetScreenIconCount
     {
