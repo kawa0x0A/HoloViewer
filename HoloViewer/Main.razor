@@ -263,6 +263,11 @@
 
     async void Capture ()
     {
+        if (CurrentCaptureToolbar.CurrentCaptureTargetCount() == 0)
+        {
+            return;
+        }
+
         switch (ApplicationScreenMode.CurrentScreenMode)
         {
             case ScreenMode.Single:

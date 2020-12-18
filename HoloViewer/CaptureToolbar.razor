@@ -165,7 +165,7 @@
         return new EnumCaptureSettingType() { BlazorWebViews = blazorWebView, CurrentCaptureMode = (EnumCaptureModeType)Enum.ToObject(typeof(EnumCaptureModeType), captureMode), CurrentCaptureScreenConvertType = captureScreenConvertType };
     }
 
-    private int CurrentCaptureTargetCount ()
+    public int CurrentCaptureTargetCount ()
     {
         int count = 0;
         int loopCount = 0;
