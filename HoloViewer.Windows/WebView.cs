@@ -13,7 +13,9 @@ namespace HoloViewer.Windows
             var content = ((Microsoft.MobileBlazorBindings.WebView.Elements.MobileBlazorBindingsBlazorWebView)blazorWebView.NativeControl).Content;
             var type = content.GetType();
 
-            return (WebView2)type.GetProperty("RetainedNativeControl").GetValue(content);
+            var webViewExtendedAnaheimRenderer = (Microsoft.MobileBlazorBindings.WebView.Windows.WebViewExtendedAnaheimRenderer)type.GetProperty("EffectControlProvider").GetValue(content);
+
+            return webViewExtendedAnaheimRenderer.Control;
         }
 
         public static async Task<string> ExecuteJavascript (BlazorWebView blazorWebView, string filePath)
