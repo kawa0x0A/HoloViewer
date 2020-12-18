@@ -51,14 +51,7 @@
     * Firebase Hosting
 
 * 最新版での既知の不具合
-  * Youtubeページから戻るとページが正常に表示されない
-    * 原因を調査中
-  * 画面分割時にページが正常に表示されない場合がある
-    * 原因を調査中
-  * Youtubeページを開いたまま画面分割モードを変更するとバックグラウンドで動画が流れたままになる
-    * 対応策を検討中
-  * Windows版のフルスクリーンでもタイトルが表示されたままになっている
-    * 原因を調査中
+  * [不具合情報一覧](https://docs.google.com/spreadsheets/d/1YBC7Tw2uv1DNkixUyVOATebgyF0IwTOW15bDXMFW1RI/edit?usp=sharing) (Googleスプレッドシートが開きます)
 
 * Q&A
   * ソフトウェアについて
