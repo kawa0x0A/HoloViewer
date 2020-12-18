@@ -3,45 +3,57 @@
 <StackLayout Orientation="StackOrientation.Horizontal">
     <Label Text="キャプチャ設定" VerticalOptions="LayoutOptions.CenterAndExpand" FontSize="24" />
 
-    @if(CaptureTargetScreenIconCount > 0)
+    @if (CaptureTargetScreenIconCount > 0)
     {
-        <Label Text="|" WidthRequest="8" HeightRequest="40" FontSize="32" TranslationY="-4" />
+        <Label Text="|" WidthRequest="8" HeightRequest="64" FontSize="32" TranslationY="-56" ScaleY="2.4" />
+    }
+    else
+    {
+        <Label Text="|" WidthRequest="8" HeightRequest="32" FontSize="32" TranslationY="-4" />
+    }
 
-        for (int i = 0; i < CaptureTargetScreenIconCount; i++)
-        {
-            var index = i;
-
-            if (index > 0)
+    <StackLayout>
+        <StackLayout Orientation="StackOrientation.Horizontal">
+            @if (CaptureTargetScreenIconCount > 0)
             {
-                <Label WidthRequest="16" />
+                for (int i = 0; i < CaptureTargetScreenIconCount; i++)
+                {
+                    var index = i;
+
+                    if (index > 0)
+                    {
+                        <Label WidthRequest="16" />
+                    }
+
+                    <CheckBox @bind-IsChecked="@IsCaptures[index]" HorizontalOptions="LayoutOptions.Center" VerticalOptions="LayoutOptions.Center" />
+                    <Image Source="@ImageSource.FromResource(CaptureIconResourceName[CurrentScreenMode][index])" WidthRequest="32" HeightRequest="32" HorizontalOptions="LayoutOptions.Center" VerticalOptions="LayoutOptions.Center" />
+                }
+
             }
+        </StackLayout>
 
-            <CheckBox @bind-IsChecked="@IsCaptures[index]" HorizontalOptions="LayoutOptions.Center" VerticalOptions="LayoutOptions.Center" />
-            <Image Source="@ImageSource.FromResource(CaptureIconResourceName[CurrentScreenMode][index])" WidthRequest="32" HeightRequest="32" HorizontalOptions="LayoutOptions.Center" VerticalOptions="LayoutOptions.Center" />
-        }
+        <StackLayout Orientation="StackOrientation.Horizontal">
+            <CheckBox @bind-IsChecked="@IsCaptureYoutubePlayerOnly" HorizontalOptions="LayoutOptions.Center" VerticalOptions="LayoutOptions.Center" />
+            <Label Text="Youtubeプレイヤーのみをキャプチャ" FontSize="21" VerticalOptions="LayoutOptions.CenterAndExpand" />
 
-    }
-
-    <Label Text="|" WidthRequest="8" HeightRequest="40" FontSize="32" TranslationY="-4" />
-    <CheckBox @bind-IsChecked="@IsCaptureYoutubePlayerOnly" HorizontalOptions="LayoutOptions.Center" VerticalOptions="LayoutOptions.Center" />
-    <Label Text="Youtubeプレイヤーのみをキャプチャ" FontSize="@LabelTextFontSize" VerticalOptions="LayoutOptions.CenterAndExpand" />
-
-    @switch (CurrentScreenMode)
-    {
-        case ApplicationScreenMode.ScreenMode.SplitHorizontal2:
-        case ApplicationScreenMode.ScreenMode.SplitVertical2:
-        case ApplicationScreenMode.ScreenMode.SplitHorizontal3:
-        case ApplicationScreenMode.ScreenMode.SplitVertical3:
-        case ApplicationScreenMode.ScreenMode.SplitCustom3_1:
-        case ApplicationScreenMode.ScreenMode.SplitCustom3_2:
-        case ApplicationScreenMode.ScreenMode.SplitHorizontal4:
-        case ApplicationScreenMode.ScreenMode.SplitVertical4:
-        case ApplicationScreenMode.ScreenMode.SplitCustom4:
-            <Label Text="|" WidthRequest="8" HeightRequest="40" FontSize="32" TranslationY="-4" />
-            <CheckBox @bind-IsChecked="@IsCapturedImageCombine" HorizontalOptions="LayoutOptions.Center" VerticalOptions="LayoutOptions.Center" />
-            <Label Text="キャプチャした画像を1つにまとめる" FontSize="@LabelTextFontSize" VerticalOptions="LayoutOptions.Center" />
-            break;
-    }
+            @switch (CurrentScreenMode)
+            {
+                case ApplicationScreenMode.ScreenMode.SplitHorizontal2:
+                case ApplicationScreenMode.ScreenMode.SplitVertical2:
+                case ApplicationScreenMode.ScreenMode.SplitHorizontal3:
+                case ApplicationScreenMode.ScreenMode.SplitVertical3:
+                case ApplicationScreenMode.ScreenMode.SplitCustom3_1:
+                case ApplicationScreenMode.ScreenMode.SplitCustom3_2:
+                case ApplicationScreenMode.ScreenMode.SplitHorizontal4:
+                case ApplicationScreenMode.ScreenMode.SplitVertical4:
+                case ApplicationScreenMode.ScreenMode.SplitCustom4:
+                    <Label Text="|" WidthRequest="8" HeightRequest="40" FontSize="32" TranslationY="-4" />
+                    <CheckBox @bind-IsChecked="@IsCapturedImageCombine" HorizontalOptions="LayoutOptions.Center" VerticalOptions="LayoutOptions.Center" />
+                    <Label Text="キャプチャした画像を1つにまとめる" FontSize="21" VerticalOptions="LayoutOptions.Center" />
+                    break;
+            }
+        </StackLayout>
+    </StackLayout>
 
     <Button Text="キャプチャ" FontSize="16" OnClick="CaptureEventCallback" HorizontalOptions="LayoutOptions.EndAndExpand" />
 </StackLayout>
@@ -71,24 +83,6 @@
     private static bool IsCapturedImageCombine { get; set; } = false;
 
     private ApplicationScreenMode.ScreenMode CurrentScreenMode { get { return ApplicationScreenMode.CurrentScreenMode; } }
-
-    private int LabelTextFontSize
-    {
-        get
-        {
-            switch (Device.RuntimePlatform)
-            {
-                case Device.WPF:
-                    return 21;
-
-                case Device.macOS:
-                    return 18;
-
-                default:
-                    return 21;
-            }
-        }
-    }
 
     private int CaptureTargetScreenIconCount
     {
