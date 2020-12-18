@@ -61,9 +61,19 @@ namespace HoloViewer.macOS
             CastWebView(blazorWebView).Reload();
         }
 
+        public bool IsLoading (BlazorWebView blazorWebView)
+        {
+            return CastWebView(blazorWebView).IsLoading;
+        }
+
         public void Stop(BlazorWebView blazorWebView)
         {
-            throw new NotImplementedException();
+            CastWebView(blazorWebView).StopLoading();
+        }
+
+        public void Navigate (BlazorWebView blazorWebView, string url)
+        {
+            CastWebView(blazorWebView).LoadRequest(new Foundation.NSUrlRequest(new Foundation.NSUrl(url)));
         }
     }
 }

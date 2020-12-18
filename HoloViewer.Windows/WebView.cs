@@ -8,6 +8,8 @@ namespace HoloViewer.Windows
 {
     class WebView : IWebView
     {
+        private bool isNavigating = false;
+
         public static WebView2 CastWebView (BlazorWebView blazorWebView)
         {
             var content = ((Microsoft.MobileBlazorBindings.WebView.Elements.MobileBlazorBindingsBlazorWebView)blazorWebView.NativeControl).Content;
@@ -60,9 +62,19 @@ namespace HoloViewer.Windows
             (CastWebView(blazorWebView)).Stop();
         }
 
+        public bool IsLoading (BlazorWebView blazorWebView)
+        {
+            return isNavigating;
+        }
+
         public string GetUrl (BlazorWebView blazorWebView)
         {
             return (CastWebView(blazorWebView)).Source.AbsoluteUri;
+        }
+
+        public void Navigate (BlazorWebView blazorWebView, string url)
+        {
+            (CastWebView(blazorWebView)).CoreWebView2.Navigate(url);
         }
     }
 }

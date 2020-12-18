@@ -16,6 +16,10 @@ namespace HoloViewer
 
         void Stop (BlazorWebView blazorWebView);
 
+        bool IsLoading (BlazorWebView blazorWebView);
+
         string GetUrl (BlazorWebView blazorWebView);
+
+        void Navigate (BlazorWebView blazorWebView, string url);
     }
 }
