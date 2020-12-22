@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Foundation;
 using Microsoft.MobileBlazorBindings.Elements;
 using WebKit;
 
@@ -9,6 +10,36 @@ namespace HoloViewer.macOS
 {
     public class WebView : IWebView
     {
+        private class NavigationDelegate : WKNavigationDelegate
+        {
+            private readonly WebViewToolbar webViewToolbar;
+
+            public NavigationDelegate(WebViewToolbar webViewToolbar)
+            {
+                this.webViewToolbar = webViewToolbar;
+            }
+
+            public override void DidStartProvisionalNavigation(WKWebView webView, WKNavigation navigation)
+            {
+                webViewToolbar.UpdateUrl();
+                webViewToolbar.UpdateReloadButton();
+                webViewToolbar.UpdateStateHasChanged();
+            }
+
+            public override void DidFailNavigation(WKWebView webView, WKNavigation navigation, NSError error)
+            {
+                webViewToolbar.UpdateReloadButton();
+                webViewToolbar.UpdateStateHasChanged();
+            }
+
+            public override void DidFinishNavigation(WKWebView webView, WKNavigation navigation)
+            {
+                webViewToolbar.UpdateTitle();
+                webViewToolbar.UpdateReloadButton();
+                webViewToolbar.UpdateStateHasChanged();
+            }
+        }
+
         public static WKWebView CastWebView(BlazorWebView blazorWebView)
         {
             var content = ((Microsoft.MobileBlazorBindings.WebView.Elements.MobileBlazorBindingsBlazorWebView)blazorWebView.NativeControl).Content;
@@ -31,12 +62,16 @@ namespace HoloViewer.macOS
             return (await CastWebView(blazorWebView).EvaluateJavaScriptAsync(script)).ToString();
         }
 
-        public async Task InitializeAsync (BlazorWebView blazorWebView)
+        public Task InitializeAsync (BlazorWebView blazorWebView)
         {
+            return Task.Run(() => { });
         }
 
         public void AddEventFunction (BlazorWebView blazorWebView, WebViewToolbar webViewToolbar)
         {
+            var wkWebView = CastWebView(blazorWebView);
+
+            wkWebView.NavigationDelegate = new NavigationDelegate(webViewToolbar);
         }
 
         public void RemoveEventFunction (BlazorWebView blazorWebView)

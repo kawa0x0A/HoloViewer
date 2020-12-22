@@ -3,7 +3,7 @@
     <StackLayout Orientation="StackOrientation.Horizontal">
         <Button Text="←" IsEnabled="CanPageBack" OnClick="PageBack" />
         <Button Text="→" IsEnabled="CanPageForward" OnClick="PageForward" />
-        <Button Text="@PageStopOrReloadButtonText" OnClick="StopOrReload" WidthRequest="48" />
+        <Button Text="@ReloadButtonText" OnClick="StopOrReload" WidthRequest="48" />
         <Entry @bind-Text="@CurrentUrl" HorizontalOptions="LayoutOptions.FillAndExpand" OnCompleted="NavigationUrl" />
         <Button Text="→" OnClick="NavigationUrl" />
     </StackLayout>
@@ -17,11 +17,11 @@
 
     public bool CanPageForward { get { return (BindingBlazorWebView == null) ? false : DependencyService.Get<IWebView>().CanPageForward(BindingBlazorWebView); } }
 
-    public string PageStopOrReloadButtonText { get { return (BindingBlazorWebView == null) ? "" : DependencyService.Get<IWebView>().IsLoading(BindingBlazorWebView) ? "Stop" : "Reload"; } }
-
-    public string CurrentPageTitle { get { return (BindingBlazorWebView == null) ? "" : DependencyService.Get<IWebView>().GetTitle(BindingBlazorWebView); } }
+    public string CurrentPageTitle { get; set; }
 
     public string CurrentUrl { get; set; }
+
+    public string ReloadButtonText { get; set; }
 
     public void PageBack ()
     {
@@ -70,11 +70,19 @@
         DependencyService.Get<IWebView>().Navigate(BindingBlazorWebView, CurrentUrl);
     }
 
+    public void UpdateTitle()
+    {
+        CurrentPageTitle = DependencyService.Get<IWebView>().GetTitle(BindingBlazorWebView);
+    }
+
     public void UpdateUrl ()
     {
         CurrentUrl = DependencyService.Get<IWebView>().GetUrl(BindingBlazorWebView);
+    }
 
-        StateHasChanged();
+    public void UpdateReloadButton()
+    {
+        ReloadButtonText = DependencyService.Get<IWebView>().IsLoading(BindingBlazorWebView) ? "Stop" : "Reload";
     }
 
     public void UpdateStateHasChanged ()
