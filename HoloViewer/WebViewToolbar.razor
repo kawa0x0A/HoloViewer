@@ -3,7 +3,7 @@
     <StackLayout Orientation="StackOrientation.Horizontal">
         <Button Text="←" IsEnabled="CanPageBack" OnClick="PageBack" />
         <Button Text="→" IsEnabled="CanPageForward" OnClick="PageForward" />
-        <Button Text="@ReloadButtonText" OnClick="StopOrReload" WidthRequest="48" />
+        <Button Text="@ReloadButtonText" OnClick="StopOrReload" WidthRequest="@ReloadButtonWidth" />
         <Entry @bind-Text="@CurrentUrl" HorizontalOptions="LayoutOptions.FillAndExpand" OnCompleted="NavigationUrl" />
         <Button Text="→" OnClick="NavigationUrl" />
     </StackLayout>
@@ -22,6 +22,24 @@
     public string CurrentUrl { get; set; }
 
     public string ReloadButtonText { get; set; }
+
+    public int ReloadButtonWidth
+    {
+        get
+        {
+            switch(Device.RuntimePlatform)
+            {
+                case Device.WPF:
+                    return 48;
+
+                case Device.macOS:
+                    return 64;
+
+                default:
+                    return 64;
+            }
+        }
+    }
 
     public void PageBack ()
     {
