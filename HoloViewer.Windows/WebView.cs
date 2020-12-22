@@ -44,9 +44,9 @@ namespace HoloViewer.Windows
 
         public void AddEventFunction (BlazorWebView blazorWebView, WebViewToolbar webViewToolbar)
         {
-            navigationStartingAction = (sender, e) => { isNavigating = true; webViewToolbar.UpdateUrl(); };
-            navigationComplatedAction = (sender, e) => { isNavigating = false; webViewToolbar.UpdateStateHasChanged(); };
-            sourceChangedAction = (sender, e) => { webViewToolbar.UpdateUrl(); };
+            navigationStartingAction = (sender, e) => { isNavigating = true; webViewToolbar.UpdateUrl(); webViewToolbar.UpdateReloadButton(); webViewToolbar.UpdateStateHasChanged(); };
+            navigationComplatedAction = (sender, e) => { isNavigating = false; webViewToolbar.UpdateTitle(); webViewToolbar.UpdateReloadButton(); webViewToolbar.UpdateStateHasChanged(); };
+            sourceChangedAction = (sender, e) => { webViewToolbar.UpdateTitle(); webViewToolbar.UpdateUrl(); webViewToolbar.UpdateStateHasChanged(); };
 
             var webview2 = CastWebView(blazorWebView);
 
