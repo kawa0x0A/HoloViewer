@@ -31,6 +31,18 @@ namespace HoloViewer.macOS
             return (await CastWebView(blazorWebView).EvaluateJavaScriptAsync(script)).ToString();
         }
 
+        public async Task InitializeAsync (BlazorWebView blazorWebView)
+        {
+        }
+
+        public void AddEventFunction (BlazorWebView blazorWebView, WebViewToolbar webViewToolbar)
+        {
+        }
+
+        public void RemoveEventFunction (BlazorWebView blazorWebView)
+        {
+        }
+
         public bool CanPageBack(BlazorWebView blazorWebView)
         {
             return CastWebView(blazorWebView).CanGoBack;
@@ -41,9 +53,14 @@ namespace HoloViewer.macOS
             return CastWebView(blazorWebView).CanGoForward;
         }
 
+        public string GetTitle (BlazorWebView blazorWebView)
+        {
+            return CastWebView(blazorWebView).Title;
+        }
+
         public string GetUrl(BlazorWebView blazorWebView)
         {
-            return (CastWebView(blazorWebView).Url.ToString());
+            return CastWebView(blazorWebView).Url.ToString();
         }
 
         public void PageBack(BlazorWebView blazorWebView)

@@ -50,6 +50,7 @@
             case ScreenMode.Single:
                 <Grid HorizontalOptions="LayoutOptions.FillAndExpand" VerticalOptions="LayoutOptions.FillAndExpand">
                     <StackLayout>
+                        <WebViewToolbar @ref="WebViewToolbars" />
                         <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
                             <HoloViewer.WebUI.App />
                         </BlazorWebView>
@@ -63,6 +64,7 @@
                     {
                         <GridCell Row="@i">
                             <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
                                 <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
                                     <HoloViewer.WebUI.App />
                                 </BlazorWebView>
@@ -78,6 +80,7 @@
                     {
                         <GridCell Column="@i">
                             <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
                                 <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
                                     <HoloViewer.WebUI.App />
                                 </BlazorWebView>
@@ -93,6 +96,7 @@
                     {
                         <GridCell Row="@i">
                             <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
                                 <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
                                     <HoloViewer.WebUI.App />
                                 </BlazorWebView>
@@ -108,6 +112,7 @@
                     {
                         <GridCell Column="@i">
                             <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
                                 <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
                                     <HoloViewer.WebUI.App />
                                 </BlazorWebView>
@@ -123,6 +128,7 @@
                     {
                         <GridCell Row="@GridRowSplitCustom3_1[i]" Column="@GridColumnSplitCustom3_1[i]" ColumnSpan="@GridColumnSpanSplitCustom3_1[i]">
                             <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
                                 <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
                                     <HoloViewer.WebUI.App />
                                 </BlazorWebView>
@@ -138,6 +144,7 @@
                     {
                         <GridCell Row="@GridRowSplitCustom3_2[i]" Column="@GridColumnSplitCustom3_2[i]" ColumnSpan="@GridColumnSpanSplitCustom3_2[i]">
                             <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
                                 <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
                                     <HoloViewer.WebUI.App />
                                 </BlazorWebView>
@@ -154,6 +161,7 @@
                     {
                         <GridCell Row="@i">
                             <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
                                 <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
                                     <HoloViewer.WebUI.App />
                                 </BlazorWebView>
@@ -169,6 +177,7 @@
                     {
                         <GridCell Column="@i">
                             <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
                                 <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
                                     <HoloViewer.WebUI.App />
                                 </BlazorWebView>
@@ -184,6 +193,7 @@
                     {
                         <GridCell Row="@GridRowSplitCustom4[i]" Column="@GridColumnSplitCustom4[i]">
                             <StackLayout>
+                                <WebViewToolbar @ref="WebViewToolbars" />
                                 <BlazorWebView @ref="BlazorWebViews" VerticalOptions="LayoutOptions.FillAndExpand">
                                     <HoloViewer.WebUI.App />
                                 </BlazorWebView>
@@ -246,7 +256,7 @@
 
     public CaptureToolbar CurrentCaptureToolbar { get; set; }
 
-    protected override void OnAfterRender (bool firstRender)
+    protected override async Task OnAfterRenderAsync (bool firstRender)
     {
         if (blazorWebViews.Count != webViewToolbars.Count)
         {
@@ -255,10 +265,14 @@
 
         for (int i = 0; i < blazorWebViews.Count; i++)
         {
+            await DependencyService.Get<IWebView>().InitializeAsync(blazorWebViews[i]);
+
             webViewToolbars[i].BindingBlazorWebView = blazorWebViews[i];
+
+            DependencyService.Get<IWebView>().AddEventFunction(blazorWebViews[i], webViewToolbars[i]);
         }
 
-        base.OnAfterRender(firstRender);
+        await base.OnAfterRenderAsync(firstRender);
     }
 
     async void Capture ()
@@ -314,6 +328,11 @@
 
     void ChangeScreenMode (ScreenMode screenMode)
     {
+        foreach (var blazorWebView in blazorWebViews)
+        {
+            DependencyService.Get<IWebView>().RemoveEventFunction(blazorWebView);
+        }
+
         blazorWebViews.Clear();
         webViewToolbars.Clear();
 

@@ -1,7 +1,9 @@
+using System;
 using System.Threading.Tasks;
 using System.IO;
 using Microsoft.MobileBlazorBindings.Elements;
 using Microsoft.Web.WebView2.Wpf;
+using Microsoft.Web.WebView2.Core;
 
 [assembly: Xamarin.Forms.Dependency(typeof(HoloViewer.Windows.WebView))]
 namespace HoloViewer.Windows
@@ -9,6 +11,9 @@ namespace HoloViewer.Windows
     class WebView : IWebView
     {
         private bool isNavigating = false;
+        private EventHandler<CoreWebView2NavigationStartingEventArgs> navigationStartingAction;
+        private EventHandler<CoreWebView2NavigationCompletedEventArgs> navigationComplatedAction;
+        private EventHandler<CoreWebView2SourceChangedEventArgs> sourceChangedAction;
 
         public static WebView2 CastWebView (BlazorWebView blazorWebView)
         {
@@ -30,6 +35,48 @@ namespace HoloViewer.Windows
             }
 
             return await CastWebView(blazorWebView).ExecuteScriptAsync(script);
+        }
+
+        public async Task InitializeAsync (BlazorWebView blazorWebView)
+        {
+            await CastWebView(blazorWebView).EnsureCoreWebView2Async();
+        }
+
+        public void AddEventFunction (BlazorWebView blazorWebView, WebViewToolbar webViewToolbar)
+        {
+            navigationStartingAction = (sender, e) => { isNavigating = true; webViewToolbar.UpdateUrl(); };
+            navigationComplatedAction = (sender, e) => { isNavigating = false; webViewToolbar.UpdateStateHasChanged(); };
+            sourceChangedAction = (sender, e) => { webViewToolbar.UpdateUrl(); };
+
+            var webview2 = CastWebView(blazorWebView);
+
+            webview2.NavigationStarting += navigationStartingAction;
+            webview2.NavigationCompleted += navigationComplatedAction;
+            webview2.SourceChanged += sourceChangedAction;
+            webview2.CoreWebView2.FrameNavigationStarting += navigationStartingAction;
+            webview2.CoreWebView2.FrameNavigationCompleted += navigationComplatedAction;
+        }
+
+        public void RemoveEventFunction (BlazorWebView blazorWebView)
+        {
+            var webview2 = CastWebView(blazorWebView);
+
+            if (navigationStartingAction != null)
+            {
+                webview2.NavigationStarting -= navigationStartingAction;
+                webview2.CoreWebView2.FrameNavigationStarting -= navigationStartingAction;
+            }
+
+            if (navigationComplatedAction != null)
+            {
+                webview2.NavigationCompleted -= navigationComplatedAction;
+                webview2.CoreWebView2.FrameNavigationCompleted -= navigationComplatedAction;
+            }
+
+            if (sourceChangedAction != null)
+            {
+                webview2.SourceChanged -= sourceChangedAction;
+            }
         }
 
         public bool CanPageBack (BlazorWebView blazorWebView)
@@ -70,6 +117,11 @@ namespace HoloViewer.Windows
         public string GetUrl (BlazorWebView blazorWebView)
         {
             return (CastWebView(blazorWebView)).Source.AbsoluteUri;
+        }
+
+        public string GetTitle (BlazorWebView blazorWebView)
+        {
+            return (CastWebView(blazorWebView)).CoreWebView2.DocumentTitle;
         }
 
         public void Navigate (BlazorWebView blazorWebView, string url)
