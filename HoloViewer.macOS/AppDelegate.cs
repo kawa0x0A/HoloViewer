@@ -8,7 +8,7 @@ namespace HoloViewer.macOS
     {
         public AppDelegate()
         {
-            var style = NSWindowStyle.Closable | NSWindowStyle.Resizable | NSWindowStyle.Titled;
+            var style = NSWindowStyle.Closable | NSWindowStyle.Miniaturizable | NSWindowStyle.Resizable | NSWindowStyle.Titled;
             var rect = new CoreGraphics.CGRect(200, 1000, 1024, 768);
             MainWindow = new NSWindow(rect, style, NSBackingStore.Buffered, false)
             {
