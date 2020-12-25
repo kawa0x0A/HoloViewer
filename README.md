@@ -2,7 +2,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/kawa0x0A/HoloViewer)](https://github.com/kawa0x0A/HoloViewer/blob/main/LICENSE)
 
-![HoloViewer_Windows](https://user-images.githubusercontent.com/10515785/100439231-9d9f3480-30e6-11eb-9c8c-ad32c80ce7ca.png)
+![HoloViewer_Windows](https://user-images.githubusercontent.com/10515785/103134135-53fc3680-46f2-11eb-8d0d-c6e4d9d1dc82.png)
 
 * ソフトウェア情報
   * 名前
