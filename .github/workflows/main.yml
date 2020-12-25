@@ -28,11 +28,14 @@ jobs:
       - name: Build Application for Windows
         run: dotnet publish -c Release ./HoloViewer.Windows/HoloViewer.Windows.csproj -r win-x64 /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
 
+      - name: Delete PDB Files
+        run: del HoloViewer.Windows/bin/Release/net5.0-windows/win-x64/publish/*.pdb
+
       - name: Copy License File
         run: copy LICENSE ./HoloViewer.Windows/bin/Release/net5.0-windows/win-x64/publish/LICENCE
 
       - name: Create Windows Archive
-        run: powershell Compress-Archive -Path HoloViewer.Windows\bin\Release\net5.0-windows\win-x64\publish\* -DestinationPath HoloViewer_Windows_x64.zip
+        run: powershell Compress-Archive -Path HoloViewer.Windows/bin/Release/net5.0-windows/win-x64/publish/* -DestinationPath HoloViewer_Windows_x64.zip
 
       - name: Create Release
         id: create_release
