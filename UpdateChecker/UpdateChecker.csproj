@@ -9,8 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Octokit" Version="0.48.0" />
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1451" />
+    <ProjectReference Include="..\UpdateCheckLibrary\UpdateCheckLibrary.csproj" />
   </ItemGroup>
 
 </Project>
