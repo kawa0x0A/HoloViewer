@@ -256,6 +256,35 @@
 
     public CaptureToolbar CurrentCaptureToolbar { get; set; }
 
+    protected override async Task OnInitializedAsync ()
+    {
+        var args = System.Environment.GetCommandLineArgs();
+
+        var update = DependencyService.Get<IUpdateCheck>();
+
+        if ((args.Length > 1) && (args[1] == "/Update"))
+        {
+            update.DeleteUpdateFiles();
+            update.UpdateComplete();
+        }
+        else
+        {
+            try
+            {
+                if ((update.IsUpdateable()) && (update.AskExecuteUpdate()))
+                {
+                    await update.Update();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        await base.OnInitializedAsync();
+    }
+
     protected override async Task OnAfterRenderAsync (bool firstRender)
     {
         if (blazorWebViews.Count != webViewToolbars.Count)

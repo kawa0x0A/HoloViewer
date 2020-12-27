@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -7,10 +7,12 @@
     <NoWarn>$(NoWarn);NU1701</NoWarn>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Version>1.0.1</Version>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="FeedBackWindow.xaml" />
+    <EmbeddedResource Remove="UpdateWindow.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HoloViewer\HoloViewer.csproj" />
+    <ProjectReference Include="..\UpdateChecker\UpdateChecker.csproj" />
   </ItemGroup>
 
   <ItemGroup>
