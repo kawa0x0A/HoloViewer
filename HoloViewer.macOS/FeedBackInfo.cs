@@ -6,7 +6,7 @@ namespace HoloViewer.macOS
     public class FeedBackInfo : NSObject
     {
         [Export(nameof(Version))]
-        public string Version { get; } = FeedBackInfoValue.Version;
+        public string Version { get; } = FeedBackInfoValue.VersionString;
 
         [Export(nameof(ReleaseDate))]
         public string ReleaseDate { get; } = FeedBackInfoValue.ReleaseDate;

@@ -2,7 +2,7 @@ namespace HoloViewer.Windows
 {
     public class FeedBackInfo
     {
-        public string Version { get; } = FeedBackInfoValue.Version;
+        public string Version { get; } = FeedBackInfoValue.VersionString;
 
         public string ReleaseDate { get; } = FeedBackInfoValue.ReleaseDate;
 
