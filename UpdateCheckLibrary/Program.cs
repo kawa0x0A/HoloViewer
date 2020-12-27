@@ -83,15 +83,7 @@ namespace UpdateCheckLibrary
             return false;
         }
 
-        public void RefreshUpdateData ()
-        {
-            if (Directory.Exists(UpdateDirectoryName))
-            {
-                Directory.Delete(UpdateDirectoryName, true);
-            }
-        }
-
-        public async Task DownloadLastReleaseArchive (string platform)
+        private ReleaseAsset GetLastReleaseAsset(string platform)
         {
             var lastRelease = GetLastRelease();
 
@@ -108,7 +100,27 @@ namespace UpdateCheckLibrary
                     break;
             }
 
-            var releaseAsset = lastRelease.Assets.SingleOrDefault(asset => asset.Name == assetName);
+            return lastRelease.Assets.SingleOrDefault(asset => asset.Name == assetName);
+        }
+
+        public string GetDownloadArchiveUrl(string platform)
+        {
+            var releaseAsset = GetLastReleaseAsset(platform);
+
+            return releaseAsset.BrowserDownloadUrl;
+        }
+
+        public void RefreshUpdateData ()
+        {
+            if (Directory.Exists(UpdateDirectoryName))
+            {
+                Directory.Delete(UpdateDirectoryName, true);
+            }
+        }
+
+        public async Task DownloadLastReleaseArchive (string platform)
+        {
+            var releaseAsset = GetLastReleaseAsset(platform);
 
             Directory.CreateDirectory(DownloadDirectoryPath);
 

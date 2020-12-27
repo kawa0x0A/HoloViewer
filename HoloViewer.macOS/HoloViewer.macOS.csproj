@@ -96,6 +96,7 @@
     <Compile Include="FeedBackInfo.cs" />
     <Compile Include="WebView.cs" />
     <Compile Include="ScreenCapture.cs" />
+    <Compile Include="UpdateCheck.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\wwwroot\index.html" />
@@ -114,6 +115,10 @@
     <ProjectReference Include="..\HoloViewer\HoloViewer.csproj">
       <Project>{E21FD9EF-FF08-4359-8B14-2166020A464F}</Project>
       <Name>HoloViewer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UpdateCheckLibrary\UpdateCheckLibrary.csproj">
+      <Project>{3511B096-5E04-4EBD-B01A-279225547A55}</Project>
+      <Name>UpdateCheckLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
