@@ -3,9 +3,9 @@ namespace HoloViewer.Windows
 {
     class ApplicationSettingsDialog : IApplicationSettingsDialog
     {
-        private HoloViewer.ApplicationSettings CurrentApplicationSettings { get; set; }
+        private ApplicationSettings CurrentApplicationSettings { get; set; }
 
-        public bool Show (HoloViewer.ApplicationSettings applicationSettings)
+        public bool Show (ApplicationSettings applicationSettings)
         {
             var applicationSettingsWindow = new ApplicationSettingsWindow();
 
@@ -16,7 +16,7 @@ namespace HoloViewer.Windows
 
             applicationSettingsWindow.ShowDialog();
 
-            CurrentApplicationSettings = new HoloViewer.ApplicationSettings()
+            CurrentApplicationSettings = new ApplicationSettings()
             {
                 StartupPageUrl = applicationSettingsWindow.StartUpPageUrl,
                 IsEnableUpdateCheck = applicationSettingsWindow.IsEnableUpdateCheck,
@@ -25,7 +25,7 @@ namespace HoloViewer.Windows
             return applicationSettingsWindow.Result;
         }
 
-        public HoloViewer.ApplicationSettings GetApplicationSettings ()
+        public ApplicationSettings GetApplicationSettings ()
         {
             return CurrentApplicationSettings;
         }
