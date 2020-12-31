@@ -28,6 +28,12 @@ jobs:
       - name: Build Application for Windows
         run: dotnet publish -c Release ./HoloViewer.Windows/HoloViewer.Windows.csproj -r win-x64 /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
 
+      - name: Build UpdateChecker
+        run: dotnet publish -c Release ./UpdateChecker/UpdateChecker.csproj -r win-x64 /p:PublishSingleFile=true /p:PublishTrimmed=true /p:IncludeNativeLibrariesForSelfExtract=true
+
+      - name: Copy UpdateChecker
+        run: copy ./UpdateChecker/bin/Release/net5.0/win-x64/publish/*.exe ./HoloViewer.Windows/bin/Release/net5.0-windows/win-x64/publish
+
       - name: Delete PDB Files
         run: del HoloViewer.Windows/bin/Release/net5.0-windows/win-x64/publish/*.pdb
 
