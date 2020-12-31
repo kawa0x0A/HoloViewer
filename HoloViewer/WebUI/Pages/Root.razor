@@ -1,0 +1,12 @@
+@page "/"
+
+@inject NavigationManager Navigation
+
+@code {
+    public static string StartUpUrl { get; set; }
+
+    protected override void OnInitialized ()
+    {
+        Navigation.NavigateTo(StartUpUrl);
+    }
+}

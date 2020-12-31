@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="ApplicationSettingsWindow.xaml" />
     <EmbeddedResource Remove="FeedBackWindow.xaml" />
     <EmbeddedResource Remove="UpdateWindow.xaml" />
   </ItemGroup>

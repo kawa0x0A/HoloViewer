@@ -1,3 +1,4 @@
+@inject ApplicationSettings ApplicationSettings
 @inject ApplicationScreenMode ApplicationScreenMode
 
 @using ScreenMode = ApplicationScreenMode.ScreenMode;
@@ -38,6 +39,7 @@
             }
 
             <StackLayout Orientation="StackOrientation.Horizontal" HorizontalOptions="LayoutOptions.EndAndExpand" VerticalOptions="LayoutOptions.FillAndExpand">
+                <Button Text="設定" FontSize="24" VerticalOptions="LayoutOptions.Center" OnClick="ShowApplicationSettingsDialog" />
                 <Button Text="フィードバック" FontSize="24" VerticalOptions="LayoutOptions.Center" OnClick="ShowFeedBackDialog" />
                 <Button Text="寄付" FontSize="24" VerticalOptions="LayoutOptions.Center" OnClick="OpenBillingPage" />
             </StackLayout>
@@ -256,6 +258,24 @@
 
     public CaptureToolbar CurrentCaptureToolbar { get; set; }
 
+    protected override void OnInitialized ()
+    {
+        if (DependencyService.Get<IApplicationSettings>().ExistsApplicationSettingsFile())
+        {
+            ApplicationSettings = DependencyService.Get<IApplicationSettings>().Load();
+        }
+
+        if (ApplicationSettings.StartupPageUrl == "")
+        {
+            WebUI.Pages.Root.StartUpUrl = "/Index";
+        }
+        else
+        {
+            WebUI.Pages.Root.StartUpUrl = ApplicationSettings.StartupPageUrl;
+        }
+
+    }
+
     protected override async Task OnInitializedAsync ()
     {
         var args = System.Environment.GetCommandLineArgs();
@@ -271,7 +291,7 @@
         {
             try
             {
-                if ((update.IsUpdateable()) && (update.AskExecuteUpdate()))
+                if (ApplicationSettings.IsEnableUpdateCheck && (update.IsUpdateable()) && (update.AskExecuteUpdate()))
                 {
                     await update.Update();
                 }
@@ -381,6 +401,18 @@
         else
         {
             windowMode.WindowMode();
+        }
+    }
+
+    void ShowApplicationSettingsDialog ()
+    {
+        var applicationSettingsDialog = DependencyService.Get<IApplicationSettingsDialog>();
+
+        if (applicationSettingsDialog.Show(ApplicationSettings))
+        {
+            ApplicationSettings = applicationSettingsDialog.GetApplicationSettings();
+
+            DependencyService.Get<IApplicationSettings>().Save(ApplicationSettings);
         }
     }
 

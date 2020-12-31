@@ -18,6 +18,8 @@ namespace HoloViewer
                     services.AddBlazorHybrid();
 
                     // Register app-specific services
+                    services.AddSingleton<ApplicationSettings>();
+
                     services.AddSingleton<ApplicationScreenMode>();
                 })
                 .UseWebRoot("wwwroot");

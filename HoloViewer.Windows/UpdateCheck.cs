@@ -42,14 +42,7 @@ namespace HoloViewer.Windows
         {
             var updateWindow = new UpdateWindow();
 
-            var parentWindow = System.Windows.Application.Current.MainWindow;
-            double parentWindowWidth = parentWindow.Width;
-            double parentWindowHeight = parentWindow.Height;
-            double childWindowWidth = updateWindow.Width;
-            double childWindowHeight = updateWindow.Height;
-
-            updateWindow.Left = parentWindow.Left + (parentWindowWidth / 2) - (childWindowWidth / 2);
-            updateWindow.Top = parentWindow.Top + (parentWindowHeight / 2) - (childWindowHeight / 2);
+            WindowUtility.SetLocateCenter(updateWindow);
 
             updateWindow.Show();
 

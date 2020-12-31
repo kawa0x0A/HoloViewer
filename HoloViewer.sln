@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloViewer.macOS", "HoloVie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UpdateChecker", "UpdateChecker\UpdateChecker.csproj", "{3446DC9E-286F-449E-945F-53ED94A9BC18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateCheckLibrary", "UpdateCheckLibrary\UpdateCheckLibrary.csproj", "{3511B096-5E04-4EBD-B01A-279225547A55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UpdateCheckLibrary", "UpdateCheckLibrary\UpdateCheckLibrary.csproj", "{3511B096-5E04-4EBD-B01A-279225547A55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
