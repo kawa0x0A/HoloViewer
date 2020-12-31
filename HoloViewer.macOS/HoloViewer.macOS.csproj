@@ -97,6 +97,12 @@
     <Compile Include="WebView.cs" />
     <Compile Include="ScreenCapture.cs" />
     <Compile Include="UpdateCheck.cs" />
+    <Compile Include="ApplicationSettingsDialog.cs" />
+    <Compile Include="ApplicationSettings.cs" />
+    <Compile Include="ApplicationSettingsViewController.cs" />
+    <Compile Include="ApplicationSettingsViewController.designer.cs">
+      <DependentUpon>ApplicationSettingsViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\wwwroot\index.html" />
@@ -123,5 +129,9 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="FeedBackWindow.storyboard" />
+    <InterfaceDefinition Include="ApplicationSettingsWindow.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\HoloViewer.macOS.entitlements" />
   </ItemGroup>
 </Project>

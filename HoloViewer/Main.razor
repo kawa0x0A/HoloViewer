@@ -260,9 +260,9 @@
 
     protected override void OnInitialized ()
     {
-        if (DependencyService.Get<IApplicationSettings>().ExistsApplicationSettingsFile())
+        if (ApplicationSettings.ExistsApplicationSettingsFile())
         {
-            ApplicationSettings = DependencyService.Get<IApplicationSettings>().Load();
+            ApplicationSettings = ApplicationSettings.Load();
         }
 
         if (ApplicationSettings.StartupPageUrl == "")
@@ -412,7 +412,7 @@
         {
             ApplicationSettings = applicationSettingsDialog.GetApplicationSettings();
 
-            DependencyService.Get<IApplicationSettings>().Save(ApplicationSettings);
+            ApplicationSettings.Save(ApplicationSettings);
         }
     }
 
