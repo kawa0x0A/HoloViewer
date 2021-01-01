@@ -1,7 +1,6 @@
 # HoloViewer
 
 [![GitHub license](https://img.shields.io/github/license/kawa0x0A/HoloViewer)](https://github.com/kawa0x0A/HoloViewer/blob/main/LICENSE)
-
 [![Github All Releases](https://img.shields.io/github/downloads/kawa0x0A/HoloViewer/total.svg)]()
 
 ![HoloViewer_Windows](https://user-images.githubusercontent.com/10515785/103134135-53fc3680-46f2-11eb-8d0d-c6e4d9d1dc82.png)
