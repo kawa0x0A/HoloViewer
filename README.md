@@ -34,10 +34,10 @@
 
 * ダウンロード
   * Windows版
-    * https://github.com/kawa0x0A/HoloViewer/releases/download/1.0.3.0/HoloViewer_Windows_x64.zip
+    * https://github.com/kawa0x0A/HoloViewer/releases/download/1.0.4.0/HoloViewer_Windows_x64.zip
     * Windows版の使用には[Microsoft Edge Canary チャネル](https://www.microsoftedgeinsider.com/ja-jp/download)が必要になります。
   * Mac版
-    * https://github.com/kawa0x0A/HoloViewer/releases/download/1.0.3.0/HoloViewer_macOS.pkg
+    * https://github.com/kawa0x0A/HoloViewer/releases/download/1.0.4.0/HoloViewer_macOS.pkg
   * 過去のバージョンは[こちら](https://github.com/kawa0x0A/HoloViewer/releases)からダウンロードしてください
 
 * 連絡先
