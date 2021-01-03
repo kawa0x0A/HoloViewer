@@ -18,10 +18,24 @@ namespace HoloViewer.macOS
 		{
 		}
 
+        partial void ClickedCaptureSavePathButton(NSButton sender)
+        {
+			var panel = new NSOpenPanel();
+
+			panel.CanChooseDirectories = true;
+			panel.CanChooseFiles = false;
+
+			if (panel.RunModal() == 1)
+			{
+				ApplicationSettings.CaptureSavePath = panel.Urls[0].Path;
+			}
+        }
+
         partial void ClickedOKButton(NSButton sender)
         {
 			Result = true;
 			ApplicationSettings.StartupPageUrl = StartupPageUrlTextFiled.StringValue;
+			ApplicationSettings.CaptureSavePath = CaptureSavePathTextField.StringValue;
 			View.Window.Close();
         }
 
