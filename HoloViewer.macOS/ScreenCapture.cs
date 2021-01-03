@@ -25,7 +25,7 @@ namespace HoloViewer.macOS
             }
         }
 
-        private static async Task CaptureCombine(Rect rect, IScreenCapture.CaptureScreenBase[] captureScreens)
+        private static async Task CaptureCombine(HoloViewer.ApplicationSettings applicationSettings, Rect rect, IScreenCapture.CaptureScreenBase[] captureScreens)
         {
             using(var skSurface = SKSurface.Create(new SKImageInfo((int)rect.Width, (int)rect.Height)))
             {
@@ -44,33 +44,33 @@ namespace HoloViewer.macOS
                 using (var skImage = skSurface.Snapshot())
                 using (var skData = skImage.Encode(SKEncodedImageFormat.Png, 100))
                 {
-                    SavePngFile(skData.ToArray(), IScreenCapture.GetCaptureFullPath(DateTime.Now));
+                    SavePngFile(skData.ToArray(), IScreenCapture.GetCaptureFullPath(applicationSettings, DateTime.Now));
                 }
             }
         }
 
-        private static async Task CaptureSeparate(IScreenCapture.CaptureScreenBase[] captureScreens)
+        private static async Task CaptureSeparate(HoloViewer.ApplicationSettings applicationSettings, IScreenCapture.CaptureScreenBase[] captureScreens)
         {
             int imageFileSuffixNumber = 1;
 
             foreach(var captureScreen in captureScreens)
             {
-                SavePngFile(await captureScreen.GetCaptureData(), IScreenCapture.GetCaptureFullPath(DateTime.Now, imageFileSuffixNumber));
+                SavePngFile(await captureScreen.GetCaptureData(), IScreenCapture.GetCaptureFullPath(applicationSettings, DateTime.Now, imageFileSuffixNumber));
 
                 imageFileSuffixNumber++;
             }
         }
 
-        private static async Task ExecuteCapture(IScreenCapture.CaptureSettingBase captureSetting, IScreenCapture.CaptureScreenBase[] captureScreens)
+        private static async Task ExecuteCapture(HoloViewer.ApplicationSettings applicationSettings, IScreenCapture.CaptureSettingBase captureSetting, IScreenCapture.CaptureScreenBase[] captureScreens)
         {
             switch(captureSetting.CurrentCaptureScreenConvertType)
             {
                 case IScreenCapture.CaptureScreenConvertType.Combine:
-                    await CaptureCombine(new Rect(0, 0, await captureSetting.GetImageWidth(), await captureSetting.GetImageHeight()), captureScreens);
+                    await CaptureCombine(applicationSettings, new Rect(0, 0, await captureSetting.GetImageWidth(), await captureSetting.GetImageHeight()), captureScreens);
                     break;
 
                 case IScreenCapture.CaptureScreenConvertType.Separate:
-                    await CaptureSeparate(captureScreens);
+                    await CaptureSeparate(applicationSettings, captureScreens);
                     break;
             }
         }
@@ -121,54 +121,54 @@ namespace HoloViewer.macOS
             return Convert.FromBase64String(IScreenCapture.ConvertUriToBase64(pngDataUri));
         }
 
-        public async Task CaptureSingle(IScreenCapture.CaptureSetting_Single captureSetting)
+        public async Task CaptureSingle(HoloViewer.ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Single captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenSingle.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenSingle.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureHorizontal2(IScreenCapture.CaptureSetting_Horizontal2Mode captureSetting)
+        public async Task CaptureHorizontal2(HoloViewer.ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Horizontal2Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenHorizontal2.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenHorizontal2.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureVertical2(IScreenCapture.CaptureSetting_Vertical2Mode captureSetting)
+        public async Task CaptureVertical2(HoloViewer.ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Vertical2Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenVertical2.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenVertical2.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureHorizontal3(IScreenCapture.CaptureSetting_Horizontal3Mode captureSetting)
+        public async Task CaptureHorizontal3(HoloViewer.ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Horizontal3Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenHorizontal3.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenHorizontal3.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureVertical3(IScreenCapture.CaptureSetting_Vertical3Mode captureSetting)
+        public async Task CaptureVertical3(HoloViewer.ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Vertical3Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenVertical3.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenVertical3.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureCustom3_1(IScreenCapture.CaptureSetting_Custom3_1Mode captureSetting)
+        public async Task CaptureCustom3_1(HoloViewer.ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Custom3_1Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenCustom3_1.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenCustom3_1.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureCustom3_2(IScreenCapture.CaptureSetting_Custom3_2Mode captureSetting)
+        public async Task CaptureCustom3_2(HoloViewer.ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Custom3_2Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenCustom3_2.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenCustom3_2.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureHorizontal4(IScreenCapture.CaptureSetting_Horizontal4Mode captureSetting)
+        public async Task CaptureHorizontal4(HoloViewer.ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Horizontal4Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenHorizontal4.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenHorizontal4.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureVertical4(IScreenCapture.CaptureSetting_Vertical4Mode captureSetting)
+        public async Task CaptureVertical4(HoloViewer.ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Vertical4Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenVertical4.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenVertical4.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureCustom4(IScreenCapture.CaptureSetting_Custom4Mode captureSetting)
+        public async Task CaptureCustom4(HoloViewer.ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Custom4Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenCustom4.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenCustom4.CreateCaptureScreens(captureSetting));
         }
     }
 }

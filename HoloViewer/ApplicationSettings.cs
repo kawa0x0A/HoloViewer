@@ -10,6 +10,8 @@ namespace HoloViewer
 
         public string StartupPageUrl { get; set; } = "";
 
+        public string CaptureSavePath { get; set; } = "";
+
         public bool IsEnableUpdateCheck { get; set; } = true;
 
         private static string GetApplicationSettingsFilePath()

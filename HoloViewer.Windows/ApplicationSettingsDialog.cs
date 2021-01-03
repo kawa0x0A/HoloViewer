@@ -11,15 +11,17 @@ namespace HoloViewer.Windows
 
             WindowUtility.SetLocateCenter(applicationSettingsWindow);
 
-            applicationSettingsWindow.StartUpPageUrl = applicationSettings.StartupPageUrl;
-            applicationSettingsWindow.IsEnableUpdateCheck = applicationSettings.IsEnableUpdateCheck;
+            applicationSettingsWindow.CurrentApplicationSettingsDataSet.StartUpPageUrl = applicationSettings.StartupPageUrl;
+            applicationSettingsWindow.CurrentApplicationSettingsDataSet.CaptureSavePath = applicationSettings.CaptureSavePath;
+            applicationSettingsWindow.CurrentApplicationSettingsDataSet.IsEnableUpdateCheck = applicationSettings.IsEnableUpdateCheck;
 
             applicationSettingsWindow.ShowDialog();
 
             CurrentApplicationSettings = new ApplicationSettings()
             {
-                StartupPageUrl = applicationSettingsWindow.StartUpPageUrl,
-                IsEnableUpdateCheck = applicationSettingsWindow.IsEnableUpdateCheck,
+                StartupPageUrl = applicationSettingsWindow.CurrentApplicationSettingsDataSet.StartUpPageUrl,
+                CaptureSavePath = applicationSettingsWindow.CurrentApplicationSettingsDataSet.CaptureSavePath,
+                IsEnableUpdateCheck = applicationSettingsWindow.CurrentApplicationSettingsDataSet.IsEnableUpdateCheck,
             };
 
             return applicationSettingsWindow.Result;

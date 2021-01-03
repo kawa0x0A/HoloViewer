@@ -75,7 +75,7 @@ namespace HoloViewer.Windows
             pngBitmapEncoder.Save(fileStream);
         }
 
-        private static async Task CaptureCombine (Rect rect, IScreenCapture.CaptureScreenBase[] captureWebViews)
+        private static async Task CaptureCombine (ApplicationSettings applicationSettings, Rect rect, IScreenCapture.CaptureScreenBase[] captureWebViews)
         {
             var matrix = PresentationSource.FromVisual(Application.Current.MainWindow).CompositionTarget.TransformToDevice;
 
@@ -104,16 +104,16 @@ namespace HoloViewer.Windows
                 renderTargetBitmap.Render(drawingVisual);
             }
 
-            SavePngFile(renderTargetBitmap, IScreenCapture.GetCaptureFullPath(DateTime.Now));
+            SavePngFile(renderTargetBitmap, IScreenCapture.GetCaptureFullPath(applicationSettings, DateTime.Now));
         }
 
-        private static async Task CaptureSeparate (IScreenCapture.CaptureScreenBase[] captureWebViews)
+        private static async Task CaptureSeparate (ApplicationSettings applicationSettings, IScreenCapture.CaptureScreenBase[] captureWebViews)
         {
             int imageFileSuffixNumber = 1;
 
             foreach (var captureWebView in captureWebViews)
             {
-                SavePngFile(await captureWebView.GetCaptureData(), IScreenCapture.GetCaptureFullPath(DateTime.Now, imageFileSuffixNumber));
+                SavePngFile(await captureWebView.GetCaptureData(), IScreenCapture.GetCaptureFullPath(applicationSettings, DateTime.Now, imageFileSuffixNumber));
 
                 imageFileSuffixNumber++;
             }
@@ -161,68 +161,68 @@ namespace HoloViewer.Windows
             return Convert.FromBase64String(IScreenCapture.ConvertUriToBase64(pngDataUri));
         }
 
-        private static async Task ExecuteCapture (IScreenCapture.CaptureSettingBase captureSetting, IScreenCapture.CaptureScreenBase[] captureScreens)
+        private static async Task ExecuteCapture (ApplicationSettings applicationSettings, IScreenCapture.CaptureSettingBase captureSetting, IScreenCapture.CaptureScreenBase[] captureScreens)
         {
             switch (captureSetting.CurrentCaptureScreenConvertType)
             {
                 case IScreenCapture.CaptureScreenConvertType.Combine:
-                    await CaptureCombine(new Rect(0, 0, await captureSetting.GetImageWidth(), await captureSetting.GetImageHeight()), captureScreens.ToArray());
+                    await CaptureCombine(applicationSettings, new Rect(0, 0, await captureSetting.GetImageWidth(), await captureSetting.GetImageHeight()), captureScreens.ToArray());
                     break;
 
                 case IScreenCapture.CaptureScreenConvertType.Separate:
-                    await CaptureSeparate(captureScreens.ToArray());
+                    await CaptureSeparate(applicationSettings, captureScreens.ToArray());
                     break;
             }
         }
 
-        public async Task CaptureSingle (IScreenCapture.CaptureSetting_Single captureSetting)
+        public async Task CaptureSingle (ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Single captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenSingle.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenSingle.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureHorizontal2 (IScreenCapture.CaptureSetting_Horizontal2Mode captureSetting)
+        public async Task CaptureHorizontal2 (ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Horizontal2Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenHorizontal2.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenHorizontal2.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureVertical2 (IScreenCapture.CaptureSetting_Vertical2Mode captureSetting)
+        public async Task CaptureVertical2 (ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Vertical2Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenVertical2.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenVertical2.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureHorizontal3 (IScreenCapture.CaptureSetting_Horizontal3Mode captureSetting)
+        public async Task CaptureHorizontal3 (ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Horizontal3Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenHorizontal3.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenHorizontal3.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureVertical3 (IScreenCapture.CaptureSetting_Vertical3Mode captureSetting)
+        public async Task CaptureVertical3 (ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Vertical3Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenVertical3.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenVertical3.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureCustom3_1 (IScreenCapture.CaptureSetting_Custom3_1Mode captureSetting)
+        public async Task CaptureCustom3_1 (ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Custom3_1Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenCustom3_1.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenCustom3_1.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureCustom3_2 (IScreenCapture.CaptureSetting_Custom3_2Mode captureSetting)
+        public async Task CaptureCustom3_2 (ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Custom3_2Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenCustom3_2.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenCustom3_2.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureHorizontal4 (IScreenCapture.CaptureSetting_Horizontal4Mode captureSetting)
+        public async Task CaptureHorizontal4 (ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Horizontal4Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenHorizontal4.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenHorizontal4.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureVertical4 (IScreenCapture.CaptureSetting_Vertical4Mode captureSetting)
+        public async Task CaptureVertical4 (ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Vertical4Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenVertical4.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenVertical4.CreateCaptureScreens(captureSetting));
         }
 
-        public async Task CaptureCustom4 (IScreenCapture.CaptureSetting_Custom4Mode captureSetting)
+        public async Task CaptureCustom4 (ApplicationSettings applicationSettings, IScreenCapture.CaptureSetting_Custom4Mode captureSetting)
         {
-            await ExecuteCapture(captureSetting, IScreenCapture.CaptureScreenCustom4.CreateCaptureScreens(captureSetting));
+            await ExecuteCapture(applicationSettings, captureSetting, IScreenCapture.CaptureScreenCustom4.CreateCaptureScreens(captureSetting));
         }
     }
 }

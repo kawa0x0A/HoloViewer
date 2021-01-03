@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Runtime.CompilerServices;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace HoloViewer.Windows
 {
@@ -21,27 +22,49 @@ namespace HoloViewer.Windows
     /// </summary>
     public partial class ApplicationSettingsWindow : Window
     {
-        private string startPageUrl;
-        private bool isEnableUpdateCheck;
+        public class ApplicationSettingsDataSet : INotifyPropertyChanged
+        {
+            private string startPageUrl;
+            private string captureSavePath;
+            private bool isEnableUpdateCheck;
+
+            public string StartUpPageUrl { get { return startPageUrl; } set { startPageUrl = value; NotifyPropertyChanged(); } }
+
+            public string CaptureSavePath { get { return captureSavePath; } set { captureSavePath = value; NotifyPropertyChanged(); } }
+
+            public bool IsEnableUpdateCheck { get { return isEnableUpdateCheck; } set { isEnableUpdateCheck = value; NotifyPropertyChanged(); } }
+
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            private void NotifyPropertyChanged ([CallerMemberName] string propertyName = "")
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
         public bool Result { get; private set; } = false;
 
-        public string StartUpPageUrl { get { return startPageUrl; } set { NotifyPropertyChanged(); startPageUrl = value; } }
-
-        public bool IsEnableUpdateCheck { get { return isEnableUpdateCheck; } set { NotifyPropertyChanged(); isEnableUpdateCheck = value; } }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged ([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        public ApplicationSettingsDataSet CurrentApplicationSettingsDataSet { get; set; } = new ApplicationSettingsDataSet();
 
         public ApplicationSettingsWindow ()
         {
             InitializeComponent();
 
-            DataContext = this;
+            DataContext = CurrentApplicationSettingsDataSet;
+        }
+
+        private void Button_Click_Select_Directory (object sender, RoutedEventArgs e)
+        {
+            var dialog = new CommonOpenFileDialog();
+
+            dialog.IsFolderPicker = true;
+
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                CurrentApplicationSettingsDataSet.CaptureSavePath = System.IO.Path.GetFullPath(dialog.FileName);
+            }
+
+            Focus();
         }
 
         private void Button_Click_OK (object sender, RoutedEventArgs e)

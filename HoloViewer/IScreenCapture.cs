@@ -57,14 +57,28 @@ namespace HoloViewer
             }
         }
 
-        public static string GetCaptureFullPath (DateTime dateTime)
+        public static string GetCaptureFullPath (ApplicationSettings applicationSettings, DateTime dateTime)
         {
-            return Path.Combine(GetCaptureDirectoryFullPath(), GetCaptureFileName(dateTime));
+            if (Directory.Exists(applicationSettings.CaptureSavePath))
+            {
+                return Path.Combine(applicationSettings.CaptureSavePath, GetCaptureFileName(dateTime));
+            }
+            else
+            {
+                return Path.Combine(GetCaptureDirectoryFullPath(), GetCaptureFileName(dateTime));
+            }
         }
 
-        public static string GetCaptureFullPath (DateTime dateTime, int index)
+        public static string GetCaptureFullPath (ApplicationSettings applicationSettings, DateTime dateTime, int index)
         {
-            return Path.Combine(GetCaptureDirectoryFullPath(), GetCaptureFileName(dateTime, index));
+            if (Directory.Exists(applicationSettings.CaptureSavePath))
+            {
+                return Path.Combine(applicationSettings.CaptureSavePath, GetCaptureFileName(dateTime, index));
+            }
+            else
+            {
+                return Path.Combine(GetCaptureDirectoryFullPath(), GetCaptureFileName(dateTime, index));
+            }
         }
 
         public static bool IsCaptureableYoutubePlayer (string url)
@@ -1090,24 +1104,24 @@ namespace HoloViewer
 
         Task<byte[]> GetCaptureYoutubeBackgroundSlateImageData (BlazorWebView blazorWebView);
 
-        Task CaptureSingle (CaptureSetting_Single captureSetting);
+        Task CaptureSingle (ApplicationSettings applicationSettings, CaptureSetting_Single captureSetting);
 
-        Task CaptureHorizontal2 (CaptureSetting_Horizontal2Mode captureSetting);
+        Task CaptureHorizontal2 (ApplicationSettings applicationSettings, CaptureSetting_Horizontal2Mode captureSetting);
 
-        Task CaptureVertical2 (CaptureSetting_Vertical2Mode captureSetting);
+        Task CaptureVertical2 (ApplicationSettings applicationSettings, CaptureSetting_Vertical2Mode captureSetting);
 
-        Task CaptureHorizontal3 (CaptureSetting_Horizontal3Mode captureSetting);
+        Task CaptureHorizontal3 (ApplicationSettings applicationSettings, CaptureSetting_Horizontal3Mode captureSetting);
 
-        Task CaptureVertical3 (CaptureSetting_Vertical3Mode captureSetting);
+        Task CaptureVertical3 (ApplicationSettings applicationSettings, CaptureSetting_Vertical3Mode captureSetting);
 
-        Task CaptureCustom3_1 (CaptureSetting_Custom3_1Mode captureSetting);
+        Task CaptureCustom3_1 (ApplicationSettings applicationSettings, CaptureSetting_Custom3_1Mode captureSetting);
 
-        Task CaptureCustom3_2 (CaptureSetting_Custom3_2Mode captureSetting);
+        Task CaptureCustom3_2 (ApplicationSettings applicationSettings, CaptureSetting_Custom3_2Mode captureSetting);
 
-        Task CaptureHorizontal4 (CaptureSetting_Horizontal4Mode captureSetting);
+        Task CaptureHorizontal4 (ApplicationSettings applicationSettings, CaptureSetting_Horizontal4Mode captureSetting);
 
-        Task CaptureVertical4 (CaptureSetting_Vertical4Mode captureSetting);
+        Task CaptureVertical4 (ApplicationSettings applicationSettings, CaptureSetting_Vertical4Mode captureSetting);
 
-        Task CaptureCustom4 (CaptureSetting_Custom4Mode captureSetting);
+        Task CaptureCustom4 (ApplicationSettings applicationSettings, CaptureSetting_Custom4Mode captureSetting);
     }
 }

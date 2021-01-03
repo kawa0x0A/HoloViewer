@@ -334,43 +334,43 @@
         switch (ApplicationScreenMode.CurrentScreenMode)
         {
             case ScreenMode.Single:
-                await DependencyService.Get<IScreenCapture>().CaptureSingle(await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Single, IScreenCapture.ScreenPosition_Single, IScreenCapture.CaptureMode_Single>(blazorWebViews.ToArray()));
+                await DependencyService.Get<IScreenCapture>().CaptureSingle(ApplicationSettings, await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Single, IScreenCapture.ScreenPosition_Single, IScreenCapture.CaptureMode_Single>(blazorWebViews.ToArray()));
                 break;
 
             case ScreenMode.SplitHorizontal2:
-                await DependencyService.Get<IScreenCapture>().CaptureHorizontal2(await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Horizontal2Mode, IScreenCapture.ScreenPosition_Horizontal2, IScreenCapture.CaptureMode_Horizontal2>(blazorWebViews.ToArray()));
+                await DependencyService.Get<IScreenCapture>().CaptureHorizontal2(ApplicationSettings, await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Horizontal2Mode, IScreenCapture.ScreenPosition_Horizontal2, IScreenCapture.CaptureMode_Horizontal2>(blazorWebViews.ToArray()));
                 break;
 
             case ScreenMode.SplitVertical2:
-                await DependencyService.Get<IScreenCapture>().CaptureVertical2(await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Vertical2Mode, IScreenCapture.ScreenPosition_Vertical2, IScreenCapture.CaptureMode_Vertical2>(blazorWebViews.ToArray()));
+                await DependencyService.Get<IScreenCapture>().CaptureVertical2(ApplicationSettings, await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Vertical2Mode, IScreenCapture.ScreenPosition_Vertical2, IScreenCapture.CaptureMode_Vertical2>(blazorWebViews.ToArray()));
                 break;
 
             case ScreenMode.SplitHorizontal3:
-                await DependencyService.Get<IScreenCapture>().CaptureHorizontal3(await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Horizontal3Mode, IScreenCapture.ScreenPosition_Horizontal3, IScreenCapture.CaptureMode_Horizontal3>(blazorWebViews.ToArray()));
+                await DependencyService.Get<IScreenCapture>().CaptureHorizontal3(ApplicationSettings, await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Horizontal3Mode, IScreenCapture.ScreenPosition_Horizontal3, IScreenCapture.CaptureMode_Horizontal3>(blazorWebViews.ToArray()));
                 break;
 
             case ScreenMode.SplitVertical3:
-                await DependencyService.Get<IScreenCapture>().CaptureVertical3(await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Vertical3Mode, IScreenCapture.ScreenPosition_Vertical3, IScreenCapture.CaptureMode_Vertical3>(blazorWebViews.ToArray()));
+                await DependencyService.Get<IScreenCapture>().CaptureVertical3(ApplicationSettings, await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Vertical3Mode, IScreenCapture.ScreenPosition_Vertical3, IScreenCapture.CaptureMode_Vertical3>(blazorWebViews.ToArray()));
                 break;
 
             case ScreenMode.SplitCustom3_1:
-                await DependencyService.Get<IScreenCapture>().CaptureCustom3_1(await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Custom3_1Mode, IScreenCapture.ScreenPosition_Custom3_1, IScreenCapture.CaptureMode_Custom3_1>(blazorWebViews.ToArray()));
+                await DependencyService.Get<IScreenCapture>().CaptureCustom3_1(ApplicationSettings, await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Custom3_1Mode, IScreenCapture.ScreenPosition_Custom3_1, IScreenCapture.CaptureMode_Custom3_1>(blazorWebViews.ToArray()));
                 break;
 
             case ScreenMode.SplitCustom3_2:
-                await DependencyService.Get<IScreenCapture>().CaptureCustom3_2(await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Custom3_2Mode, IScreenCapture.ScreenPosition_Custom3_2, IScreenCapture.CaptureMode_Custom3_2>(blazorWebViews.ToArray()));
+                await DependencyService.Get<IScreenCapture>().CaptureCustom3_2(ApplicationSettings, await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Custom3_2Mode, IScreenCapture.ScreenPosition_Custom3_2, IScreenCapture.CaptureMode_Custom3_2>(blazorWebViews.ToArray()));
                 break;
 
             case ScreenMode.SplitHorizontal4:
-                await DependencyService.Get<IScreenCapture>().CaptureHorizontal4(await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Horizontal4Mode, IScreenCapture.ScreenPosition_Horizontal4, IScreenCapture.CaptureMode_Horizontal4>(blazorWebViews.ToArray()));
+                await DependencyService.Get<IScreenCapture>().CaptureHorizontal4(ApplicationSettings, await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Horizontal4Mode, IScreenCapture.ScreenPosition_Horizontal4, IScreenCapture.CaptureMode_Horizontal4>(blazorWebViews.ToArray()));
                 break;
 
             case ScreenMode.SplitVertical4:
-                await DependencyService.Get<IScreenCapture>().CaptureVertical4(await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Vertical4Mode, IScreenCapture.ScreenPosition_Vertical4, IScreenCapture.CaptureMode_Vertical4>(blazorWebViews.ToArray()));
+                await DependencyService.Get<IScreenCapture>().CaptureVertical4(ApplicationSettings, await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Vertical4Mode, IScreenCapture.ScreenPosition_Vertical4, IScreenCapture.CaptureMode_Vertical4>(blazorWebViews.ToArray()));
                 break;
 
             case ScreenMode.SplitCustom4:
-                await DependencyService.Get<IScreenCapture>().CaptureCustom4(await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Custom4Mode, IScreenCapture.ScreenPosition_Custom4, IScreenCapture.CaptureMode_Custom4>(blazorWebViews.ToArray()));
+                await DependencyService.Get<IScreenCapture>().CaptureCustom4(ApplicationSettings, await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Custom4Mode, IScreenCapture.ScreenPosition_Custom4, IScreenCapture.CaptureMode_Custom4>(blazorWebViews.ToArray()));
                 break;
         }
     }
