@@ -13,7 +13,13 @@ namespace HoloViewer.macOS
 	partial class ApplicationSettingsViewController
 	{
 		[Outlet]
+		AppKit.NSTextField CaptureSavePathTextField { get; set; }
+
+		[Outlet]
 		AppKit.NSTextField StartupPageUrlTextFiled { get; set; }
+
+		[Action ("ClickedCaptureSavePathButton:")]
+		partial void ClickedCaptureSavePathButton (AppKit.NSButton sender);
 
 		[Action ("ClickedCloseButton:")]
 		partial void ClickedCloseButton (AppKit.NSButton sender);
@@ -26,6 +32,11 @@ namespace HoloViewer.macOS
 			if (StartupPageUrlTextFiled != null) {
 				StartupPageUrlTextFiled.Dispose ();
 				StartupPageUrlTextFiled = null;
+			}
+
+			if (CaptureSavePathTextField != null) {
+				CaptureSavePathTextField.Dispose ();
+				CaptureSavePathTextField = null;
 			}
 		}
 	}

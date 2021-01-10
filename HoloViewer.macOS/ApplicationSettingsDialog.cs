@@ -16,6 +16,7 @@ namespace HoloViewer.macOS
             windowController.Window.WillClose += Window_WillClose;
 
             applicationSettingsViewController.ApplicationSettings.StartupPageUrl = applicationSettings.StartupPageUrl;
+            applicationSettingsViewController.ApplicationSettings.CaptureSavePath = applicationSettings.CaptureSavePath;
             applicationSettingsViewController.ApplicationSettings.IsEnableUpdateCheck = applicationSettings.IsEnableUpdateCheck;
 
             NSApplication.SharedApplication.RunModalForWindow(windowController.Window);
@@ -36,6 +37,7 @@ namespace HoloViewer.macOS
             return new HoloViewer.ApplicationSettings()
             {
                 StartupPageUrl = CurrentApplicationSettings.StartupPageUrl,
+                CaptureSavePath = CurrentApplicationSettings.CaptureSavePath,
                 IsEnableUpdateCheck = CurrentApplicationSettings.IsEnableUpdateCheck,
             };
         }

@@ -14,9 +14,9 @@ namespace HoloViewer.macOS
     {
         private static void SavePngFile(byte[] pngData, string pngFileFullPath)
         {
-            if (!Directory.Exists(IScreenCapture.GetCaptureDirectoryFullPath()))
+            if (!Directory.Exists(Path.GetDirectoryName(pngFileFullPath)))
             {
-                Directory.CreateDirectory(IScreenCapture.GetCaptureDirectoryFullPath());
+                Directory.CreateDirectory(Path.GetDirectoryName(pngFileFullPath));
             }
 
             using (var fileStream = new FileStream(pngFileFullPath, FileMode.Create))

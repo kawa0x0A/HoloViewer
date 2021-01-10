@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2QD-PW-oHu">
-                                <rect key="frame" x="20" y="234" width="126" height="16"/>
+                                <rect key="frame" x="18" y="232" width="126" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="起動時に表示するURL" id="2N4-hY-RTS">
                                     <font key="font" metaFont="system"/>
@@ -58,7 +58,7 @@
                                 </connections>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iJZ-bL-4kh">
-                                <rect key="frame" x="20" y="205" width="263" height="18"/>
+                                <rect key="frame" x="18" y="178" width="263" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="起動時にアプリケーションの更新を確認する" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="29N-EV-cFN">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -100,11 +100,44 @@ Gw
                                     <action selector="ClickedCloseButton:" target="3RP-5L-PcC" id="UOm-CY-zTb"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JJ0-bB-h6D">
+                                <rect key="frame" x="18" y="205" width="197" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="キャプチャした画像を保存する場所" id="dwL-hL-Yz9">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73l-2T-fwL">
+                                <rect key="frame" x="221" y="202" width="204" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="jUW-OL-RzD">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="3RP-5L-PcC" name="value" keyPath="ApplicationSettings.CaptureSavePath" id="zg9-fT-DYO"/>
+                                </connections>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JBn-TK-ocV">
+                                <rect key="frame" x="427" y="195" width="52" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tcf-ml-nyJ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="ClickedCaptureSavePathButton:" target="3RP-5L-PcC" id="5Bv-pI-f79"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="CaptureSavePathTextField" destination="73l-2T-fwL" id="hTa-Rb-iD2"/>
                         <outlet property="StartupPageUrlTextField" destination="2iy-Rk-yMa" id="oJs-xb-CED"/>
-                        <outlet property="StartupPageUrlTextFiled" destination="2iy-Rk-yMa" id="LP5-be-n5X"/>
+                        <outlet property="StartupPageUrlTextFiled" destination="2iy-Rk-yMa" id="5eb-eW-SU7"/>
                     </connections>
                 </viewController>
                 <customObject id="OYa-Tq-XpU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
