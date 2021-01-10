@@ -35,10 +35,10 @@
 
 * ダウンロード
   * Windows版
-    * https://github.com/kawa0x0A/HoloViewer/releases/download/1.0.4.0/HoloViewer_Windows_x64.zip
+    * https://github.com/kawa0x0A/HoloViewer/releases/download/1.0.5.0/HoloViewer_Windows_x64.zip
     * Windows版の使用には[Microsoft Edge Canary チャネル](https://www.microsoftedgeinsider.com/ja-jp/download)が必要になります。
   * Mac版
-    * https://github.com/kawa0x0A/HoloViewer/releases/download/1.0.4.0/HoloViewer_macOS.pkg
+    * https://github.com/kawa0x0A/HoloViewer/releases/download/1.0.5.0/HoloViewer_macOS.pkg
   * 過去のバージョンは[こちら](https://github.com/kawa0x0A/HoloViewer/releases)からダウンロードしてください
 
 * 連絡先
@@ -60,7 +60,7 @@
   * ソフトウェアについて
     * Q. Linux版はある?
       * A. Linuxには非対応です
-    * キャプチャした画像はどこに保存される?
+    * キャプチャした画像はどこに保存される? (スクリーンショットの保存場所の設定を変更していない場合)
       * Windows版は、HoloViewer.Windows.exeファイルがあるディレクトリの「Capture」という名前のディレクトリの中にキャプチャした画面を画像ファイルとして保存します。
       * Mac版は、デスクトップの「Capture」ディレクトリを作成し、その中にキャプチャした画面を画像ファイルとして保存します。
     * Captureディレクトリが無いよ?
