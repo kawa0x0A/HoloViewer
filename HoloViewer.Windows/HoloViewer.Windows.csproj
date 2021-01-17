@@ -6,7 +6,7 @@
     <UseWPF>true</UseWPF>
     <NoWarn>$(NoWarn);NU1701</NoWarn>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Version>1.0.5</Version>
+    <Version>1.0.6</Version>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
 
