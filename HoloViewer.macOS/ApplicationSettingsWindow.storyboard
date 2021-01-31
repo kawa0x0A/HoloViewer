@@ -13,10 +13,10 @@
                     <window key="window" title="アプリケーション設定" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="xoM-tc-jCk">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="181" y="186" width="480" height="270"/>
+                        <rect key="contentRect" x="181" y="186" width="640" height="480"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1366" height="745"/>
                         <view key="contentView" id="JK5-dU-3GK">
-                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <rect key="frame" x="0.0" y="0.0" width="640" height="480"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </view>
                     </window>
@@ -33,11 +33,11 @@
             <objects>
                 <viewController id="3RP-5L-PcC" customClass="ApplicationSettingsViewController" sceneMemberID="viewController">
                     <view key="view" id="3S5-eS-h8R">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="640" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2QD-PW-oHu">
-                                <rect key="frame" x="18" y="232" width="126" height="16"/>
+                                <rect key="frame" x="18" y="442" width="126" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="起動時に表示するURL" id="2N4-hY-RTS">
                                     <font key="font" metaFont="system"/>
@@ -46,7 +46,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iy-Rk-yMa">
-                                <rect key="frame" x="152" y="229" width="321" height="21"/>
+                                <rect key="frame" x="152" y="439" width="468" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="uvd-WA-K3T">
                                     <font key="font" metaFont="system"/>
@@ -57,8 +57,30 @@
                                     <binding destination="3RP-5L-PcC" name="value" keyPath="ApplicationSettings.StartupPageUrl" id="cuy-U7-Fe6"/>
                                 </connections>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ljq-8t-YHb">
+                                <rect key="frame" x="18" y="388" width="474" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Twitter投稿時にYoutubeページで使用されているハッシュタグを自動的に追加する" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="5Zc-J5-RF1">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="3RP-5L-PcC" name="value" keyPath="ApplicationSettings.IsEnableInsertTweetYoutubeTag" id="KBM-t5-dhL"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SSU-Vx-4yV">
+                                <rect key="frame" x="18" y="368" width="412" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Twitter投稿時にホロビューワー関連のハッシュタグを自動的に追加する" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="s4t-VX-vvC">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="3RP-5L-PcC" name="value" keyPath="ApplicationSettings.IsEnableInsertTweetHoloViewerHashTag" id="RsN-qd-sO9"/>
+                                </connections>
+                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iJZ-bL-4kh">
-                                <rect key="frame" x="18" y="178" width="263" height="18"/>
+                                <rect key="frame" x="18" y="348" width="263" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="起動時にアプリケーションの更新を確認する" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="29N-EV-cFN">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -73,7 +95,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nza-pu-NhP">
-                                <rect key="frame" x="407" y="13" width="59" height="32"/>
+                                <rect key="frame" x="567" y="13" width="59" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0tl-8z-DWS">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -87,7 +109,7 @@ DQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noa-uw-99F">
-                                <rect key="frame" x="325" y="13" width="82" height="32"/>
+                                <rect key="frame" x="485" y="13" width="82" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aQL-Gc-j36">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -101,7 +123,7 @@ Gw
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JJ0-bB-h6D">
-                                <rect key="frame" x="18" y="205" width="197" height="16"/>
+                                <rect key="frame" x="18" y="415" width="197" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="キャプチャした画像を保存する場所" id="dwL-hL-Yz9">
                                     <font key="font" metaFont="system"/>
@@ -110,7 +132,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73l-2T-fwL">
-                                <rect key="frame" x="221" y="202" width="204" height="21"/>
+                                <rect key="frame" x="221" y="412" width="351" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="jUW-OL-RzD">
                                     <font key="font" metaFont="system"/>
@@ -122,7 +144,7 @@ Gw
                                 </connections>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JBn-TK-ocV">
-                                <rect key="frame" x="427" y="195" width="52" height="32"/>
+                                <rect key="frame" x="574" y="405" width="52" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tcf-ml-nyJ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -136,14 +158,17 @@ Gw
                     </view>
                     <connections>
                         <outlet property="CaptureSavePathTextField" destination="73l-2T-fwL" id="hTa-Rb-iD2"/>
+                        <outlet property="InsertTweetHoloViewerHashTag" destination="SSU-Vx-4yV" id="w0W-IS-D9J"/>
+                        <outlet property="InsertTweetYoutubeTag" destination="ljq-8t-YHb" id="YA3-xJ-N5q"/>
                         <outlet property="StartupPageUrlTextField" destination="2iy-Rk-yMa" id="oJs-xb-CED"/>
                         <outlet property="StartupPageUrlTextFiled" destination="2iy-Rk-yMa" id="5eb-eW-SU7"/>
+                        <outlet property="UpdateCheckCheckBox" destination="iJZ-bL-4kh" id="dnq-4L-sHQ"/>
                     </connections>
                 </viewController>
                 <customObject id="OYa-Tq-XpU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="fVT-Lc-Uyw"/>
             </objects>
-            <point key="canvasLocation" x="144" y="226"/>
+            <point key="canvasLocation" x="144" y="447"/>
         </scene>
     </scenes>
 </document>

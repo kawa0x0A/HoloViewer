@@ -103,6 +103,7 @@
     <Compile Include="ApplicationSettingsViewController.designer.cs">
       <DependentUpon>ApplicationSettingsViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="TwitterDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\wwwroot\index.html" />
@@ -130,6 +131,7 @@
   <ItemGroup>
     <InterfaceDefinition Include="FeedBackWindow.storyboard" />
     <InterfaceDefinition Include="ApplicationSettingsWindow.storyboard" />
+    <InterfaceDefinition Include="WebViewWindow.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\HoloViewer.macOS.entitlements" />

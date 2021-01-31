@@ -17,6 +17,8 @@ namespace HoloViewer.macOS
 
             applicationSettingsViewController.ApplicationSettings.StartupPageUrl = applicationSettings.StartupPageUrl;
             applicationSettingsViewController.ApplicationSettings.CaptureSavePath = applicationSettings.CaptureSavePath;
+            applicationSettingsViewController.ApplicationSettings.IsEnableInsertTweetYoutubeTag = applicationSettings.IsEnableAutoInsertHashTagYoutubeTag;
+            applicationSettingsViewController.ApplicationSettings.IsEnableInsertTweetHoloViewerHashTag = applicationSettings.IsEnableAutoInsertHashTagHoloViewer;
             applicationSettingsViewController.ApplicationSettings.IsEnableUpdateCheck = applicationSettings.IsEnableUpdateCheck;
 
             NSApplication.SharedApplication.RunModalForWindow(windowController.Window);
@@ -38,6 +40,8 @@ namespace HoloViewer.macOS
             {
                 StartupPageUrl = CurrentApplicationSettings.StartupPageUrl,
                 CaptureSavePath = CurrentApplicationSettings.CaptureSavePath,
+                IsEnableAutoInsertHashTagYoutubeTag = CurrentApplicationSettings.IsEnableInsertTweetYoutubeTag,
+                IsEnableAutoInsertHashTagHoloViewer = CurrentApplicationSettings.IsEnableInsertTweetHoloViewerHashTag,
                 IsEnableUpdateCheck = CurrentApplicationSettings.IsEnableUpdateCheck,
             };
         }

@@ -9,6 +9,10 @@ namespace HoloViewer.macOS
 
         private string captureSavePath = "";
 
+        private bool isEnableInsertTweetYoutubeTag = true;
+
+        private bool isEnableInsertTweetHoloViewerHashTag = false;
+
         private bool isEnableUpdateCheck = true;
 
         [Export(nameof(StartupPageUrl))]
@@ -16,6 +20,12 @@ namespace HoloViewer.macOS
 
         [Export(nameof(CaptureSavePath))]
         public string CaptureSavePath { get { return captureSavePath; } set { WillChangeValue(nameof(CaptureSavePath)); captureSavePath = value; DidChangeValue(nameof(CaptureSavePath)); } }
+
+        [Export(nameof(IsEnableInsertTweetYoutubeTag))]
+        public bool IsEnableInsertTweetYoutubeTag { get { return isEnableInsertTweetYoutubeTag; } set { WillChangeValue(nameof(IsEnableInsertTweetYoutubeTag)); isEnableInsertTweetYoutubeTag = value; DidChangeValue(nameof(IsEnableInsertTweetYoutubeTag)); } }
+
+        [Export(nameof(IsEnableInsertTweetHoloViewerHashTag))]
+        public bool IsEnableInsertTweetHoloViewerHashTag { get { return isEnableInsertTweetHoloViewerHashTag; } set { WillChangeValue(nameof(IsEnableInsertTweetHoloViewerHashTag)); isEnableInsertTweetHoloViewerHashTag = value; DidChangeValue(nameof(IsEnableInsertTweetHoloViewerHashTag)); } }
 
         [Export(nameof(IsEnableUpdateCheck))]
         public bool IsEnableUpdateCheck { get { return isEnableUpdateCheck; } set { WillChangeValue(nameof(IsEnableUpdateCheck)); isEnableUpdateCheck = value; DidChangeValue(nameof(IsEnableUpdateCheck)); } }

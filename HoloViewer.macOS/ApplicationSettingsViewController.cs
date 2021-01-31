@@ -36,6 +36,9 @@ namespace HoloViewer.macOS
 			Result = true;
 			ApplicationSettings.StartupPageUrl = StartupPageUrlTextFiled.StringValue;
 			ApplicationSettings.CaptureSavePath = CaptureSavePathTextField.StringValue;
+			ApplicationSettings.IsEnableInsertTweetYoutubeTag = (InsertTweetYoutubeTag.State == NSCellStateValue.On);
+			ApplicationSettings.IsEnableInsertTweetHoloViewerHashTag = (InsertTweetHoloViewerHashTag.State == NSCellStateValue.On);
+			ApplicationSettings.IsEnableUpdateCheck = (UpdateCheckCheckBox.State == NSCellStateValue.On);
 			View.Window.Close();
         }
 

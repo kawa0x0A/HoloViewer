@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace HoloViewer
 {
@@ -9,7 +10,15 @@ namespace HoloViewer
     {
         public static string[] ConvertStringToHashTagArray (string hashTagString)
         {
-            return hashTagString.Replace(@"""", "").Replace("[", "").Replace("]", "").Replace(" ", "").Split(',').Select(str => System.Web.HttpUtility.UrlDecode(str)).Distinct().ToArray();
+            switch (Device.RuntimePlatform)
+            {
+                case Device.WPF:
+                    return hashTagString.Replace(@"""", "").Replace("[", "").Replace("]", "").Replace(" ", "").Split(',').Select(str => System.Web.HttpUtility.UrlDecode(str)).Distinct().ToArray();
+                case Device.macOS:
+                    return hashTagString.Replace(@"""", "").Replace("(", "").Replace(")", "").Replace(" ", "").Split(',').Select(str => System.Web.HttpUtility.UrlDecode(str).Trim('\n')).Distinct().ToArray();
+            }
+
+            return null;
         }
 
         public static string CreateTweetUrl (string[] hashTags)

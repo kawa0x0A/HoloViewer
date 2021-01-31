@@ -16,7 +16,16 @@ namespace HoloViewer.macOS
 		AppKit.NSTextField CaptureSavePathTextField { get; set; }
 
 		[Outlet]
+		AppKit.NSButton InsertTweetHoloViewerHashTag { get; set; }
+
+		[Outlet]
+		AppKit.NSButton InsertTweetYoutubeTag { get; set; }
+
+		[Outlet]
 		AppKit.NSTextField StartupPageUrlTextFiled { get; set; }
+
+		[Outlet]
+		AppKit.NSButton UpdateCheckCheckBox { get; set; }
 
 		[Action ("ClickedCaptureSavePathButton:")]
 		partial void ClickedCaptureSavePathButton (AppKit.NSButton sender);
@@ -29,14 +38,29 @@ namespace HoloViewer.macOS
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (CaptureSavePathTextField != null) {
+				CaptureSavePathTextField.Dispose ();
+				CaptureSavePathTextField = null;
+			}
+
 			if (StartupPageUrlTextFiled != null) {
 				StartupPageUrlTextFiled.Dispose ();
 				StartupPageUrlTextFiled = null;
 			}
 
-			if (CaptureSavePathTextField != null) {
-				CaptureSavePathTextField.Dispose ();
-				CaptureSavePathTextField = null;
+			if (InsertTweetYoutubeTag != null) {
+				InsertTweetYoutubeTag.Dispose ();
+				InsertTweetYoutubeTag = null;
+			}
+
+			if (InsertTweetHoloViewerHashTag != null) {
+				InsertTweetHoloViewerHashTag.Dispose ();
+				InsertTweetHoloViewerHashTag = null;
+			}
+
+			if (UpdateCheckCheckBox != null) {
+				UpdateCheckCheckBox.Dispose ();
+				UpdateCheckCheckBox = null;
 			}
 		}
 	}
