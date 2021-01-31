@@ -12,6 +12,10 @@ namespace HoloViewer
 
         public string CaptureSavePath { get; set; } = "";
 
+        public bool IsEnableAutoInsertHashTagYoutubeTag { get; set; } = true;
+
+        public bool IsEnableAutoInsertHashTagHoloViewer { get; set; } = false;
+
         public bool IsEnableUpdateCheck { get; set; } = true;
 
         private static string GetApplicationSettingsFilePath()

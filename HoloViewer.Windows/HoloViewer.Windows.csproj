@@ -14,10 +14,12 @@
     <EmbeddedResource Remove="ApplicationSettingsWindow.xaml" />
     <EmbeddedResource Remove="FeedBackWindow.xaml" />
     <EmbeddedResource Remove="UpdateWindow.xaml" />
+    <EmbeddedResource Remove="WebViewWindow.xaml" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.MobileBlazorBindings.WebView.Windows" Version="0.6.5-preview" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.781-prerelease" />
     <PackageReference Include="Microsoft.WindowsAPICodePack-Core" Version="1.1.0.2" />
     <PackageReference Include="Microsoft.WindowsAPICodePack-Shell" Version="1.1.0" />
     <PackageReference Include="System.Text.Json" Version="5.0.1" />

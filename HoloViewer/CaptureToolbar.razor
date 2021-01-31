@@ -65,13 +65,19 @@
         </StackLayout>
     </StackLayout>
 
-    <Button Text="キャプチャ" FontSize="16" OnClick="CaptureEventCallback" HorizontalOptions="LayoutOptions.EndAndExpand" />
+    <StackLayout Orientation="StackOrientation.Horizontal" HorizontalOptions="LayoutOptions.EndAndExpand">
+        <Button Text="キャプチャ" FontSize="16" OnClick="CaptureEventCallback" />
+        <Button Text="Twitterに投稿" FontSize="16" OnClick="TweetEventCallback" />
+    </StackLayout>
 </StackLayout>
 
 @code
 {
     [Parameter]
     public EventCallback CaptureEventCallback { get; set; }
+
+    [Parameter]
+    public EventCallback TweetEventCallback { get; set; }
 
     private static readonly Dictionary<ApplicationScreenMode.ScreenMode, string[]> CaptureIconResourceName = new Dictionary<ApplicationScreenMode.ScreenMode, string[]>()
     {

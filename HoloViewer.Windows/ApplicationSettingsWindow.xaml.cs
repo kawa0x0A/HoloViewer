@@ -26,11 +26,17 @@ namespace HoloViewer.Windows
         {
             private string startPageUrl;
             private string captureSavePath;
+            private bool isEnableAutoInsertHashTagYoutubeTag;
+            private bool isEnableAutoInsertHashTagHoloViewer;
             private bool isEnableUpdateCheck;
 
             public string StartUpPageUrl { get { return startPageUrl; } set { startPageUrl = value; NotifyPropertyChanged(); } }
 
             public string CaptureSavePath { get { return captureSavePath; } set { captureSavePath = value; NotifyPropertyChanged(); } }
+
+            public bool IsEnableAutoInsertHashTagYoutubeTag { get { return isEnableAutoInsertHashTagYoutubeTag; } set { isEnableAutoInsertHashTagYoutubeTag = value; NotifyPropertyChanged(); } }
+
+            public bool IsEnableAutoInsertHashTagHoloViewer { get { return isEnableAutoInsertHashTagHoloViewer; } set { isEnableAutoInsertHashTagHoloViewer = value; NotifyPropertyChanged(); } }
 
             public bool IsEnableUpdateCheck { get { return isEnableUpdateCheck; } set { isEnableUpdateCheck = value; NotifyPropertyChanged(); } }
 

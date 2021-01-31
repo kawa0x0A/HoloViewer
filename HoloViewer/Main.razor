@@ -45,7 +45,7 @@
             </StackLayout>
         </StackLayout>
 
-        <CaptureToolbar @ref="CurrentCaptureToolbar" CaptureEventCallback="Capture" />
+        <CaptureToolbar @ref="CurrentCaptureToolbar" CaptureEventCallback="Capture" TweetEventCallback="Tweet" />
 
         @switch (ApplicationScreenMode.CurrentScreenMode)
         {
@@ -373,6 +373,27 @@
                 await DependencyService.Get<IScreenCapture>().CaptureCustom4(ApplicationSettings, await CurrentCaptureToolbar.CreateCaptureSetting<IScreenCapture.CaptureSetting_Custom4Mode, IScreenCapture.ScreenPosition_Custom4, IScreenCapture.CaptureMode_Custom4>(blazorWebViews.ToArray()));
                 break;
         }
+    }
+
+    async void Tweet ()
+    {
+        var hashTags = new List<string>();
+
+        if (ApplicationSettings.IsEnableAutoInsertHashTagYoutubeTag)
+        {
+            for (int i = 0; i < blazorWebViews.Count; i++)
+            {
+                hashTags.AddRange(await DependencyService.Get<ITwitterDialog>().GetHashTags(blazorWebViews[i]));
+            }
+        }
+
+        if (ApplicationSettings.IsEnableAutoInsertHashTagHoloViewer)
+        {
+            hashTags.Add("HoloViewer");
+            hashTags.Add("ホロビューワー");
+        }
+
+        await DependencyService.Get<ITwitterDialog>().Tweet(hashTags.Distinct().ToArray());
     }
 
     void ChangeScreenMode (ScreenMode screenMode)

@@ -13,6 +13,8 @@ namespace HoloViewer.Windows
 
             applicationSettingsWindow.CurrentApplicationSettingsDataSet.StartUpPageUrl = applicationSettings.StartupPageUrl;
             applicationSettingsWindow.CurrentApplicationSettingsDataSet.CaptureSavePath = applicationSettings.CaptureSavePath;
+            applicationSettingsWindow.CurrentApplicationSettingsDataSet.IsEnableAutoInsertHashTagYoutubeTag = applicationSettings.IsEnableAutoInsertHashTagYoutubeTag;
+            applicationSettingsWindow.CurrentApplicationSettingsDataSet.IsEnableAutoInsertHashTagHoloViewer = applicationSettings.IsEnableAutoInsertHashTagHoloViewer;
             applicationSettingsWindow.CurrentApplicationSettingsDataSet.IsEnableUpdateCheck = applicationSettings.IsEnableUpdateCheck;
 
             applicationSettingsWindow.ShowDialog();
@@ -21,6 +23,8 @@ namespace HoloViewer.Windows
             {
                 StartupPageUrl = applicationSettingsWindow.CurrentApplicationSettingsDataSet.StartUpPageUrl,
                 CaptureSavePath = applicationSettingsWindow.CurrentApplicationSettingsDataSet.CaptureSavePath,
+                IsEnableAutoInsertHashTagYoutubeTag = applicationSettingsWindow.CurrentApplicationSettingsDataSet.IsEnableAutoInsertHashTagYoutubeTag,
+                IsEnableAutoInsertHashTagHoloViewer = applicationSettingsWindow.CurrentApplicationSettingsDataSet.IsEnableAutoInsertHashTagHoloViewer,
                 IsEnableUpdateCheck = applicationSettingsWindow.CurrentApplicationSettingsDataSet.IsEnableUpdateCheck,
             };
 

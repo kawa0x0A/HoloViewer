@@ -105,4 +105,8 @@
     <PackageReference Include="Microsoft.MobileBlazorBindings.WebView" Version="0.6.5-preview" />
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\scripts\tweet\" />
+  </ItemGroup>
 </Project>
