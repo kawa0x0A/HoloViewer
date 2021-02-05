@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using AppKit;
 using Foundation;
 
@@ -18,6 +20,7 @@ namespace HoloViewer.macOS
             applicationSettingsViewController.ApplicationSettings.StartupPageUrl = applicationSettings.StartupPageUrl;
             applicationSettingsViewController.ApplicationSettings.CaptureSavePath = applicationSettings.CaptureSavePath;
             applicationSettingsViewController.ApplicationSettings.IsEnableInsertTweetYoutubeTag = applicationSettings.IsEnableAutoInsertHashTagYoutubeTag;
+            applicationSettingsViewController.ApplicationSettings.IsUseHashTags = applicationSettings.IsUseHashTags.Select(p => new ApplicationSettings.HashTagSettingsDataSet() { HashTagName = p.Key, IsUseHashTag = p.Value }).ToArray();
             applicationSettingsViewController.ApplicationSettings.IsEnableInsertTweetHoloViewerHashTag = applicationSettings.IsEnableAutoInsertHashTagHoloViewer;
             applicationSettingsViewController.ApplicationSettings.IsEnableUpdateCheck = applicationSettings.IsEnableUpdateCheck;
 
@@ -41,6 +44,7 @@ namespace HoloViewer.macOS
                 StartupPageUrl = CurrentApplicationSettings.StartupPageUrl,
                 CaptureSavePath = CurrentApplicationSettings.CaptureSavePath,
                 IsEnableAutoInsertHashTagYoutubeTag = CurrentApplicationSettings.IsEnableInsertTweetYoutubeTag,
+                IsUseHashTags = new Dictionary<string, bool>(CurrentApplicationSettings.IsUseHashTags.Select(p => new KeyValuePair<string, bool>(p.HashTagName, p.IsUseHashTag))),
                 IsEnableAutoInsertHashTagHoloViewer = CurrentApplicationSettings.IsEnableInsertTweetHoloViewerHashTag,
                 IsEnableUpdateCheck = CurrentApplicationSettings.IsEnableUpdateCheck,
             };

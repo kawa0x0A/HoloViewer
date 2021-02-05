@@ -68,32 +68,6 @@
                                     <binding destination="3RP-5L-PcC" name="value" keyPath="ApplicationSettings.IsEnableInsertTweetYoutubeTag" id="KBM-t5-dhL"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SSU-Vx-4yV">
-                                <rect key="frame" x="18" y="368" width="412" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Twitter投稿時にホロビューワー関連のハッシュタグを自動的に追加する" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="s4t-VX-vvC">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <binding destination="3RP-5L-PcC" name="value" keyPath="ApplicationSettings.IsEnableInsertTweetHoloViewerHashTag" id="RsN-qd-sO9"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iJZ-bL-4kh">
-                                <rect key="frame" x="18" y="348" width="263" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="起動時にアプリケーションの更新を確認する" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="29N-EV-cFN">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <binding destination="3RP-5L-PcC" name="value" keyPath="ApplicationSettings.IsEnableUpdateCheck" id="o49-NP-gio">
-                                        <dictionary key="options">
-                                            <bool key="NSConditionallySetsEnabled" value="NO"/>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nza-pu-NhP">
                                 <rect key="frame" x="567" y="13" width="59" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -152,6 +126,99 @@ Gw
                                 </buttonCell>
                                 <connections>
                                     <action selector="ClickedCaptureSavePathButton:" target="3RP-5L-PcC" id="5Bv-pI-f79"/>
+                                </connections>
+                            </button>
+                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hb3-AY-Qth">
+                                <rect key="frame" x="20" y="247" width="600" height="135"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <clipView key="contentView" id="sp9-eK-DjA">
+                                    <rect key="frame" x="1" y="0.0" width="598" height="134"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="dFc-Uu-qRl" id="xE6-uk-Fnz">
+                                            <rect key="frame" x="0.0" y="0.0" width="598" height="109"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn width="40" minWidth="40" maxWidth="1000" id="G3s-3U-Mqq">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <buttonCell key="dataCell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="UdY-Cm-tcL">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <connections>
+                                                        <binding destination="3RP-5L-PcC" name="value" keyPath="ApplicationSettings.IsUseHashTags.IsUseHashTag" id="vVu-WS-nf0"/>
+                                                    </connections>
+                                                </tableColumn>
+                                                <tableColumn width="552" minWidth="40" maxWidth="1000" id="RC4-u2-Dff">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Text" id="Y6H-vO-7kH">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <connections>
+                                                        <binding destination="3RP-5L-PcC" name="value" keyPath="ApplicationSettings.IsUseHashTags.HashTagName" id="5Jk-fW-Z2c">
+                                                            <dictionary key="options">
+                                                                <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                            </dictionary>
+                                                        </binding>
+                                                    </connections>
+                                                </tableColumn>
+                                            </tableColumns>
+                                            <connections>
+                                                <binding destination="3RP-5L-PcC" name="content" keyPath="ApplicationSettings.IsUseHashTags" id="XnX-Wj-X8a"/>
+                                            </connections>
+                                        </tableView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="L93-dr-K4o">
+                                    <rect key="frame" x="1" y="118" width="584" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Jex-zw-kAQ">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <tableHeaderView key="headerView" id="dFc-Uu-qRl">
+                                    <rect key="frame" x="0.0" y="0.0" width="598" height="25"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableHeaderView>
+                            </scrollView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SSU-Vx-4yV">
+                                <rect key="frame" x="18" y="223" width="412" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Twitter投稿時にホロビューワー関連のハッシュタグを自動的に追加する" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="s4t-VX-vvC">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="3RP-5L-PcC" name="value" keyPath="ApplicationSettings.IsEnableInsertTweetHoloViewerHashTag" id="RsN-qd-sO9"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iJZ-bL-4kh">
+                                <rect key="frame" x="18" y="203" width="263" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="起動時にアプリケーションの更新を確認する" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="29N-EV-cFN">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="3RP-5L-PcC" name="value" keyPath="ApplicationSettings.IsEnableUpdateCheck" id="o49-NP-gio">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEnabled" value="NO"/>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </button>
                         </subviews>
