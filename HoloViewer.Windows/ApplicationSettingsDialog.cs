@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+
 [assembly: Xamarin.Forms.Dependency(typeof(HoloViewer.Windows.ApplicationSettingsDialog))]
 namespace HoloViewer.Windows
 {
@@ -14,6 +17,7 @@ namespace HoloViewer.Windows
             applicationSettingsWindow.CurrentApplicationSettingsDataSet.StartUpPageUrl = applicationSettings.StartupPageUrl;
             applicationSettingsWindow.CurrentApplicationSettingsDataSet.CaptureSavePath = applicationSettings.CaptureSavePath;
             applicationSettingsWindow.CurrentApplicationSettingsDataSet.IsEnableAutoInsertHashTagYoutubeTag = applicationSettings.IsEnableAutoInsertHashTagYoutubeTag;
+            applicationSettingsWindow.CurrentApplicationSettingsDataSet.IsUseHashTags = new System.Collections.ObjectModel.ObservableCollection<ApplicationSettingsWindow.ApplicationSettingsDataSet.HashTagSettingsDataSet>(applicationSettings.IsUseHashTags.Select(p => new ApplicationSettingsWindow.ApplicationSettingsDataSet.HashTagSettingsDataSet() { IsUseHashTag = p.Value, HashTagName = p.Key }));
             applicationSettingsWindow.CurrentApplicationSettingsDataSet.IsEnableAutoInsertHashTagHoloViewer = applicationSettings.IsEnableAutoInsertHashTagHoloViewer;
             applicationSettingsWindow.CurrentApplicationSettingsDataSet.IsEnableUpdateCheck = applicationSettings.IsEnableUpdateCheck;
 
@@ -24,6 +28,7 @@ namespace HoloViewer.Windows
                 StartupPageUrl = applicationSettingsWindow.CurrentApplicationSettingsDataSet.StartUpPageUrl,
                 CaptureSavePath = applicationSettingsWindow.CurrentApplicationSettingsDataSet.CaptureSavePath,
                 IsEnableAutoInsertHashTagYoutubeTag = applicationSettingsWindow.CurrentApplicationSettingsDataSet.IsEnableAutoInsertHashTagYoutubeTag,
+                IsUseHashTags = new Dictionary<string, bool>(applicationSettingsWindow.CurrentApplicationSettingsDataSet.IsUseHashTags.Select(p => new KeyValuePair<string, bool>(p.HashTagName, p.IsUseHashTag))),
                 IsEnableAutoInsertHashTagHoloViewer = applicationSettingsWindow.CurrentApplicationSettingsDataSet.IsEnableAutoInsertHashTagHoloViewer,
                 IsEnableUpdateCheck = applicationSettingsWindow.CurrentApplicationSettingsDataSet.IsEnableUpdateCheck,
             };

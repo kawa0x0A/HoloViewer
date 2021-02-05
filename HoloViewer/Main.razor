@@ -377,15 +377,36 @@
 
     async void Tweet ()
     {
-        var hashTags = new List<string>();
+        var youtubeHashTags = new List<string>();
 
         if (ApplicationSettings.IsEnableAutoInsertHashTagYoutubeTag)
         {
             for (int i = 0; i < blazorWebViews.Count; i++)
             {
-                hashTags.AddRange(await DependencyService.Get<ITwitterDialog>().GetHashTags(blazorWebViews[i]));
+                youtubeHashTags.AddRange(await DependencyService.Get<ITwitterDialog>().GetHashTags(blazorWebViews[i]));
             }
         }
+
+        var hashTags = new List<string>();
+
+        foreach (var hashTag in youtubeHashTags)
+        {
+            if (ApplicationSettings.IsUseHashTags.ContainsKey(hashTag))
+            {
+                if (ApplicationSettings.IsUseHashTags[hashTag])
+                {
+                    hashTags.Add(hashTag);
+                }
+            }
+            else
+            {
+                hashTags.Add(hashTag);
+
+                ApplicationSettings.IsUseHashTags.Add(hashTag, true);
+            }
+        }
+
+        ApplicationSettings.Save(ApplicationSettings);
 
         if (ApplicationSettings.IsEnableAutoInsertHashTagHoloViewer)
         {

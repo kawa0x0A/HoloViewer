@@ -1,4 +1,5 @@
 using System.IO;
+using System.Collections.Generic;
 using System.Text.Json;
 using Xamarin.Forms;
 
@@ -13,6 +14,8 @@ namespace HoloViewer
         public string CaptureSavePath { get; set; } = "";
 
         public bool IsEnableAutoInsertHashTagYoutubeTag { get; set; } = true;
+
+        public Dictionary<string, bool> IsUseHashTags { get; set; } = new Dictionary<string, bool>();
 
         public bool IsEnableAutoInsertHashTagHoloViewer { get; set; } = false;
 

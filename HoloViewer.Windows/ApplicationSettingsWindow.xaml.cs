@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,9 +25,27 @@ namespace HoloViewer.Windows
     {
         public class ApplicationSettingsDataSet : INotifyPropertyChanged
         {
+            public class HashTagSettingsDataSet : INotifyPropertyChanged
+            {
+                private bool isUseHashTag;
+                private string hashTagName;
+
+                public bool IsUseHashTag { get { return isUseHashTag; } set { isUseHashTag = value; NotifyPropertyChanged(); } }
+
+                public string HashTagName { get { return hashTagName; } set { hashTagName = value; NotifyPropertyChanged(); } }
+
+                public event PropertyChangedEventHandler PropertyChanged;
+
+                private void NotifyPropertyChanged ([CallerMemberName] string propertyName = "")
+                {
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+                }
+            }
+
             private string startPageUrl;
             private string captureSavePath;
             private bool isEnableAutoInsertHashTagYoutubeTag;
+            private ObservableCollection<HashTagSettingsDataSet> isUseHashTags;
             private bool isEnableAutoInsertHashTagHoloViewer;
             private bool isEnableUpdateCheck;
 
@@ -35,6 +54,8 @@ namespace HoloViewer.Windows
             public string CaptureSavePath { get { return captureSavePath; } set { captureSavePath = value; NotifyPropertyChanged(); } }
 
             public bool IsEnableAutoInsertHashTagYoutubeTag { get { return isEnableAutoInsertHashTagYoutubeTag; } set { isEnableAutoInsertHashTagYoutubeTag = value; NotifyPropertyChanged(); } }
+
+            public ObservableCollection<HashTagSettingsDataSet> IsUseHashTags { get { return isUseHashTags; } set { isUseHashTags = value; NotifyPropertyChanged(); } }
 
             public bool IsEnableAutoInsertHashTagHoloViewer { get { return isEnableAutoInsertHashTagHoloViewer; } set { isEnableAutoInsertHashTagHoloViewer = value; NotifyPropertyChanged(); } }
 
