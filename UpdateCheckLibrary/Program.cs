@@ -208,7 +208,10 @@ namespace UpdateCheckLibrary
             {
                 var oldDirectoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(Path.GetDirectoryName(directoryPath + Path.DirectorySeparatorChar)));
 
-                Directory.Delete(oldDirectoryPath, true);
+                if (Directory.Exists(oldDirectoryPath))
+                {
+                    Directory.Delete(oldDirectoryPath, true);
+                }
 
                 CopyDirectory(directoryPath, oldDirectoryPath);
             }

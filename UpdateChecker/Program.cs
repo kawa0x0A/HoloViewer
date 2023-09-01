@@ -12,26 +12,29 @@ namespace UpdateChecker
             {
                 Console.WriteLine("アップデート開始");
 
-                var processID = int.Parse(args[1]);
-
-                try
+                if (args.Length > 1)
                 {
-                    var process = Process.GetProcessById(processID);
+                    var processID = int.Parse(args[1]);
 
-                    if (process != null)
+                    try
                     {
-                        process.Kill();
+                        var process = Process.GetProcessById(processID);
 
-                        Console.Write("初期化中");
+                        if (process != null)
+                        {
+                            process.Kill();
 
-                        await Task.Run(() => { for (int i = 0; i < 5; i++) { Console.Write("."); System.Threading.Thread.Sleep(1000); } });
+                            Console.Write("初期化中");
 
-                        Console.WriteLine();
+                            await Task.Run(() => { for (int i = 0; i < 5; i++) { Console.Write("."); System.Threading.Thread.Sleep(1000); } });
+
+                            Console.WriteLine();
+                        }
                     }
-                }
-                catch
-                {
-                    throw;
+                    catch
+                    {
+                        throw;
+                    }
                 }
 
                 Console.WriteLine("ファイルコピー中");
@@ -40,7 +43,10 @@ namespace UpdateChecker
 
                 Console.WriteLine("アップデート完了");
 
-                Process.Start(new ProcessStartInfo("HoloViewer.exe", "/Update"));
+                if (args.Length > 1)
+                {
+                    Process.Start(new ProcessStartInfo("HoloViewer.exe", "/Update"));
+                }
             }
         }
     }

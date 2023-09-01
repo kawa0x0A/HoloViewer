@@ -156,7 +156,7 @@ namespace HoloViewer
                     {
                         var oldUpdaterPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, UpdaterFileName);
 
-                        File.Copy(oldUpdaterPath, newUpdaterPath, true);
+                        File.Copy(newUpdaterPath, oldUpdaterPath, true);
                     }
                 }
 
@@ -166,7 +166,7 @@ namespace HoloViewer
                     updatePage.BindingUpdateDataSet.FunctionTextValue = UpdateCompleteFunctionText;
                 });
 
-                var process = Process.Start(new ProcessStartInfo(UpdaterFileName, $"/Update {Process.GetCurrentProcess().Id}"));
+                var process = Process.Start(new ProcessStartInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, UpdaterFileName), $"/Update {Process.GetCurrentProcess().Id}"));
 
                 process.WaitForExit();
             }
