@@ -20,29 +20,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v1
-        with: 
-          dotnet-version: '5.0.100'
-
-      - name: Build Application for Windows
-        run: dotnet publish -c Release ./HoloViewer.Windows/HoloViewer.Windows.csproj -r win-x64 /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
-
-      - name: Build UpdateChecker
-        run: dotnet publish -c Release ./UpdateChecker/UpdateChecker.csproj -r win-x64 /p:PublishSingleFile=true /p:PublishTrimmed=true /p:IncludeNativeLibrariesForSelfExtract=true
-
-      - name: Copy UpdateChecker
-        run: copy ./UpdateChecker/bin/Release/net5.0/win-x64/publish/*.exe ./HoloViewer.Windows/bin/Release/net5.0-windows/win-x64/publish
-
-      - name: Delete PDB Files
-        run: del HoloViewer.Windows/bin/Release/net5.0-windows/win-x64/publish/*.pdb
-
-      - name: Copy License File
-        run: copy LICENSE ./HoloViewer.Windows/bin/Release/net5.0-windows/win-x64/publish/LICENCE
-
-      - name: Create Windows Archive
-        run: powershell Compress-Archive -Path HoloViewer.Windows/bin/Release/net5.0-windows/win-x64/publish/* -DestinationPath HoloViewer_Windows_x64.zip
-
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -57,14 +34,3 @@ jobs:
             - Second Change
           draft: false
           prerelease: false
-
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./HoloViewer_Windows_x64.zip
-          asset_name: HoloViewer_Windows_x64.zip
-          asset_content_type: application/zip
