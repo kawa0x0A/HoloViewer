@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HoloViewer.FeedBackWindow"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}">
+    <Grid>
+        <StackLayout>
+            <StackLayout Margin="256, 32">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="アプリケーションバージョン" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Grid.Column="1" Text="{Binding Path=Version, Mode=OneTime}" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="リリース日" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Grid.Column="1" Text="{Binding Path=ReleaseDate, Mode=OneTime}" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="ライセンス" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Grid.Column="1" Text="{Binding Path=SoftwareLicense, Mode=OneTime}" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </Grid>
+            </StackLayout>
+            <StackLayout Margin="0, 32">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="メールアドレス (クリックでクリップボードにコピー)" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Grid.Column="1" Text="{Binding Path=MailAddress, Mode=OneTime}" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ClickMailAddress}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="製作者 Twitter プロフィールページ" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Grid.Column="1" Text="{Binding Path=TwitterProfilePageUrl, Mode=OneTime}" TextDecorations="Underline" TextColor="Blue" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ClickTwitterLink}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="GitHub リポジトリページ" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Grid.Column="1" Text="{Binding Path=RepositoryPageUrl, Mode=OneTime}" Margin="16,0,0,0" TextDecorations="Underline" TextColor="Blue" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ClickGithubLink}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </StackLayout>
+            <Label Text="{Binding Path=FeedBackDescription, Mode=OneTime}" Margin="0, 32" FontSize="Medium" HorizontalTextAlignment="Center"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

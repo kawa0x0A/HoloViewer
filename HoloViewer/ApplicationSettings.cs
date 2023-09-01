@@ -1,35 +1,54 @@
-using System.IO;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text.Json;
-using Xamarin.Forms;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace HoloViewer
 {
-    public class ApplicationSettings
+    public partial class HashTag : ObservableObject
+    {
+        [ObservableProperty]
+        private bool isUseHashTag;
+
+        [ObservableProperty]
+        private string hashTagName;
+    }
+
+    public partial class ApplicationSettings : ObservableObject
     {
         private const string ApplicationSettingFileName = "ApplicationSetting.json";
 
-        public string StartupPageUrl { get; set; } = "";
+        public static ApplicationSettings Current { get; private set; } = new();
 
-        public string CaptureSavePath { get; set; } = "";
+        [ObservableProperty]
+        private AppTheme theme = AppTheme.Light;
 
-        public bool IsEnableAutoInsertHashTagYoutubeTag { get; set; } = true;
+        [ObservableProperty]
+        private string startupPageUrl = "";
 
-        public Dictionary<string, bool> IsUseHashTags { get; set; } = new Dictionary<string, bool>();
+        [ObservableProperty]
+        private string captureSavePath = ScreenCapture.GetCaptureDirectoryFullPath();
 
-        public bool IsEnableAutoInsertHashTagHoloViewer { get; set; } = false;
+        [ObservableProperty]
+        private bool isEnableAutoInsertHashTagYoutubeTag = true;
 
-        public bool IsEnableUpdateCheck { get; set; } = true;
+        [ObservableProperty]
+        private ObservableCollection<HashTag> hashTags = new();
+
+        [ObservableProperty]
+        private bool isEnableAutoInsertHashTagHoloViewer = false;
+
+        [ObservableProperty]
+        private bool isEnableUpdateCheck = true;
 
         private static string GetApplicationSettingsFilePath()
         {
-            switch(Device.RuntimePlatform)
-            {
-                case Device.WPF: return ApplicationSettingFileName;
-                case Device.macOS: return Path.Combine($"/Users/{System.Environment.UserName}/Library/Preferences/HoloViewer/", ApplicationSettingFileName);
-            }
-
+#if WINDOWS
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ApplicationSettingFileName);
+#elif MACCATALYST || MACOS
+            return Path.Combine($"/Users/{Environment.UserName}/Library/Preferences/HoloViewer/", ApplicationSettingFileName);
+#else
             return "";
+#endif
         }
 
         public static bool ExistsApplicationSettingsFile()
@@ -37,33 +56,38 @@ namespace HoloViewer
             return File.Exists(GetApplicationSettingsFilePath());
         }
 
-        public static ApplicationSettings Load()
+        public static void Load()
         {
-            var jsonString = "";
+            using var streamReader = new StreamReader(GetApplicationSettingsFilePath());
 
-            using (var streamReader = new StreamReader(GetApplicationSettingsFilePath()))
+            var jsonString = streamReader.ReadToEnd();
+
+            try
             {
-                jsonString = streamReader.ReadToEnd();
+                Current = JsonSerializer.Deserialize<ApplicationSettings>(jsonString);
             }
+            catch (Exception)
+            {
+                streamReader.Close();
 
-            return JsonSerializer.Deserialize<ApplicationSettings>(jsonString);
+                File.Delete(GetApplicationSettingsFilePath());
+            }
         }
 
-        public static void Save(ApplicationSettings applicationSettings)
+        public static void Save()
         {
             string directoryPath = Path.GetDirectoryName(GetApplicationSettingsFilePath());
 
-            if((directoryPath != "") && (!Directory.Exists(directoryPath)))
+            if ((directoryPath != "") && (!Directory.Exists(directoryPath)))
             {
                 Directory.CreateDirectory(directoryPath);
             }
 
-            var jsonString = JsonSerializer.Serialize(applicationSettings);
+            var jsonString = JsonSerializer.Serialize(Current);
 
-            using (var streamWriter = new StreamWriter(GetApplicationSettingsFilePath()))
-            {
-                streamWriter.Write(jsonString);
-            }
+            using var streamWriter = new StreamWriter(GetApplicationSettingsFilePath());
+
+            streamWriter.Write(jsonString);
         }
     }
 }

@@ -2,11 +2,11 @@ namespace HoloViewer
 {
     public static class FeedBackInfoValue
     {
-        public static readonly System.Version Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+        public static readonly Version Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
 
         public static readonly string VersionString = Version.ToString();
 
-        public const string ReleaseDate = "2021/2/7";
+        public const string ReleaseDate = "2023/9/1";
 
         public const string SoftwareLicense = "MIT";
 

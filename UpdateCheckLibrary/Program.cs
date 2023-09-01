@@ -1,25 +1,19 @@
-﻿using System;
-using System.IO;
 using System.IO.Compression;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Xamarin.Forms;
 using Octokit;
 
 namespace UpdateCheckLibrary
 {
     public class Program : IDisposable
     {
-        private readonly GitHubClient gitHubClient = new GitHubClient(new ProductHeaderValue("HoloViewer"));
-        private readonly HttpClient httpClient = new HttpClient();
+        private readonly GitHubClient gitHubClient = new(new ProductHeaderValue("HoloViewer"));
+        private readonly HttpClient httpClient = new();
 
         private const string UpdateDirectoryName = "Update";
         private const string DownloadDirectoryName = "Download";
         private const string ExtractDirectoryName = "Extract";
 
-        private static string DownloadDirectoryPath { get { return Path.Combine(UpdateDirectoryName, DownloadDirectoryName); } }
-        private static string ExtractDirectoryPath { get { return Path.Combine(UpdateDirectoryName, ExtractDirectoryName); } }
+        private static string DownloadDirectoryPath { get { return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, UpdateDirectoryName, DownloadDirectoryName); } }
+        private static string ExtractDirectoryPath { get { return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, UpdateDirectoryName, ExtractDirectoryName); } }
 
         public long DownloadedSize { get; private set; }
 
@@ -83,50 +77,53 @@ namespace UpdateCheckLibrary
             return false;
         }
 
-        private ReleaseAsset GetLastReleaseAsset(string platform)
+        private ReleaseAsset GetLastReleaseAsset(DevicePlatform devicePlatform)
         {
             var lastRelease = GetLastRelease();
 
             string assetName = "";
 
-            switch (platform)
+            if (devicePlatform == DevicePlatform.WinUI)
             {
-                case Device.WPF:
-                    assetName = "HoloViewer_Windows_x64.zip";
-                    break;
-
-                case Device.macOS:
-                    assetName = "HoloViewer_macOS.pkg";
-                    break;
+                assetName = "HoloViewer_Windows_x64.zip";
+            }
+            else if ((devicePlatform == DevicePlatform.MacCatalyst) || (devicePlatform == DevicePlatform.macOS))
+            {
+                assetName = "HoloViewer_macOS.pkg";
             }
 
             return lastRelease.Assets.SingleOrDefault(asset => asset.Name == assetName);
         }
 
-        public string GetDownloadArchiveUrl(string platform)
+        public string GetDownloadArchiveUrl(DevicePlatform devicePlatform)
         {
-            var releaseAsset = GetLastReleaseAsset(platform);
+            var releaseAsset = GetLastReleaseAsset(devicePlatform);
 
             return releaseAsset.BrowserDownloadUrl;
         }
 
-        public void RefreshUpdateData ()
+        public static void RefreshUpdateData ()
         {
-            if (Directory.Exists(UpdateDirectoryName))
+            if (Directory.Exists(DownloadDirectoryPath))
             {
-                Directory.Delete(UpdateDirectoryName, true);
+                Directory.Delete(DownloadDirectoryPath, true);
+            }
+
+            if (Directory.Exists(ExtractDirectoryPath))
+            {
+                Directory.Delete(ExtractDirectoryPath, true);
             }
         }
 
-        public async Task DownloadLastReleaseArchive (string platform)
+        public async Task DownloadLastReleaseArchiveAsync(DevicePlatform devicePlatform)
         {
-            var releaseAsset = GetLastReleaseAsset(platform);
+            var releaseAsset = GetLastReleaseAsset(devicePlatform);
 
             Directory.CreateDirectory(DownloadDirectoryPath);
 
             var archivePath = Path.Combine(DownloadDirectoryPath, releaseAsset.Name);
 
-            httpClient.Timeout = System.Threading.Timeout.InfiniteTimeSpan;
+            httpClient.Timeout = Timeout.InfiniteTimeSpan;
 
             try
             {
@@ -136,9 +133,9 @@ namespace UpdateCheckLibrary
                 {
                     ContentSize = (long)httpResponseMessage.Content.Headers.ContentLength;
 
-                    using (var content = httpResponseMessage.Content)
-                    using (var stream = await content.ReadAsStreamAsync())
-                    using (var fileStream = new FileStream(archivePath, System.IO.FileMode.Create))
+                    using var content = httpResponseMessage.Content;
+                    using var stream = await content.ReadAsStreamAsync();
+                    using var fileStream = new FileStream(archivePath, System.IO.FileMode.Create);
                     {
                         while (true)
                         {
@@ -172,7 +169,7 @@ namespace UpdateCheckLibrary
             httpClient.CancelPendingRequests();
         }
 
-        public void ExtractArchive ()
+        public static void ExtractArchive ()
         {
             var files = Directory.GetFiles(DownloadDirectoryPath);
             var zipFiles = files.Where(filePath => Path.GetExtension(filePath) == ".zip").ToArray();
@@ -189,7 +186,7 @@ namespace UpdateCheckLibrary
 
             var files = Directory.GetFiles(archiveExtractedDirectoryPath);
 
-            return files.SingleOrDefault(filePath => filePath.IndexOf("UpdateChecker.exe") >= 0);
+            return files.SingleOrDefault(filePath => filePath.Contains("UpdateChecker.exe"));
         }
 
         protected static void CopyExtractFiles ()
@@ -198,9 +195,9 @@ namespace UpdateCheckLibrary
 
             var files = Directory.GetFiles(archiveExtractedDirectoryPath);
 
-            foreach (var filePath in files.Where(path => !(path.IndexOf("UpdateChecker.exe") >= 0)))
+            foreach (var filePath in files.Where(path => !(path.Contains("UpdateChecker.exe"))))
             {
-                var destFilePath = Path.Combine(Directory.GetCurrentDirectory(), Path.GetFileName(filePath));
+                var destFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(filePath));
 
                 File.Copy(filePath, destFilePath, true);
             }
@@ -209,7 +206,7 @@ namespace UpdateCheckLibrary
 
             foreach (var directoryPath in directories)
             {
-                var oldDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), Path.GetFileName(Path.GetDirectoryName(directoryPath + Path.DirectorySeparatorChar)));
+                var oldDirectoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(Path.GetDirectoryName(directoryPath + Path.DirectorySeparatorChar)));
 
                 Directory.Delete(oldDirectoryPath, true);
 
@@ -228,14 +225,14 @@ namespace UpdateCheckLibrary
 
             foreach (var filePath in Directory.GetFiles(sourceDirectoryPath))
             {
-                var distPath = Path.Combine(Directory.GetCurrentDirectory(), filePath.Substring(filePath.IndexOf(ExtractRootName) + ExtractRootName.Length + 1));
+                var distPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, filePath[(filePath.IndexOf(ExtractRootName) + ExtractRootName.Length + 1)..]);
 
                 File.Copy(filePath, distPath, true);
             }
 
             foreach (var directoryPath in Directory.GetDirectories(sourceDirectoryPath))
             {
-                var oldDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), directoryPath.Substring(directoryPath.IndexOf(ExtractRootName) + ExtractRootName.Length + 1));
+                var oldDirectoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, directoryPath[(directoryPath.IndexOf(ExtractRootName) + ExtractRootName.Length + 1)..]);
 
                 CopyDirectory(directoryPath, oldDirectoryPath);
             }

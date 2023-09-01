@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HoloViewer.WebViewToolbar">
+    <StackLayout>
+        <Label Text="{Binding Path=CurrentPageTitle}" HorizontalOptions="FillAndExpand" />
+        <StackLayout Orientation="Horizontal">
+            <Button Text="←" IsEnabled="{Binding Path=CanPageBack}" Clicked="PageBack" />
+            <Button Text="→" IsEnabled="{Binding Path=CanPageForward}" Clicked="PageForward" />
+            <Button Text="{Binding Path=ReloadButtonText}" Clicked="StopOrReload" WidthRequest="96" />
+            <Entry Text="{Binding Path=CurrentUrl}" HorizontalOptions="FillAndExpand" Focused="Entry_Focused" Unfocused="Entry_Unfocused" />
+            <Button Text="→" Clicked="NavigationUrl" />
+        </StackLayout>
+    </StackLayout>
+</ContentView>

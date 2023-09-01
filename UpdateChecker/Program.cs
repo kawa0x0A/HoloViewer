@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -40,7 +40,7 @@ namespace UpdateChecker
 
                 Console.WriteLine("アップデート完了");
 
-                Process.Start(new ProcessStartInfo("HoloViewer.Windows.exe", "/Update"));
+                Process.Start(new ProcessStartInfo("HoloViewer.exe", "/Update"));
             }
         }
     }

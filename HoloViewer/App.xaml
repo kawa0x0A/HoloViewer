@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HoloViewer"
+             x:Class="HoloViewer.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="LightBackgroundColor">White</Color>
+            <Color x:Key="LightBorderColor">Black</Color>
+            <Color x:Key="LightTextColor">Black</Color>
+
+            <Color x:Key="DarkBackgroundColor">Black</Color>
+            <Color x:Key="DarkBorderColor">White</Color>
+            <Color x:Key="DarkTextColor">White</Color>
+            <Color x:Key="DarkCheckBoxColor">Gray</Color>
+
+            <Style TargetType="Border">
+                <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource LightBorderColor}, Dark={StaticResource DarkBorderColor}}" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+                <Setter Property="BackgroundColor" Value="#2b0b98" />
+                <Setter Property="Padding" Value="14,10" />
+            </Style>
+
+            <Style TargetType="RadioButton">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
+            </Style>
+
+            <Style TargetType="CheckBox">
+                <Setter Property="Color" Value="{AppThemeBinding Dark={StaticResource DarkCheckBoxColor}}" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

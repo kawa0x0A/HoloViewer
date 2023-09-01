@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HoloViewer.ApplicationSettingsPage"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}">
+    <Grid>
+        <StackLayout Margin="8">
+            <Grid Margin="0, 8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="8*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="テーマカラー"/>
+                <StackLayout Grid.Column="1" Orientation="Vertical">
+                    <RadioButton x:Name="ThemeColorLight" Content="Light" CheckedChanged="RadioButtonLight_CheckedChanged"/>
+                    <RadioButton x:Name="ThemeColorDark" Content="Dark" CheckedChanged="RadioButtonDark_CheckedChanged"/>
+                    <RadioButton x:Name="ThemeColorSystem" Content="System" CheckedChanged="RadioButtonSystem_CheckedChanged"/>
+                </StackLayout>
+            </Grid>
+            <Grid Margin="0, 8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="8*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="起動時に表示するURL" Grid.Column="0" VerticalOptions="Center"/>
+                <Entry x:Name="startupPageUrlEntry" Text="{Binding StartupPageUrl}" Margin="8,0" Grid.Column="1"/>
+            </Grid>
+            <Grid Margin="0, 8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="キャプチャした画像を保存する場所" Grid.Column="0" VerticalOptions="Center"/>
+                <Entry x:Name="capturePathEntry" Text="{Binding CaptureSavePath, Mode=TwoWay}" Grid.Column="1" Margin="8,0"/>
+                <Button Text="..." Grid.Column="2" Clicked="Button_Click_Select_Directory" Margin="0,0,8,0"/>
+            </Grid>
+            <Grid Margin="0, 8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="8*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Twitter投稿時にYoutubeページで使用されているハッシュタグを自動的に追加する" VerticalOptions="Center" />
+                <CheckBox Grid.Column="1" x:Name="useHashTagCheckBox" Margin="0,8" IsChecked="{Binding IsEnableAutoInsertHashTagYoutubeTag}" HorizontalOptions="Start"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="8*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="過去に使用したハッシュタグの使用設定" VerticalOptions="Center" />
+                <Border Grid.Column="1" HeightRequest="128">
+                    <ListView ItemsSource="{Binding HashTags}" SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Margin="0, 0, 16, 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="10*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <CheckBox Grid.Column="0" IsChecked="{Binding IsUseHashTag}" />
+                                        <Label Grid.Column="1" Text="{Binding HashTagName}" VerticalTextAlignment="Center" />
+                                        <Button Grid.Column="2" Text="削除" Clicked="Button_Click_HashTag_Remove" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Border>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="8*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Twitter投稿時にホロビューワー関連のハッシュタグを自動的に追加する" VerticalOptions="Center" />
+                <CheckBox Grid.Column="1" x:Name="addHashTagCheckBox" Margin="0,8" IsChecked="{Binding IsEnableAutoInsertHashTagHoloViewer}" HorizontalOptions="Start" />
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="8*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="起動時にアプリケーションの更新を確認する" VerticalOptions="Center" />
+                <CheckBox Grid.Column="1" x:Name="checkUpdateCheckBox" Margin="0,8" IsChecked="{Binding IsEnableUpdateCheck}" HorizontalOptions="Start" />
+            </Grid>
+        </StackLayout>
+    </Grid>
+</ContentPage>

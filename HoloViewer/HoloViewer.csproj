@@ -1,112 +1,64 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-    <RazorLangVersion>3.0</RazorLangVersion>
-    <EnableDefaultCssItems>false</EnableDefaultCssItems>
-    <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
-    <Version>1.0.8</Version>
-    <AssemblyVersion>1.0.8.0</AssemblyVersion>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFrameworks>net7.0-maccatalyst</TargetFrameworks>
+        <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.22621.0</TargetFrameworks>
+        <!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+        <!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
+        <RootNamespace>HoloViewer</RootNamespace>
+        <UseMaui>true</UseMaui>
+        <SkipValidateMauiImplicitPackageReferences>true</SkipValidateMauiImplicitPackageReferences>
+        <SingleProject>true</SingleProject>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <EnableDefaultCssItems>false</EnableDefaultCssItems>
+        <OutputType>Exe</OutputType>
+        <WindowsPackageType>None</WindowsPackageType>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>portable</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
+        <!-- Display name -->
+        <ApplicationTitle>HoloViewer</ApplicationTitle>
 
-  <ItemGroup>
-    <None Remove="Resources\Icon\IconScreenCustom3-1.png" />
-    <None Remove="Resources\Icon\IconScreenCustom3-1_CaptureBottomLeft.png" />
-    <None Remove="Resources\Icon\IconScreenCustom3-1_CaptureBottomRight.png" />
-    <None Remove="Resources\Icon\IconScreenCustom3-1_CaptureTop.png" />
-    <None Remove="Resources\Icon\IconScreenCustom3-2.png" />
-    <None Remove="Resources\Icon\IconScreenCustom3-2_CaptureBottom.png" />
-    <None Remove="Resources\Icon\IconScreenCustom3-2_CaptureTopLeft.png" />
-    <None Remove="Resources\Icon\IconScreenCustom3-2_CaptureTopRight.png" />
-    <None Remove="Resources\Icon\IconScreenCustom4.png" />
-    <None Remove="Resources\Icon\IconScreenCustom4_CaptureBottomLeft.png" />
-    <None Remove="Resources\Icon\IconScreenCustom4_CaptureBottomRight.png" />
-    <None Remove="Resources\Icon\IconScreenCustom4_CaptureTopLeft.png" />
-    <None Remove="Resources\Icon\IconScreenCustom4_CaptureTopRight.png" />
-    <None Remove="Resources\Icon\IconScreenHorizontal2.png" />
-    <None Remove="Resources\Icon\IconScreenHorizontal2_CaptureBottom.png" />
-    <None Remove="Resources\Icon\IconScreenHorizontal2_CaptureTop.png" />
-    <None Remove="Resources\Icon\IconScreenHorizontal3.png" />
-    <None Remove="Resources\Icon\IconScreenHorizontal3_CaptureBottom.png" />
-    <None Remove="Resources\Icon\IconScreenHorizontal3_CaptureCenter.png" />
-    <None Remove="Resources\Icon\IconScreenHorizontal3_CaptureTop.png" />
-    <None Remove="Resources\Icon\IconScreenHorizontal4.png" />
-    <None Remove="Resources\Icon\IconScreenHorizontal4_CaptureBottom.png" />
-    <None Remove="Resources\Icon\IconScreenHorizontal4_CaptureCenterBottom.png" />
-    <None Remove="Resources\Icon\IconScreenHorizontal4_CaptureCenterTop.png" />
-    <None Remove="Resources\Icon\IconScreenHorizontal4_CaptureTop.png" />
-    <None Remove="Resources\Icon\IconScreenSingle.png" />
-    <None Remove="Resources\Icon\IconScreenVertical2.png" />
-    <None Remove="Resources\Icon\IconScreenVertical2_CaptureLeft.png" />
-    <None Remove="Resources\Icon\IconScreenVertical2_CaptureRight.png" />
-    <None Remove="Resources\Icon\IconScreenVertical3.png" />
-    <None Remove="Resources\Icon\IconScreenVertical3_CaptureCenter.png" />
-    <None Remove="Resources\Icon\IconScreenVertical3_CaptureLeft.png" />
-    <None Remove="Resources\Icon\IconScreenVertical3_CaptureRight.png" />
-    <None Remove="Resources\Icon\IconScreenVertical4.png" />
-    <None Remove="Resources\Icon\IconScreenVertical4_CaptureCenterLeft.png" />
-    <None Remove="Resources\Icon\IconScreenVertical4_CaptureCenterRight.png" />
-    <None Remove="Resources\Icon\IconScreenVertical4_CaptureLeft.png" />
-    <None Remove="Resources\Icon\IconScreenVertical4_CaptureRight.png" />
-  </ItemGroup>
+        <!-- App Identifier -->
+        <ApplicationId>com.companyname.holoviewer</ApplicationId>
+        <ApplicationIdGuid>68BCCB31-C4CE-4E58-B268-25737702E01B</ApplicationIdGuid>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Icon\IconScreenCustom3-1_CaptureBottomLeft.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenCustom3-1_CaptureBottomRight.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenCustom3-1_CaptureTop.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenCustom3-2_CaptureBottom.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenCustom3-2_CaptureTopLeft.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenCustom3-2_CaptureTopRight.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenCustom4_CaptureBottomLeft.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenCustom4_CaptureBottomRight.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenCustom4_CaptureTopLeft.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenCustom4_CaptureTopRight.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal3_CaptureTop.png" />
-  </ItemGroup>
+        <!-- Versions -->
+        <ApplicationDisplayVersion>2.0.0</ApplicationDisplayVersion>
+        <ApplicationVersion>2</ApplicationVersion>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Icon\IconScreenCustom3-1.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenCustom3-2.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenCustom4.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal2.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal2_CaptureBottom.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal2_CaptureTop.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal3.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal3_CaptureBottom.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal3_CaptureCenter.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal4.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal4_CaptureBottom.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal4_CaptureCenterBottom.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal4_CaptureCenterTop.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenHorizontal4_CaptureTop.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenSingle.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenVertical2.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenVertical2_CaptureLeft.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenVertical2_CaptureRight.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenVertical3.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenVertical3_CaptureCenter.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenVertical3_CaptureLeft.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenVertical3_CaptureRight.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenVertical4.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenVertical4_CaptureCenterLeft.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenVertical4_CaptureCenterRight.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenVertical4_CaptureLeft.png" />
-    <EmbeddedResource Include="Resources\Icon\IconScreenVertical4_CaptureRight.png" />
-  </ItemGroup>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+        <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.MobileBlazorBindings" Version="0.6.5-preview" />
-    <PackageReference Include="Microsoft.MobileBlazorBindings.WebView" Version="0.6.5-preview" />
-    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <!-- App Icon -->
+        <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
-  <ItemGroup>
-    <Folder Include="wwwroot\scripts\tweet\" />
-  </ItemGroup>
+        <!-- Splash Screen -->
+        <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+        <!-- Images -->
+        <MauiImage Include="Resources\Images\*" />
+
+        <!-- Custom Fonts -->
+        <MauiFont Include="Resources\Fonts\*" />
+
+        <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+        <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CommunityToolkit.Maui" Version="5.3.0" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Maui.Graphics.Skia" Version="7.0.92" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\UpdateCheckLibrary\UpdateCheckLibrary.csproj" />
+    </ItemGroup>
+
 </Project>

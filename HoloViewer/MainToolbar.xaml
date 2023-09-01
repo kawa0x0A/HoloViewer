@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HoloViewer.MainToolbar">
+    <StackLayout Orientation="Horizontal" HeightRequest="48">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="画面分割" FontSize="Medium" VerticalTextAlignment="Center" />
+            <ImageButton Source="icon_screen_single.png" WidthRequest="32" HeightRequest="32" Clicked="ScreenSingle_Clicked" />
+            <ImageButton Source="icon_screen_horizontal2.png" WidthRequest="32" HeightRequest="32" Clicked="ScreenHorizontal2_Clicked" />
+            <ImageButton Source="icon_screen_vertical2.png" WidthRequest="32" HeightRequest="32" Clicked="ScreenVertical2_Clicked" />
+            <ImageButton Source="icon_screen_horizontal3.png" WidthRequest="32" HeightRequest="32" Clicked="ScreenHorizontal3_Clicked" />
+            <ImageButton Source="icon_screen_vertical3.png" WidthRequest="32" HeightRequest="32" Clicked="ScreenVertical3_Clicked" />
+            <ImageButton Source="icon_screen_custom3_1.png" WidthRequest="32" HeightRequest="32" Clicked="ScreenCustom3_1_Clicked" />
+            <ImageButton Source="icon_screen_custom3_2.png" WidthRequest="32" HeightRequest="32" Clicked="ScreenCustom3_2_Clicked" />
+            <ImageButton Source="icon_screen_horizontal4.png" WidthRequest="32" HeightRequest="32" Clicked="ScreenHorizontal4_Clicked" />
+            <ImageButton Source="icon_screen_vertical4.png" WidthRequest="32" HeightRequest="32" Clicked="ScreenVertical4_Clicked" />
+            <ImageButton Source="icon_screen_custom4.png" WidthRequest="32" HeightRequest="32" Clicked="ScreenCustom4_Clicked" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+            <Button Text="設定" Clicked="ShowApplicationSettingsDialog" />
+            <Button Text="フィードバック" Clicked="ShowFeedBackDialog" />
+            <Button Text="寄付" Clicked="OpenBillingPage" />
+        </StackLayout>
+    </StackLayout>
+</ContentView>

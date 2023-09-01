@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HoloViewer.UpdatePage">
+    <StackLayout>
+        <Label Text="{Binding Path=StateTextValue}" HorizontalTextAlignment="Center" VerticalOptions="Center" />
+        <ProgressBar Progress="{Binding Path=StateProgressValue}" Margin="8" />
+        <Label Text="{Binding Path=FunctionTextValue}" HorizontalTextAlignment="Center" VerticalOptions="Center" />
+        <Label Text="{Binding Path=FunctionProgressTextValue}" HorizontalTextAlignment="Center" />
+        <ProgressBar Progress="{Binding Path=FunctionProgressValue}" Margin="8" />
+        <Button Text="アップデートを中止" Margin="8" Clicked="Button_Click"/>
+    </StackLayout>
+</ContentPage>

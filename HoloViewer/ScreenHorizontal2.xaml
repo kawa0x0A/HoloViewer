@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:HoloViewer"
+             x:Class="HoloViewer.ScreenHorizontal2"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}">
+    <ContentView>
+        <StackLayout>
+            <local:MainToolbar />
+            <local:CaptureToolbar x:Name="captureToolbar">
+                <local:CaptureToolbar.CaptureButtons>
+                    <local:CaptureButtonsHorizontal2 x:Name="captureButtons" />
+                </local:CaptureToolbar.CaptureButtons>
+            </local:CaptureToolbar>
+            <local:WebViewToolbar x:Name="webviewToolbar1" />
+            <BlazorWebView HostPage="wwwroot/index.html" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BlazorWebViewInitialized="BlazorWebView1_BlazorWebViewInitialized" UrlLoading="BlazorWebView_UrlLoading">
+                <BlazorWebView.RootComponents>
+                    <RootComponent Selector="#app" ComponentType="{x:Type local:Main}" />
+                </BlazorWebView.RootComponents>
+            </BlazorWebView>
+            <local:WebViewToolbar x:Name="webviewToolbar2" />
+            <BlazorWebView HostPage="wwwroot/index.html" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BlazorWebViewInitialized="BlazorWebView2_BlazorWebViewInitialized" UrlLoading="BlazorWebView_UrlLoading">
+                <BlazorWebView.RootComponents>
+                    <RootComponent Selector="#app" ComponentType="{x:Type local:Main}" />
+                </BlazorWebView.RootComponents>
+            </BlazorWebView>
+        </StackLayout>
+    </ContentView>
+</ContentPage>
