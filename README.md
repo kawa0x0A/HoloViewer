@@ -3,9 +3,9 @@
 [![GitHub license](https://img.shields.io/github/license/kawa0x0A/HoloViewer)](https://github.com/kawa0x0A/HoloViewer/blob/main/LICENSE)
 [![Github All Releases](https://img.shields.io/github/downloads/kawa0x0A/HoloViewer/total.svg)]()
 
-![HoloViewer_Windows](https://user-images.githubusercontent.com/10515785/103134135-53fc3680-46f2-11eb-8d0d-c6e4d9d1dc82.png)
+![HoloViewer_Windows](https://github.com/kawa0x0A/HoloViewer/assets/10515785/291cebaa-7799-44ea-b744-04d2b02c0221)
 
-![HoloViewer_Mac](https://user-images.githubusercontent.com/10515785/103134186-ca993400-46f2-11eb-9603-35a61e424921.png)
+![HoloViewer_Mac](https://github.com/kawa0x0A/HoloViewer/assets/10515785/bb94f885-f8d0-4902-8443-de9c6ef77e6e)
 
 * ソフトウェア情報
   * 名前
@@ -13,9 +13,13 @@
   * 開発者
     * kawa0x0A
   * 動作に必要な環境
-    * Windows (64bit)
-      * 『Microsoft Edge Canary チャネル』のインストールが必要です
-    * Mac (macOS 10.9以上)
+    * バージョン2系
+      * Windows 10 以降 (64bit)
+      * Mac (macOS 14.0以上)
+    * バージョン1系
+      * Windows (64bit)
+        * 『Microsoft Edge Canary チャネル』のインストールが必要です
+      * Mac (macOS 10.9以上)
   * 機能
     * ブラウザを複数起動しなくても、Youtubeなどの動画ページを同時に見ることができます
   * 料金
@@ -35,10 +39,11 @@
 
 * ダウンロード
   * Windows版
-    * https://github.com/kawa0x0A/HoloViewer/releases/download/1.0.7.0/HoloViewer_Windows_x64.zip
-    * Windows版の使用には[Microsoft Edge Canary チャネル](https://www.microsoftedgeinsider.com/ja-jp/download)が必要になります。
+    * https://github.com/kawa0x0A/HoloViewer/releases/download/2.0.0.0/HoloViewer_Windows_x64.zip
+    * バージョン1系を使用する際の注意
+      * Windows版の使用には[Microsoft Edge Canary チャネル](https://www.microsoftedgeinsider.com/ja-jp/download)が必要になります。
   * Mac版
-    * https://github.com/kawa0x0A/HoloViewer/releases/download/1.0.7.0/HoloViewer_macOS.pkg
+    * https://github.com/kawa0x0A/HoloViewer/releases/download/2.0.0.0/HoloViewer_macOS.pkg
   * 過去のバージョンは[こちら](https://github.com/kawa0x0A/HoloViewer/releases)からダウンロードしてください
 
 * 連絡先
@@ -47,7 +52,10 @@
 
 * 技術情報
   * 使用言語とフレームワーク
-    * C# + .NET 5.0 + Mobile Blazor Bindings
+    * バージョン2系
+      * C# + .NET 7.0 + MAUI Blazor
+    * バージョン1系
+      * C# + .NET 5.0 + Mobile Blazor Bindings
   * 決済
     * Stripe
   * ホスティング
