@@ -78,4 +78,11 @@ public partial class ApplicationSettingsPage : ContentPage
 
         ApplicationSettings.Save();
     }
+
+    protected override bool OnBackButtonPressed()
+    {
+        ApplicationSettings.Save();
+
+        return base.OnBackButtonPressed();
+    }
 }

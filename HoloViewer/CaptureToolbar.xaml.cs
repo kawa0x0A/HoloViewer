@@ -49,11 +49,11 @@ public partial class CaptureToolbar : ContentView
 #if WINDOWS || MACCATALYST || MACOS
         if ((BindingModelView.IsCapturedImageCombine) || (CaptureTargetWebviews.Length == 1))
         {
-            await ScreenCapture.CaptureCombine(CaptureTargetWebviews.ToArray(), await CapturePositionFunction());
+            await ScreenCapture.CaptureCombine(CaptureTargetWebviews.ToArray(), BindingModelView.IsCaptureYoutubePlayerOnly, await CapturePositionFunction());
         }
         else
         {
-            await ScreenCapture.CaptureSeparate(CaptureTargetWebviews.ToArray());
+            await ScreenCapture.CaptureSeparate(CaptureTargetWebviews.ToArray(), BindingModelView.IsCaptureYoutubePlayerOnly);
         }
 #endif
     }

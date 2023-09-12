@@ -9,6 +9,23 @@ namespace HoloViewer
 #endif
 
 #if WINDOWS
+        public static string GetCurrentUrl(Microsoft.UI.Xaml.Controls.WebView2 webView)
+#elif MACCATALYST || MACOS
+        public static string GetCurrentUrl(WebKit.WKWebView webView)
+#else
+        public static string GetCurrentUrl(object webView)
+#endif
+        {
+#if WINDOWS
+            return ((UrlWebViewSource)webView.CoreWebView2.Source).Url;
+#elif MACCATALYST || MACOS
+            return webView.Url.ToString();
+#else
+            return "";
+#endif
+        }
+
+#if WINDOWS
         public static async Task<string> ExecuteJavaScriptAsync(Microsoft.UI.Xaml.Controls.WebView2 webView, string executeJavaScriptFilePath)
 #elif MACCATALYST || MACOS
         public static async Task<string> ExecuteJavaScriptAsync(WebKit.WKWebView webView, string executeJavaScriptFilePath)

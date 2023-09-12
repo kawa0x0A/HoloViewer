@@ -149,11 +149,7 @@ public partial class WebViewToolbar : ContentView
 
     public void UpdateUrl()
     {
-#if WINDOWS
-        BindingModelView.CurrentUrl = ((UrlWebViewSource)WebView.CoreWebView2.Source).Url;
-#elif MACCATALYST || MACOS
-        BindingModelView.CurrentUrl = WebView.Url.ToString();
-#endif
+        BindingModelView.CurrentUrl = WebViewUtility.GetCurrentUrl(WebView);
     }
 
     public void UpdateReloadButton()

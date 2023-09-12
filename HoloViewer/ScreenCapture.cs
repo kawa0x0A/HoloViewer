@@ -111,11 +111,11 @@ namespace HoloViewer
         }
 
 #if WINDOWS
-        public static async Task CaptureCombine(Microsoft.UI.Xaml.Controls.WebView2[] webViews, Rect[] rects)
+        public static async Task CaptureCombine(Microsoft.UI.Xaml.Controls.WebView2[] webViews, bool isCaptureYoutubePlayerOnly, Rect[] rects)
 #elif MACCATALYST || MACOS
-        public static async Task CaptureCombine(WebKit.WKWebView[] webViews, Rect[] rects)
+        public static async Task CaptureCombine(WebKit.WKWebView[] webViews, bool isCaptureYoutubePlayerOnly, Rect[] rects)
 #else
-        public static void CaptureCombine(object[] webViews, object[] rects)
+        public static void CaptureCombine(object[] webViews, bool isCaptureYoutubePlayerOnly, object[] rects)
 #endif
         {
 #if WINDOWS || MACCATALYST || MACOS
@@ -126,11 +126,16 @@ namespace HoloViewer
 
             for (int i = 0; i < webViews.Length; i++)
             {
-                var imageByteData = await GetCaptureWebViewData(webViews[i]);
+                var imageByteData = (isCaptureYoutubePlayerOnly && CustomRegex.IsMatchYoutubeUrl(WebViewUtility.GetCurrentUrl(webViews[i]))) ? (await IsEnableYoutubeVideoPlayer(webViews[i])) ? await GetCaptureYoutubePlayerData(webViews[i]) : await GetCaptureWebViewData(webViews[i]) : await GetCaptureYoutubeBackgroundSlateImageData(webViews[i]);
                 var image = new SkiaImage(SkiaSharp.SKBitmap.Decode(imageByteData));
                 var rect = rects[i];
 
                 skiaBitmap.Canvas.DrawImage(image, (float)rect.X, (float)rect.Y, (float)rect.Width, (float)rect.Height);
+            }
+
+            if (!Directory.Exists(GetCaptureDirectoryFullPath()))
+            {
+                Directory.CreateDirectory(GetCaptureDirectoryFullPath());
             }
 
             skiaBitmap.WriteToFile(GetCaptureFullPath(DateTime.Now));
@@ -138,11 +143,11 @@ namespace HoloViewer
         }
 
 #if WINDOWS
-        public static async Task CaptureSeparate(Microsoft.UI.Xaml.Controls.WebView2[] webViews)
+        public static async Task CaptureSeparate(Microsoft.UI.Xaml.Controls.WebView2[] webViews, bool isCaptureYoutubePlayerOnly)
 #elif MACCATALYST || MACOS
-        public static async Task CaptureSeparate(WebKit.WKWebView[] webViews)
+        public static async Task CaptureSeparate(WebKit.WKWebView[] webViews, bool isCaptureYoutubePlayerOnly)
 #else
-        public static void CaptureSeparate(object[] webViews)
+        public static void CaptureSeparate(object[] webViews, bool isCaptureYoutubePlayerOnly)
 #endif
         {
 #if WINDOWS || MACCATALYST || MACOS
@@ -150,7 +155,7 @@ namespace HoloViewer
 
             foreach (var webView in webViews)
             {
-                SavePngFile(await GetCaptureWebViewData(webView), GetCaptureFullPath(DateTime.Now, imageFileSuffixNumber));
+                SavePngFile((isCaptureYoutubePlayerOnly && CustomRegex.IsMatchYoutubeUrl(WebViewUtility.GetCurrentUrl(webView))) ? (await IsEnableYoutubeVideoPlayer(webView)) ? await GetCaptureYoutubePlayerData(webView) : await GetCaptureYoutubeBackgroundSlateImageData(webView) : await GetCaptureWebViewData(webView), GetCaptureFullPath(DateTime.Now, imageFileSuffixNumber));
 
                 imageFileSuffixNumber++;
             }
