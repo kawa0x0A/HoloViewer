@@ -33,6 +33,22 @@
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
+      <ApplicationDisplayVersion>2.0.2</ApplicationDisplayVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.22621.0|AnyCPU'">
+      <ApplicationDisplayVersion>2.0.2</ApplicationDisplayVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
+      <ApplicationDisplayVersion>2.0.2</ApplicationDisplayVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.22621.0|AnyCPU'">
+      <ApplicationDisplayVersion>2.0.2</ApplicationDisplayVersion>
+    </PropertyGroup>
+
     <ItemGroup>
         <!-- App Icon -->
         <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -59,6 +75,123 @@
 
     <ItemGroup>
       <ProjectReference Include="..\UpdateCheckLibrary\UpdateCheckLibrary.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <MauiImage Update="Resources\Images\icon_screen_custom3_1.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_custom3_1_capture_bottom_left.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_custom3_1_capture_bottom_right.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_custom3_1_capture_top.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_custom3_2.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_custom3_2_capture_bottom.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_custom3_2_capture_top_left.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_custom3_2_capture_top_right.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_custom4.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_custom4_capture_bottom_left.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_custom4_capture_bottom_right.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_custom4_capture_top_left.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_custom4_capture_top_right.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_horizontal2.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_horizontal2_capture_bottom.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_horizontal2_capture_top.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_horizontal3.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_horizontal3_capture_bottom.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_horizontal3_capture_center.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_horizontal3_capture_top.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_horizontal4.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_horizontal4_capture_bottom.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_horizontal4_capture_center_bottom.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_horizontal4_capture_center_top.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_horizontal4_capture_top.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_single.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_vertical2.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_vertical2_capture_left.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_vertical2_capture_right.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_vertical3.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_vertical3_capture_center.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_vertical3_capture_left.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_vertical3_capture_right.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_vertical4.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_vertical4_capture_center_left.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_vertical4_capture_center_right.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_vertical4_capture_left.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
+      <MauiImage Update="Resources\Images\icon_screen_vertical4_capture_right.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </MauiImage>
     </ItemGroup>
 
 </Project>
