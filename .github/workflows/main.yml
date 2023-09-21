@@ -39,62 +39,62 @@ jobs:
 
       - name: Delete Directory
         run: |
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/af-ZA
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/ar-SA
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/az-Latn-AZ
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/bg-BG
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/bs-Latn-BA
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/ca-ES
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/cs-CZ
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/cy-GB
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/da-DK
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/de-DE
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/el-GR
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/en-GB
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/en-us
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/es-ES
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/es-MX
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/et-EE
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/eu-ES
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/fa-IR
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/fi-FI
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/fr-CA
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/fr-FR
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/gl-ES
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/he-IL
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/hi-IN
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/hr-HR
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/hu-HU
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/id-ID
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/is-IS
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/it-IT
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/ka-GE
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/kk-KZ
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/ko-KR
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/lt-LT
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/lv-LV
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/Microsoft.UI.Xaml
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/ms-MY
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/nb-NO
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/nl-NL
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/nn-NO
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/pl-PL
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/pt-BR
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/pt-PT
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/ro-RO
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/ru-RU
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/sk-SK
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/sl-SI
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/sq-AL
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/sr-Cyrl-RS
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/sr-Latn-RS
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/sv-SE
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/th-TH
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/tr-TR
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/uk-UA
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/vi-VN
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/zh-CN
-            rmdir /s /q ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/zh-TW
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/af-ZA
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/ar-SA
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/az-Latn-AZ
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/bg-BG
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/bs-Latn-BA
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/ca-ES
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/cs-CZ
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/cy-GB
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/da-DK
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/de-DE
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/el-GR
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/en-GB
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/en-us
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/es-ES
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/es-MX
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/et-EE
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/eu-ES
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/fa-IR
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/fi-FI
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/fr-CA
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/fr-FR
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/gl-ES
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/he-IL
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/hi-IN
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/hr-HR
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/hu-HU
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/id-ID
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/is-IS
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/it-IT
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/ka-GE
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/kk-KZ
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/ko-KR
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/lt-LT
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/lv-LV
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/Microsoft.UI.Xaml
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/ms-MY
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/nb-NO
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/nl-NL
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/nn-NO
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/pl-PL
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/pt-BR
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/pt-PT
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/ro-RO
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/ru-RU
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/sk-SK
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/sl-SI
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/sq-AL
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/sr-Cyrl-RS
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/sr-Latn-RS
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/sv-SE
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/th-TH
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/tr-TR
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/uk-UA
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/vi-VN
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/zh-CN
+            Remove-Item ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/zh-TW
 
       - name: Delete PDB Files
         run: del ./HoloViewer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/publish/*.pdb
