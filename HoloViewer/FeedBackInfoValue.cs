@@ -6,7 +6,7 @@ namespace HoloViewer
 
         public static readonly string VersionString = Version.ToString();
 
-        public const string ReleaseDate = "2023/9/12";
+        public const string ReleaseDate = "2023/9/21";
 
         public const string SoftwareLicense = "MIT";
 
